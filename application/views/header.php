@@ -11,6 +11,8 @@
 <script type="text/javascript" src="<?php echo base_url();?>javascripts/jquery.corners.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>javascripts/producto_redondeado.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>javascripts/descripcion_producto.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>javascripts/gradienter.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>javascripts/degradado.js"></script>
 
 </head> 
  
