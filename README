@@ -1,9 +1,9 @@
-Fauna-Exotica
-Instalación BD: faunaexoticaSQL.sql
+/*****  Fauna-Exotica  *****\
+Instalacion BD: faunaexoticaSQL.sql
 
 Terminado / Revisando:
 - Cuenta usuarios
-- Menú productos
+- Menu productos
 - Productos
 - Carrito
 
