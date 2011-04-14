@@ -49,7 +49,7 @@
 	<!-- Carro -->	
 	<div class="grid_3"> 
 		<div class='header'>
-		<img src="<?php echo base_url();?>images/carrito.jpg"></img>
+		<img src="<?php echo base_url();?>images/carrito.png"></img>
 					 Total: <?php echo $this->cart->total().'&#8364<br>'; ?> 
 					Tienes <?php echo $this->cart->total_items();?> productos.
 					<?php echo anchor('/carrito/index/', 'Ver Carrito')?>

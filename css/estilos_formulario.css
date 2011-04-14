@@ -16,6 +16,25 @@ div.error{
 	padding:10px;
 }
 
-.cuenta form {
+.cuenta div form {
 	margin-bottom:10px;
+}
+
+.cuenta ul {
+	margin-top: 0px;
+	padding: 0px;
+}
+
+.cuenta ul li {
+	padding : 5px;
+}
+
+.seccion {
+	background-color:#E6ECEF;
+	padding : 5px;
+}
+.color {
+	background-color:#E6ECEF;
+	color: black;
+	padding: 5px;
 }

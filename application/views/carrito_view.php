@@ -3,7 +3,7 @@
 
 <div class='contenido'> 
 
-<div class='grid_8 push_2 carrito'>
+<div class='grid_10 push_1 carrito'>
 <p>Hay un total de <?php echo $total_items;?> productos.</p>
 
 <table>
