@@ -1,29 +1,35 @@
  /* Estilos para ver los grid */ 
-body { background-color: #fff; }
+body { background-color: #333; }
 
 .container { background-color:#333;}
 
+a{
+	text-decoration:none;
+	color: white;
+}
  /* Fin */ 
 
  
   /* Estilos de la web */ 
 .header {
 	text-align: center;
-	background-color:#fff;
-	border:1px solid #333;
+	background-color:#001A0D;
 	padding:10px;
 }
 
+.header h1 {
+}
+
 .menu_horizontal{
-	background-color:#fff;
-	border:1px solid #333; 
+	background-color:#00110D;
 	
 }
 
 .menu_vertical{
+	color: white;
 	margin-top: 0px;
 	min-height: 400px;
-	background-color:#fff;
+	background-color:#001A0D;
 	padding:10px;
 }
 
@@ -36,117 +42,20 @@ body { background-color: #fff; }
 } 
 
 .contenido {
+	color: white;
 	min-height: 400px;
-	background-color:#fff;
-	border:1px solid #333;
+	background-color:#001A0D;
 	padding:20px;
+}
+h1{
+	text-align:center;
 }
 
 .footer{
-	background-color:#fff;
-	border:1px solid #333; 
+	background-color:#001A00;
+	color: white;
 	padding:10px;
-	margin-top: 10px;
-	text-align: center; 
-}
-
-.producto{
-	background:#C6D3DA;
-	padding:10px;
-	margin-left:12px;
-}
-
-.producto img{
-	height:165px;
-	width: 176px;
-}
-
-.producto p {
-	margin-top:5px;
-    color: #40606E;
-    font-family: Arial,Helvetica,sans-serif;
-    font-size: 15px;
-}
-.precio{
-	display:inline;
-	padding-left:42px;
-	font-size:30px;
-	color:#red;
-	font-weight:bold;
-}
-.producto a{
-	float:right;
-    color: #40606E;
-    font-family: Arial,Helvetica,sans-serif;
-    font-size: 15px;
-    margin-top:0px;
-}
-.info{
+	font:normal 62.5%/1.5 Helvetica, Arial, sans-serif;
+	margin-top:13px;
 	text-align:center;
-}
-.info a img{
- 	width:45px;
-	height:15px;
-}
-.descripcion{
-    color: green;
-    font-family: Arial,Helvetica,sans-serif;
-    font-size: 15px;
-}
-
-.zoom_producto img{
-	display:inline;	
-	height:165px;
-	width: 176px;
-	 
-}
-
-.zoom_producto{
-	background-color:#C6D3DA;
-}
-
-.zoom_producto p{
-    color: green;
-    font-family: Arial,Helvetica,sans-serif;
-    font-size: 15px;
-}
-
-.carrito {
-	background:#C6D3DA;
-	padding:5px;
-	margin:10px;
-}
-
-.carrito table {
-	border: 1px solid black;
-	width:100%;
-	text-align: right;
-	height:50px;
-}
-
-.carrito table th {
-	width: 90px;
-}
-
-.carrito table tr {
-	width:90px;
-}
-
-.carrito_img {
-	display:inline;	
-	height:70px;
-	width: 70px;
-}
-
-label,input{
-	display:block;
-	padding:5px;
-}
-
-div.error{
-	background-color:#FF8F8F;
-	border: 1px solid #FF1111;
-	margin-bottom:5px;
-	padding:5px;
-	width:400px;
 }

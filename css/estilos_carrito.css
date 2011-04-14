@@ -1,0 +1,26 @@
+ .carrito {
+	background:#C6D3DA;
+	padding:5px;
+	margin:10px;
+}
+
+.carrito table {
+	border: 1px solid black;
+	width:100%;
+	text-align: right;
+	height:50px;
+}
+
+.carrito table th {
+	width: 90px;
+}
+
+.carrito table tr {
+	width:90px;
+}
+
+.carrito_img {
+	display:inline;	
+	height:70px;
+	width: 70px;
+}

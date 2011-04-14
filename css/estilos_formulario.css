@@ -1,0 +1,12 @@
+label,input{
+	display:block;
+	padding:5px;
+}
+
+div.error{
+	background-color:#FF8F8F;
+	border: 1px solid #FF1111;
+	margin-bottom:5px;
+	padding:5px;
+	width:400px;
+}

@@ -6,17 +6,25 @@
 
 <?php 
 	foreach($productos as $fila){
+		
+			$data = array(
+               'id'      => $fila->cod,
+               'qty'     => '1',
+               'price'   => $fila->precio,
+               'name'    => $fila->nombre
+            );
+            
+           $str = $this->uri->assoc_to_uri($data);
+           
 		echo "<div class=\"producto grid_3 push_1\">"; 
 		echo "<img src=".base_url()."images/".$fila->foto.">";
 		echo "<div class=\"info\"><p>".$fila->nombre."</p>";
-		echo "<p class=\"precio\">".$fila->precio." &#8364;</p>";
-		//echo "<a onclick=\"Mostrar_Ocultar_Descripcion(".$fila->cod.")\" href=\"#\">+ mas</a>";
-		echo "<a href=".base_url()."index.php/producto/mostrar/".$fila->cod."><img src=".base_url()."images/info.gif></a>";
+		echo "<p class=\"precios\">".$fila->precio." &#8364;</p>";
+		echo "<div class=\"mas_info\">";
+		echo anchor('/carrito/incluir/'.$str, '<img class="derecha" src="'.base_url().'images/comprar.png">');
+		echo "<a href=".base_url()."index.php/producto/mostrar/".$fila->cod."><img src=".base_url()."images/info.png></a>";
 		echo "</div>";
-		echo "<div id='descripcion_".$fila->cod."' style=\"display:none\">";
-		echo "Descripcion: <br>";
-		echo $fila->descripcion;
-		echo "</div>";		
+		echo "</div>";
 		echo "</div>";	
 	}
 ?>

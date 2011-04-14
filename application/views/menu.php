@@ -30,7 +30,7 @@ if ($this->session->userdata('logged_in') === TRUE){
 <div class='clear'>&nbsp;</div> 
 <div class='grid_2'> 
 
-<div class='menu_vertical' id='menu_vertical'>
+<div class='menu_vertical'>
 
 	<div>
 	ANIMALES

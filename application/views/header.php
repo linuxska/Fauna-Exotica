@@ -7,12 +7,18 @@
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/960grid.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/estilos.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/estilos_productos.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/estilos_carrito.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/estilos_formulario.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/global.css" />
 <script type="text/javascript" src="<?php echo base_url();?>javascripts/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="<?php echo base_url();?>js/slides.min.jquery.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>javascripts/slider.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>javascripts/jquery.corners.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>javascripts/producto_redondeado.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>javascripts/descripcion_producto.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>javascripts/gradienter.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>javascripts/degradado.js"></script>
+
+
 
 </head> 
  
@@ -36,7 +42,7 @@
 	<!--  TITULO -->
 	<div class="grid_6 "> 
 		<div class='header'>
-			[ TITULO ]<?php echo anchor('inicio', 'Fauna exotica')?> 
+			<h1><?php echo anchor('inicio', 'Fauna exotica')?> </h1>
 		</div>	
 	</div>
 	<!--  Fin Titulo -->

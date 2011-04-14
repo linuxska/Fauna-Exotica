@@ -7,10 +7,17 @@ class Producto extends CI_Controller {
             parent::__construct();
 			$this->load->helper('url');
 			$this->load->model('producto_model');
+			$this->load->helper('form');
+		
+
    
        }
        
        public function Index(){
+       		/* Carga de modelos */
+       		$this->load->model('menu_model');
+   		
+       		
        		/* Datos para la vista */
        		$head['titulo'] = "Productos";
 
@@ -52,7 +59,6 @@ class Producto extends CI_Controller {
     		
     		$this->load->view('footer');    	
        
-       }
-       
+       }      
 }
 ?>
