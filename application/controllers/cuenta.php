@@ -11,7 +11,7 @@ class Cuenta extends CI_Controller {
 			
 			$this->load->library('form_validation');
 			
-			//$this->load->model('cuenta_model');
+			$this->load->model('cuenta_model');
        }
        
        public function Index(){
@@ -29,8 +29,11 @@ class Cuenta extends CI_Controller {
 				$this->load->view('header', $head);
     			$this->load->view('menu', $menu);
     			
+    			// Datos del usuario para el formulario
+    			$cuenta= $this->cuenta_model->obtener($this->session->userdata('id'));
+    			
     			// Contenido principal
-				$this->load->view('cuenta_view');
+				$this->load->view('cuenta_view', $cuenta);
 				
 				$this->load->view('footer');
 			}
@@ -44,6 +47,35 @@ class Cuenta extends CI_Controller {
        }
        
        public function perfil(){
+       	    if( $this->session->userdata('logged_in') ===  TRUE) redirect('cuenta/index');      		
+       
+    		// Reglas de validaciÃ³n del formulario
+			$this->establecer_reglas();
+			
+			if($this->form_validation->run()==FALSE){
+				$this->load->view('menu', $menu);
+				// Si no se ha realizado el formulario de registro
+				$this->load->view('registro_view');	
+			} else {
+				// Formulario enviado
+				$usuario = $this->input->post('usuario');
+			    $password = $this->input->post('password');
+			    $email = $this->input->post('email');
+
+			    //Registro BD
+				$reg = $this->registro_model->registrar($usuario, $password, $email);				
+				if ($reg === TRUE) {
+					// Tras registrarse con Ã©xito:
+					$this->session->sess_destroy();
+					$this->cuenta_model->login($usuario, $password);
+					$this->load->view('menu', $menu);
+					$this->load->view('cuenta_view');
+				} else echo "ERROR REGISTRO";
+			
+			}
+						
+    		
+    		 redirect('cuenta/index');
        	
        }
        
