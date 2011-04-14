@@ -8,13 +8,15 @@ class Login extends CI_Controller {
 			$this->load->helper('url');
 			$this->load->helper('form');
 			$this->load->library('form_validation');
-			$this->load->model('login_model');
+			$this->load->model('cuenta_model');
+			$this->load->helper('email');
+			$this->load->library('email');
        }
        
-       public function Index(){ 
+       public function Index(){
        		if( $this->session->userdata('logged_in') ===  TRUE) redirect('cuenta/index');
        			
-       		 // Reglas de validación del formulario
+       		 // Reglas de validaciÃ³n del formulario
 			$this->establecer_reglas();
 			
        		/* Datos para la vista */
@@ -32,7 +34,7 @@ class Login extends CI_Controller {
 				$usuario = $this->input->post('usuario');
 				$password = $this->input->post('password');
 
-				$login = $this->login_model->login($usuario, $password);
+				$login = $this->cuenta_model->login($usuario, $password);
 				
 				if ($login == TRUE){
 					$this->load->view('menu', $menu);
@@ -45,24 +47,26 @@ class Login extends CI_Controller {
        }
        
        public function comprobar_usuario($usuario){
-       		return $this->login_model->existe_usuario($usuario);
+       		return $this->cuenta_model->existe_usuario($usuario);
        }
        
        public function comprobar_password($password){
        		$usuario = $this->input->post('usuario');
-       		return $this->login_model->comprobar_password($usuario, $password);
+       		return $this->cuenta_model->comprobar_password($usuario, $password);
        }
        
        public function establecer_reglas(){
-       	    $this->form_validation->set_rules('usuario', 'usuario', 'required|trim|min_length[5]|callback_comprobar_usuario');
-			$this->form_validation->set_rules('password', 'contrase&ntilde;a', 'required|trim|md5|callback_comprobar_password');
+       	    $this->form_validation->set_rules('usuario', 'usuario', 'required|trim|min_length[5]|max_length[25]|callback_comprobar_usuario');
+			$this->form_validation->set_rules('password', 'contraseña', 'required|trim|md5|callback_comprobar_password');
 				
 			$this->form_validation->set_message('required', 'Debe introducir el campo %s');
-			$this->form_validation->set_message('min_length', 'El campo %s debe ser de al menos %s carácteres');
+			$this->form_validation->set_message('min_length', 'El campo %s debe ser de al menos %s caracteres');
+			$this->form_validation->set_message('max_length', 'El campo %s debe tener como máximo %s caracteres');
 			$this->form_validation->set_message('comprobar_usuario', 'El usuario no es correcto');
-			$this->form_validation->set_message('comprobar_password', 'La contrase&ntilde;a no es correcta');
+			$this->form_validation->set_message('comprobar_password', 'La contraseña no es correcta');
 			
        }
+
        
 }
 ?>
