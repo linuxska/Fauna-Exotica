@@ -17,6 +17,7 @@
 <script type="text/javascript" src="<?php echo base_url();?>javascripts/slider.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>javascripts/jquery.corners.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>javascripts/producto_redondeado.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>javascripts/cuenta.js"></script>
 
 </head> 
 
@@ -31,8 +32,8 @@
 <div class='header'>
 	<!-- Logo -->	
 	<div class="grid_3"> 
-		<div class='header'>
-			[ LOGO ]
+		<div>
+		<img src="<?php echo base_url();?>images/logo.png">
 		</div>		
 	</div> 
 	<!--  Fin Logo -->

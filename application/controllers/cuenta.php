@@ -42,6 +42,10 @@ class Cuenta extends CI_Controller {
        		
        		redirect('inicio/index/');
        }
+       
+       public function datos(){
+       	
+       }
 
        
 }

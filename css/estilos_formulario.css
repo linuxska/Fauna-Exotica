@@ -10,3 +10,12 @@ div.error{
 	padding:5px;
 	width:275px;
 }
+
+.cuenta {
+	background-color:#C6D3DA;
+	padding:10px;
+}
+
+.cuenta form {
+	margin-bottom:10px;
+}
