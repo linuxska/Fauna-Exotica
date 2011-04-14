@@ -7,7 +7,18 @@ class Cuenta_model extends CI_Model {
             // Your own constructor code
             $this->load->database();
        }
-       
+	public function obtener($cod_usuario){
+		$query = $this->db->where('id', $cod_usuario)
+							->get('usuario');
+		
+		if($query->num_rows>0){
+			foreach ($query->result() as $fila) {
+				$data[] = $fila;
+			}
+			return $query->row();
+		}
+	}
+	
        public function existe_usuario ($usuario) {
 	        if ($usuario === false){
 		        return false;
@@ -43,7 +54,7 @@ class Cuenta_model extends CI_Model {
        
 	   
 	/* PARA LOGIN */
-	       public function comprobar_password ($usuario, $password) {
+	  public function comprobar_password ($usuario, $password) {
 		    if ($usuario === false || $password === false) return false;
 		    		    
 		    $query = $this->db->select('id, nombre, email, password')
@@ -66,7 +77,7 @@ class Cuenta_model extends CI_Model {
 	{
 	    
 	    if ($usuario === false || $password === false)  
-	    {	 // NOTA: ¿Falta comprobar si esta identificado ya ?
+	    {	 // NOTA: ï¿½Falta comprobar si esta identificado ya ?
 	        return false;
 	    }
 	    
