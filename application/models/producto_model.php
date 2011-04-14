@@ -8,10 +8,10 @@ class Producto_model extends CI_Model{
        } 
        
        // Obtener todos los productos de una subcategoría
-       public function obtener_productos ($cod_subcategoria) {
+       public function obtener_productos ($num_items,$num_pag, $cod_subcategoria) {
 	         $query = $this->db->select('cod, nombre, foto, descripcion, precio')
        							->where('cod_subcategoria',$cod_subcategoria)
-       							->get('producto');
+       							->get('producto',$num_items, $num_pag);
        							
        		 return $query->result();
 	   }
@@ -37,7 +37,14 @@ class Producto_model extends CI_Model{
 
 	   }
 	   
-	   
+	   //Obtener el n� total de productos de una subcategoria
+	   public function total_productos($cod_subcategoria){
+	   		$query = $this->db->select('cod')
+       							->where('cod_subcategoria',$cod_subcategoria)
+       							->get('producto');
+	   		
+	   		return $query->num_rows();
+	   }
 }
 
 

@@ -30,5 +30,6 @@
 ?>
 
 <div class=clear></div>
+<?php echo '<p>'.$this->pagination->create_links().'</p>';?>
 </div>
 </div> <!--  Fin Contenido -->
