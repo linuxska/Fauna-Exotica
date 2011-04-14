@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class Registro_model extends CI_Model {
 

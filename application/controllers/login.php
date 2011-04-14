@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 
 class Login extends CI_Controller {
 
@@ -14,7 +14,7 @@ class Login extends CI_Controller {
        public function Index(){ 
        		if( $this->session->userdata('logged_in') ===  TRUE) redirect('cuenta/index');
        			
-       		 // Reglas de validación del formulario
+       		 // Reglas de validaciÃ³n del formulario
 			$this->establecer_reglas();
 			
        		/* Datos para la vista */
@@ -58,7 +58,7 @@ class Login extends CI_Controller {
 			$this->form_validation->set_rules('password', 'contrase&ntilde;a', 'required|trim|md5|callback_comprobar_password');
 				
 			$this->form_validation->set_message('required', 'Debe introducir el campo %s');
-			$this->form_validation->set_message('min_length', 'El campo %s debe ser de al menos %s carácteres');
+			$this->form_validation->set_message('min_length', 'El campo %s debe ser de al menos %s carÃ¡cteres');
 			$this->form_validation->set_message('comprobar_usuario', 'El usuario no es correcto');
 			$this->form_validation->set_message('comprobar_password', 'La contrase&ntilde;a no es correcta');
 			

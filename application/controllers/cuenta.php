@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class Cuenta extends CI_Controller {
 
@@ -11,7 +11,7 @@ class Cuenta extends CI_Controller {
 			
 			$this->load->library('form_validation');
 			
-			$this->load->model('cuenta_model');
+			//$this->load->model('cuenta_model');
        }
        
        public function Index(){
@@ -21,8 +21,8 @@ class Cuenta extends CI_Controller {
 			$menu['menu'] = $this->menu_model->obtener_menu();
 
 			if( $this->session->userdata('logged_in') !==  TRUE){
-				// Si no ha iniciado sesi�n se abre la pagina login
-				redirect('login/index');	
+				// Si no ha iniciado sesión se abre la pagina login
+				redirect('login/index');
 			} else {
 			
            		 /* Carga de las vistas */

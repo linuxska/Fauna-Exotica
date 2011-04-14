@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 class Carrito_model extends CI_Model{
        public function __construct()
        {
@@ -32,7 +32,7 @@ class Carrito_model extends CI_Model{
        public function obtener_carrito(){
        		 $carrito = $this->cart->contents(); 
 
-       		 // A�adimos la foto del producto 
+       		 // Añadimos la foto del producto 
        		 foreach ($carrito as $indice => $producto){
        		 	$producto_bd = $this->producto_model->obtener_foto_producto($producto['id']);
        		 	$carrito[$indice]['foto'] = $producto_bd->foto;

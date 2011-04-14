@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class Usuario_model extends CI_Model {
 
@@ -88,7 +88,7 @@ public function registrar ($usuario = false, $password = false, $email = false)
 	{
 	    
 	    if ($usuario === false || $password === false)  
-	    {	 // NOTA: �Falta comprobar si esta identificado ya ?
+	    {	 // NOTA: ¿Falta comprobar si esta identificado ya ?
 	        return false;
 	    }
 	    

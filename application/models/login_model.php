@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class Login_model extends CI_Model {
 
@@ -49,7 +49,7 @@ class Login_model extends CI_Model {
 	{
 	    
 	    if ($usuario === false || $password === false)  
-	    {	 // NOTA: �Falta comprobar si esta identificado ya ?
+	    {	 // NOTA: ¿Falta comprobar si esta identificado ya ?
 	        return false;
 	    }
 	    

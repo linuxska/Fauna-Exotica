@@ -1,4 +1,4 @@
-<!--  Contenido -->
+﻿<!--  Contenido -->
 <div class='grid_10'> 
 
 <div class='contenido'>
@@ -13,12 +13,12 @@
 <?php echo form_password(array('name' => 'password', 'id' => 'password', 'size' => '40')); ?>
 <?php echo form_submit('enviar', 'Login') ?>
 <?php echo form_close() ?>
-<p><?php echo anchor('', '&#191;Has olvidado tu contrase&ntilde;a? JODETE!')?></p>
+<p><?php echo anchor('', '¿Has olvidado tu contraseña?')?></p>
 </div>
 
 <div class='grid_3'> <!--  Enlaces -->
-<p>&#191;Nuevo usuario?</p>
-<p><?php echo anchor('registro/index', '&#161;REGISTRATE AQUI!')?></p>
+<p>¿Nuevo usuario?</p>
+<p><?php echo anchor('registro/index', '¡REGISTRATE AQUI!')?></p>
 </div>
 
 <div class=clear></div>

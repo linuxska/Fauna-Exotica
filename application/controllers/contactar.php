@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class Contactar extends CI_Controller {
 

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class Carrito extends CI_Controller {
 
@@ -40,7 +40,7 @@ class Carrito extends CI_Controller {
 	       	// Remplazar los espacios url de Html %20...
 	       	$data_uri['name'] = str_replace('%20', ' ', $data_uri['name']);
 	      
-			$this->cart->insert($data_uri); // Insertar a la sesi�n del carrito
+			$this->cart->insert($data_uri); // Insertar a la sesión del carrito
 	       	        
 			// Muestra el carrito:
 	       	redirect('carrito/index/');

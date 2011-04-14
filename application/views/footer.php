@@ -1,4 +1,4 @@
-<!--  Footer -->
+﻿<!--  Footer -->
 <div class='clear'>&nbsp;</div> 
 <div class="grid_12">
 

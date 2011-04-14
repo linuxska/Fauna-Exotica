@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class Informacion extends CI_Controller {
 

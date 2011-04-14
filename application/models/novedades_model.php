@@ -1,4 +1,4 @@
-<?php 
+ï»¿<?php 
 class Novedades_model extends CI_Model{
        public function __construct()
        {
@@ -7,7 +7,7 @@ class Novedades_model extends CI_Model{
             $this->load->database();
        } 
        
-       //Función con la que se obtiene los últimos 5 productos insertados en la tabla productos
+       //FunciÃ³n con la que se obtiene los Ãºltimos 5 productos insertados en la tabla productos
        public function obtener_novedades(){
        		$query = $this->db->order_by("cod", "DESC")
        							->get('producto',3);

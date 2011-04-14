@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml"> 
 <head> 
@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/estilos_carrito.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/estilos_formulario.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/global.css" />
+
 <script type="text/javascript" src="<?php echo base_url();?>javascripts/jquery.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script src="<?php echo base_url();?>js/slides.min.jquery.js"></script>
@@ -42,7 +43,7 @@
 	<!--  TITULO -->
 	<div class="grid_6 "> 
 		<div class='header'>
-			<h1><?php echo anchor('inicio', 'Fauna exotica')?> </h1>
+			<h1><?php echo anchor('inicio', 'Fauna exótica')?></h1>
 		</div>	
 	</div>
 	<!--  Fin Titulo -->

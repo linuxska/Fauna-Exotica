@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class Inicio extends CI_Controller {
 

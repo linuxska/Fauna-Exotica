@@ -1,4 +1,4 @@
-<?php 
+ï»¿<?php 
 class Producto_model extends CI_Model{
        public function __construct()
        {
@@ -7,7 +7,7 @@ class Producto_model extends CI_Model{
             $this->load->database();
        } 
        
-       // Obtener todos los productos de una subcategoría
+       // Obtener todos los productos de una subcategorÃ­a
        public function obtener_productos ($cod_subcategoria) {
 	         $query = $this->db->select('cod, nombre, foto, descripcion, precio')
        							->where('cod_subcategoria',$cod_subcategoria)
@@ -16,7 +16,7 @@ class Producto_model extends CI_Model{
        		 return $query->result();
 	   }
 	   
-	   // Obtener un solo producto por su código
+	   // Obtener un solo producto por su cÃ³digo
        public function obtener_producto ($cod_producto) {
 
 	         $query = $this->db->where('cod',$cod_producto)
@@ -26,7 +26,7 @@ class Producto_model extends CI_Model{
 
 	   }
 	   
-	   // Obtener el registro foto de un producto por su código
+	   // Obtener el registro foto de un producto por su cÃ³digo
        public function obtener_foto_producto ($cod_producto) {
 
 	         $query = $this->db->select('foto')
