@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 class Etiqueta_model extends CI_Model {
 

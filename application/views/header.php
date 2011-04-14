@@ -1,9 +1,8 @@
-﻿
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml"> 
-<head> 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-    <title><?php echo $titulo?></title> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title><?php echo $titulo?></title>
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/960grid.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/estilos.css" />
@@ -19,11 +18,9 @@
 <script type="text/javascript" src="<?php echo base_url();?>javascripts/jquery.corners.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>javascripts/producto_redondeado.js"></script>
 
-
-
 </head> 
- 
-<body> 
+
+<body>
 
 <!--  CONTAINER -->
 <div class="container container_12">

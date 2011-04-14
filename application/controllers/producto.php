@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 class Producto extends CI_Controller {
 

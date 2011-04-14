@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 class Registro extends CI_Controller {
 

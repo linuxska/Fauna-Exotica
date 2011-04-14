@@ -1,5 +1,4 @@
-﻿<?php
-
+<?php 
 class Inicio extends CI_Controller {
 
        public function __construct()
@@ -29,6 +28,5 @@ class Inicio extends CI_Controller {
     		
     		$this->load->view('footer');
        }
-       
 }
 ?>

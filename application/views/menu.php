@@ -1,5 +1,5 @@
-﻿<!--  Menu Horizontal -->
-<div class='clear'>&nbsp;</div> 
+<!--  Menu Horizontal -->
+<div class='clear'>&nbsp;</div>
 <div class='grid_10 push_2'>
 
 <div class='menu_horizontal'>
@@ -12,7 +12,7 @@
 </div>
 <div class ='grid_3 push_2'>
 <p>
-<?php 
+<?php
 echo anchor('cuenta/index', 'Mi cuenta').' ';
 if ($this->session->userdata('logged_in') === TRUE){
 	echo 'Bienvenido '.$this->session->userdata('usuario').'. ';
@@ -73,3 +73,4 @@ if ($this->session->userdata('logged_in') === TRUE){
 </div>
 
  </div> <!--  Fin Menu Vertical -->
+ 

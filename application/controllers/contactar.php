@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 class Contactar extends CI_Controller {
 
@@ -24,6 +24,6 @@ class Contactar extends CI_Controller {
     		
     		$this->load->view('footer');
        }
-       
+
 }
 ?>

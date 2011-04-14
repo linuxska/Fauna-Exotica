@@ -1,4 +1,4 @@
-﻿<!--  Contenido -->
+<!--  Contenido -->
 <div class='grid_10'> 
 
 <div class='contenido'>	<h1>Novedades</h1> <?php echo $this->session->userdata('nombre'); ?>

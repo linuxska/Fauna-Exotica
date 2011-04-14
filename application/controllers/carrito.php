@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 class Carrito extends CI_Controller {
 
