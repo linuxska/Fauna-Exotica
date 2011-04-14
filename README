@@ -1,3 +1,18 @@
-y aqui?
-linea cambiada con respecto a remoto
-que tal?
+Fauna-Exotica
+Instalación BD: faunaexoticaSQL.sql
+
+Terminado / Revisando:
+- Cuenta usuarios
+- Menú productos
+- Productos
+- Carrito
+
+En proceso:
+- Procesar pedido
+- Paginar productos
+- Filtrar productos
+- Vista web principal
+
+Sin empezar:
+- Administración BD scaffolding
+- Procesar pedidos paypal
