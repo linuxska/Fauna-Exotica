@@ -51,7 +51,11 @@ class Login extends CI_Controller {
        
        public function comprobar_password($password){
        		$usuario = $this->input->post('usuario');
-       		return $this->cuenta_model->comprobar_password($usuario, $password);
+       		if ($this->cuenta_model->comprobar_password($usuario, $password))
+       			return true;
+       		elseif ($this->cuenta_model->comprobar_password_recuperacion($usuario, $password))
+       			return true;
+       		else return false;
        }
        
        public function establecer_reglas(){

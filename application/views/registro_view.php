@@ -10,9 +10,9 @@
 <?php echo form_input(array('name' => 'usuario', 'id' => 'usuario', 'maxlength'   => '20', 'size' => '40', 'value' => set_value('usuario'))) ?>
 <?php echo form_label('Email:', 'email'); ?>
 <?php echo form_input(array('name' => 'email', 'id' => 'email', 'maxlength'   => '40', 'size' => '40', 'value' => set_value('email'))); ?>
-<?php echo form_label('Contrase&ntilde;a:', 'password'); ?>
+<?php echo form_label('Contraseña:', 'password'); ?>
 <?php echo form_password(array('name' => 'password', 'id' => 'password', 'maxlength'   => '40', 'size' => '40')); ?>
-<?php echo form_label('Reescribe la contrase&ntilde;a:', 'repassword'); ?>
+<?php echo form_label('Reescribe la contraseña:', 'repassword'); ?>
 <?php echo form_password(array('name' => 'repassword', 'id' => 'repassword', 'maxlength'   => '40', 'size' => '40')); ?>
 <?php echo form_submit('enviar', 'Registrarse') ?>
 <?php echo form_close() ?>

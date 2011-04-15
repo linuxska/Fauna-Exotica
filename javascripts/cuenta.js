@@ -1,4 +1,6 @@
-//Script que crea los bordes redondeados 
+/*
+ * Script para vista de cuenta
+ */
 $(document).ready( 
 
 function(){

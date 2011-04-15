@@ -1,8 +1,16 @@
-/*****  Fauna-Exotica  *****\
-Instalacion BD: faunaexoticaSQL.sql
+/*****  Fauna-Exotica  *****/
+Instalacion BD: faunaexoticaSQL.sq
+Instalacion Mail: habilitar en php.ini => extension=php_openssl.dll (reiniciar servidor) 
+
+Datos cuenta GMAIL: 
+nombre =>	lausca.sl@gmail.com
+pass =>		faunaexotica
+
+/* Proceso de la web */
 
 Terminado / Revisando:
 - Cuenta usuarios
+- Mandar emails (Gmail)
 - Menu productos
 - Productos
 - Carrito
@@ -14,5 +22,5 @@ En proceso:
 - Vista web principal
 
 Sin empezar:
-- Administración BD scaffolding
+- Administracióon BD scaffolding
 - Procesar pedidos paypal
