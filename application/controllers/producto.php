@@ -18,7 +18,7 @@ class Producto extends CI_Controller {
        		$this->load->library('pagination');
        		$config['base_url']= base_url().'index.php/producto/index/'.$this->uri->segment(3);
        		$config['total_rows']=$this->producto_model->total_productos($this->uri->segment(3));
-       		$config['per_page'] = '3';
+       		$config['per_page'] = '9';
        		$config['uri_segment']=4;
        		$this->pagination->initialize($config);
        	
