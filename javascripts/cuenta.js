@@ -2,13 +2,16 @@
 $(document).ready( 
 
 function(){
-	// Bordes redondeados
+  // Bordes redondeados
   $('.cuenta').corners("5px");
+  
+  $( '#perfil_link').addClass("color");
   $('#datos').hide();
-  $('#perfil_link').addClass("color");
   
   // Cambio de vista de sección
   $('#perfil_link').click(function() {
+	  $actual = '#perfil';
+	  $actual_link = '#perfil_link';
 	  $('#datos_link').removeClass("color");
 	  $(this).addClass("color");
 		 
@@ -17,6 +20,9 @@ function(){
 	});
   
   $('#datos_link').click(function() {
+	  $actual = '#datos';
+	  $actual_link = '#datos_link';
+	  
 	  $('#perfil_link').removeClass("color");
 	  $(this).addClass("color");
 	  

@@ -63,25 +63,17 @@ class Cuenta_model extends CI_Model {
 		
 		return false;
 	}
-       
-	   
-	public function actualizar_perfil ($datos, $cod_usuario){
-		$this->db->select('nombre, apellido1, apellido2, direccion')
-				->where('id', $cod_usuario)
-				->update('usuario', $datos); 
-		return ($this->db->affected_rows() > 0) ? true : false;
-		
-		
-	}
+
 	
-	public function actualizar_datos ($datos, $cod_usuario){
-		$this->db->select('email, password')
-				->where('id', $cod_usuario)
-				->update('usuario', $datos); 
+	public function actualizar_usuario ($datos, $cod_usuario){
+		$this->db->where('id', $cod_usuario)
+				  ->update('usuario', $datos); 
 				
 		return ($this->db->affected_rows() > 0) ? true : false;
 		
 	}
+	
+
 	
 	/* PARA LOGIN */
 	  public function comprobar_password ($usuario, $password) {

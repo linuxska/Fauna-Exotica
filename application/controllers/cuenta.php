@@ -1,9 +1,5 @@
 <?php
-/* ***********************
- * 
- * FALTA SOLUCIONAR ACTUALIZAR CONTRASEÑA
- * 
- */
+
 class Cuenta extends CI_Controller {
 
        public function __construct()
@@ -69,14 +65,16 @@ class Cuenta extends CI_Controller {
 				$this->load->view('cuenta_view', $cuenta);
 			} else {
 				// Formulario enviado
-				$datos_perfil['nombre']=  $this->input->post('nombre');
-				$datos_perfil['apellido1']=  $this->input->post('apellido1');
-				$datos_perfil['apellido2']=  $this->input->post('apellido2');
-			    $datos_perfil['direccion'] = $this->input->post('direccion');
-
+				$datos_perfil = array(
+				               'nombre' => $this->input->post('nombre'),
+				               'apellido1' => $this->input->post('apellido1'),
+				               'apellido2' => $this->input->post('apellido2'),
+							   'direccion' => $this->input->post('direccion')
+           					   );
+			    
 			    //Update BD
 			    $cod_usuario = $this->session->userdata('id');
-				$reg = $this->cuenta_model->actualizar_perfil($datos_perfil, $cod_usuario);	
+				$reg = $this->cuenta_model->actualizar_usuario($datos_perfil, $cod_usuario);	
 				if ($reg) {
 					$this->load->view('menu', $menu);
 					$this->load->view('cuenta_view', $cuenta);
@@ -86,10 +84,10 @@ class Cuenta extends CI_Controller {
 
        }
        
-       public function datos(){
+       public function email(){
 			if( $this->session->userdata('logged_in') ===  FALSE) redirect('cuenta/index');
     		// Reglas de validacion del formulario
-			$this->establecer_reglas_datos();
+			$this->establecer_reglas_email();
 			
 			/* Datos para la vista */
        		$head['titulo'] = "Cuenta";
@@ -105,12 +103,48 @@ class Cuenta extends CI_Controller {
 				$this->load->view('cuenta_view', $cuenta);
 			} else {
 				// Formulario enviado			    
-			    $datos['password']=  $this->input->post('password_nueva');
-			    $datos['email'] = $this->input->post('email');
-
+				$email = array(
+				               'email' => $this->input->post('email'),
+				            );
+				            
 			    //Update BD
 			    $cod_usuario = $this->session->userdata('id');
-				$reg = $this->cuenta_model->actualizar_datos($datos, $cod_usuario);	
+				$reg = $this->cuenta_model->actualizar_usuario($email, $cod_usuario);	
+				if ($reg) {
+					$this->load->view('menu', $menu);
+					$this->load->view('cuenta_view', $cuenta);
+				}				
+			}
+			$this->load->view('footer');
+       }
+       
+		public function password(){
+			if( $this->session->userdata('logged_in') ===  FALSE) redirect('cuenta/index');
+    		
+			// Reglas de validacion del formulario
+			$this->establecer_reglas_password();
+			
+			/* Datos para la vista */
+       		$head['titulo'] = "Cuenta";
+			$menu['menu'] = $this->menu_model->obtener_menu();
+
+            /* Carga de las vistas */
+			$this->load->view('header', $head);
+			
+			$cuenta = $this->cuenta_model->obtener_todo($this->session->userdata('id'));
+			
+			if($this->form_validation->run()==FALSE){
+				$this->load->view('menu', $menu);
+				$this->load->view('cuenta_view', $cuenta);
+			} else {
+				// Formulario enviado			    
+				$password = array(
+				               'password' => $this->input->post('password_nueva'),
+				            );
+			    
+			    //Update BD
+			    $cod_usuario = $this->session->userdata('id');
+				$reg = $this->cuenta_model->actualizar_usuario($password, $cod_usuario);	
 				if ($reg) {
 					$this->load->view('menu', $menu);
 					$this->load->view('cuenta_view', $cuenta);
@@ -120,7 +154,6 @@ class Cuenta extends CI_Controller {
        }
        
      public function comprobar_password($password){
-     		if ($password=="") return true;
        		$usuario = $this->session->userdata('usuario');
        		return $this->cuenta_model->comprobar_password($usuario, $password);
      }
@@ -135,28 +168,36 @@ class Cuenta extends CI_Controller {
       }
        
        public function establecer_reglas_perfil(){
-       	    $this->form_validation->set_rules('nombre', 'nombre', 'trim|min_length[5]|max_length[25]|');
-       	    $this->form_validation->set_rules('apellido1', '1º Apellido', 'trim|min_length[5]|max_length[40]|');
-       	    $this->form_validation->set_rules('apellido2', '2º Apellido', 'trim|min_length[5]|max_length[40]|');
-			$this->form_validation->set_rules('direccion', 'dirección', 'trim|min_length[5]|max_length[50]|');
+       	    $this->form_validation->set_rules('nombre', 'nombre', 'trim|min_length[3]|max_length[25]|');
+       	    $this->form_validation->set_rules('apellido1', '1º Apellido', 'trim|min_length[3]|max_length[40]|');
+       	    $this->form_validation->set_rules('apellido2', '2º Apellido', 'trim|min_length[3]|max_length[40]|');
+			$this->form_validation->set_rules('direccion', 'dirección', 'trim|min_length[3]|max_length[50]|');
 
 			$this->form_validation->set_message('min_length', 'El campo %s debe ser de al menos %s caracteres');
 			$this->form_validation->set_message('max_length', 'El campo %s debe tener como máximo %s caracteres');
        }
 
-       public function establecer_reglas_datos(){
-			$this->form_validation->set_rules('email', 'email', 'valid_email|trim|callback_existe_email');
-			$this->form_validation->set_rules('password_actual', 'contraseña actual', 'trim|md5|callback_comprobar_password');
-			$this->form_validation->set_rules('password_nueva', 'nueva contraseña', 'trim|md5');
-			$this->form_validation->set_rules('repassword', 'reescribir contraseña', 'matches[password_nueva]|trim|md5');
+       public function establecer_reglas_email(){
+			$this->form_validation->set_rules('email', 'email', 'required|valid_email|trim|callback_existe_email');
+			$this->form_validation->set_rules('password_email_actual', 'contraseña actual', 'required|trim|md5|callback_comprobar_password');
 			
-			$this->form_validation->set_message('min_length', 'El campo %s debe ser de al menos %s caracteres');
-			$this->form_validation->set_message('max_length', 'El campo %s debe tener como máximo %s caracteres');
 			$this->form_validation->set_message('valid_email', 'Debe escribir una dirección de email correcta');
-			$this->form_validation->set_message('matches', 'Los campos %s y %s no coinciden');
+			$this->form_validation->set_message('required', 'Debe introducir el campo %s');
 			
 			$this->form_validation->set_message('comprobar_password', 'La %s no es correcta');
-			$this->form_validation->set_message('existe_email', 'El email ya existe. Elija otro correo');
+			$this->form_validation->set_message('existe_email', 'El email ya existe en nuestra base de datos. Elija otro correo');
+       }
+       
+       public function establecer_reglas_password(){
+			$this->form_validation->set_rules('password_actual', 'contraseña actual', 'required|trim|md5|callback_comprobar_password');
+			$this->form_validation->set_rules('password_nueva', 'nueva contraseña', 'required|trim|md5');
+			$this->form_validation->set_rules('repassword', 'reescribir nueva contraseña', 'required|matches[password_nueva]|trim|md5');
+			
+
+			$this->form_validation->set_message('matches', 'Los campos %s y %s no coinciden');
+			$this->form_validation->set_message('required', 'Debe introducir el campo %s');
+			
+			$this->form_validation->set_message('comprobar_password', 'La %s no es correcta');
        }
        
 }
