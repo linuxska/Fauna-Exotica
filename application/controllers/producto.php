@@ -8,14 +8,12 @@ class Producto extends CI_Controller {
 			$this->load->helper('url');
 			$this->load->model('producto_model');
 			$this->load->helper('form');
-		
+			$this->load->library('pagination');
 
-   
        }
        
        public function Index(){
-			/* Datos de paginacion*/
-       		$this->load->library('pagination');
+			/* Datos de paginacion*/     		
        		$config['base_url']= base_url().'index.php/producto/index/'.$this->uri->segment(3);
        		$config['total_rows']=$this->producto_model->total_productos($this->uri->segment(3));
        		$config['per_page'] = '9';
