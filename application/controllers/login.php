@@ -16,7 +16,7 @@ class Login extends CI_Controller {
        public function Index(){
        		if( $this->session->userdata('logged_in') ===  TRUE) redirect('cuenta/index');
        			
-       		 // Reglas de validaciÃ³n del formulario
+       		 // Reglas de validacion del formulario
 			$this->establecer_reglas();
 			
        		/* Datos para la vista */
@@ -37,8 +37,7 @@ class Login extends CI_Controller {
 				$login = $this->cuenta_model->login($usuario, $password);
 				
 				if ($login == TRUE){
-					$this->load->view('menu', $menu);
-					$this->load->view('cuenta_view');
+					redirect('cuenta/index');
 				} else echo "NO";
 			
 		}

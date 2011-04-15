@@ -7,7 +7,8 @@ class Cuenta_model extends CI_Model {
             // Your own constructor code
             $this->load->database();
        }
-	public function obtener($cod_usuario){
+       
+	public function obtener_todo($cod_usuario){
 		$query = $this->db->where('id', $cod_usuario)
 							->get('usuario');
 		
@@ -17,6 +18,17 @@ class Cuenta_model extends CI_Model {
 			}
 			return $query->row();
 		}
+	}
+	
+	// Obtener un campo específico
+	public function obtener($campo, $cod_usuario){
+		$query = $this->db->select($campo)
+							->where('id', $cod_usuario)
+							->get('usuario');
+		$dato = $query->row()->$campo;
+		return $dato;
+
+		
 	}
 	
        public function existe_usuario ($usuario) {
@@ -53,6 +65,24 @@ class Cuenta_model extends CI_Model {
 	}
        
 	   
+	public function actualizar_perfil ($datos, $cod_usuario){
+		$this->db->select('nombre, apellido1, apellido2, direccion')
+				->where('id', $cod_usuario)
+				->update('usuario', $datos); 
+		return ($this->db->affected_rows() > 0) ? true : false;
+		
+		
+	}
+	
+	public function actualizar_datos ($datos, $cod_usuario){
+		$this->db->select('email, password')
+				->where('id', $cod_usuario)
+				->update('usuario', $datos); 
+				
+		return ($this->db->affected_rows() > 0) ? true : false;
+		
+	}
+	
 	/* PARA LOGIN */
 	  public function comprobar_password ($usuario, $password) {
 		    if ($usuario === false || $password === false) return false;

@@ -6,11 +6,9 @@ class Registro extends CI_Controller {
        {
             parent::__construct();
 			$this->load->helper('url');
-			$this->load->helper('form');
-			
+			$this->load->helper('form');			
 			$this->load->library('form_validation');
-			
-			$this->load->model('registro_model');
+
 			$this->load->model('cuenta_model');
        }
        
@@ -38,13 +36,12 @@ class Registro extends CI_Controller {
 			    $email = $this->input->post('email');
 
 			    //Registro BD
-				$reg = $this->registro_model->registrar($usuario, $password, $email);				
+				$reg = $this->cuenta_model->registrar($usuario, $password, $email);				
 				if ($reg === TRUE) {
-					// Tras registrarse con Ã©xito:
+					// Tras registrarse con Exito:
 					$this->session->sess_destroy();
 					$this->cuenta_model->login($usuario, $password);
-					$this->load->view('menu', $menu);
-					$this->load->view('cuenta_view');
+					redirect('cuenta/index');
 				} else echo "ERROR REGISTRO";
 			
 			}
@@ -55,12 +52,12 @@ class Registro extends CI_Controller {
        
        public function existe_usuario($usuario){
        		// Devuelve verdadero si NO existe en la BD
-       		return !($this->registro_model->existe_usuario($usuario));
+       		return !($this->cuenta_model->existe_usuario($usuario));
        }
        
        public function existe_email($email){
        		// Devuelve verdadero si NO existe en la BD
-       		return !($this->registro_model->existe_email($email));
+       		return !($this->cuenta_model->existe_email($email));
        }
        
        public function establecer_reglas(){
