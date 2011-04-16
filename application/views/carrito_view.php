@@ -22,12 +22,12 @@
   
 <?php foreach ($carrito as $indice => $producto): ?>
     <tr>
-		<td><?php echo "<img src=".base_url()."images/".$producto['foto']." class='carrito_img'>"; ?></td>
+		<td><?php echo "<img src=".base_url()."img/productos/".$producto['foto']." class='carrito_img'>"; ?></td>
 	    <td><?php echo $producto['name']; ?></td>
 	    <td><?php echo $producto['qty']; ?></td>
 	    <td><?php echo $producto['price'];?>€</td>
 	    <td><?php echo ($producto['price'] * $producto['qty']);?>€</td>
-	    <td><a href= '<?php echo base_url()?>index.php/carrito/eliminar/<?php echo $producto['rowid'];?>'><img src="<?php echo base_url().'images/x.png'?>"></a>
+	    <td><a href= '<?php echo base_url()?>index.php/carrito/eliminar/<?php echo $producto['rowid'];?>'><img src="<?php echo base_url().'img/x.png'?>"></a>
     </tr>
 <?php endforeach; ?>
 

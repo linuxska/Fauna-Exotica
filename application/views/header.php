@@ -11,13 +11,13 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/estilos_formulario.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/global.css" />
 
-<script type="text/javascript" src="<?php echo base_url();?>javascripts/jquery.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>js/jquery.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script src="<?php echo base_url();?>js/slides.min.jquery.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>javascripts/slider.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>javascripts/jquery.corners.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>javascripts/producto_redondeado.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>javascripts/cuenta.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>js/slider.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>js/jquery.corners.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>js/producto_redondeado.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>js/cuenta.js"></script>
 
 </head> 
 
@@ -33,7 +33,7 @@
 	<!-- Logo -->	
 	<div class="grid_3"> 
 		<div>
-		<img src="<?php echo base_url();?>images/logo.png">
+		<img src="<?php echo base_url();?>img/logo.png">
 		</div>		
 	</div> 
 	<!--  Fin Logo -->
@@ -49,7 +49,7 @@
 	<!-- Carro -->	
 	<div class="grid_3"> 
 		<div class='header'>
-		<img src="<?php echo base_url();?>images/carrito.png"></img>
+		<img src="<?php echo base_url();?>img/carrito.png"></img>
 					 Total: <?php echo $this->cart->total().'&#8364<br>'; ?> 
 					Tienes <?php echo $this->cart->total_items();?> productos.
 					<?php echo anchor('/carrito/index/', 'Ver Carrito')?>

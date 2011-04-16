@@ -1,9 +1,10 @@
 /*****  Fauna-Exotica  *****/
 Instalacion BD: faunaexoticaSQL.sq
 Instalacion Mail: habilitar en php.ini => extension=php_openssl.dll (reiniciar servidor) 
+.htaccess : habilitar en apache httpd.conf => LoadModule rewrite_module modules/mod_rewrite.so (reiniciar servidor) 
 
 Datos cuenta GMAIL: 
-nombre =>	lausca.sl@gmail.com
+nombre =>	lauscar.sl@gmail.com
 pass =>		faunaexotica
 
 /* Proceso de la web */
@@ -22,5 +23,5 @@ En proceso:
 - Vista web principal
 
 Sin empezar:
-- Administracióon BD scaffolding
+- Administracion BD scaffolding
 - Procesar pedidos paypal

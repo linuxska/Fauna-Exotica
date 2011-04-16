@@ -4,7 +4,7 @@
 <div class='contenido'> 
 
 <div class='zoom_producto grid_10 push_1 producto'>
-<div class="grid_4"><?php echo "<img src=".base_url()."images/".$producto->foto.">"; ?> </div>
+<div class="grid_4"><?php echo "<img src=".base_url()."img/productos/".$producto->foto.">"; ?> </div>
 <div class="grid _2 informacion">
 <p><?php echo $producto->nombre; ?></p>
 <p id="precio"><?php echo $producto->precio; ?> &#8364;</p> 
@@ -33,7 +33,7 @@
 	?>
 		
 		
-		<p><?php echo anchor('/carrito/incluir/'.$str, '<img src="'.base_url().'images/anadir.png">')?></p>
+		<p><?php echo anchor('/carrito/incluir/'.$str, '<img src="'.base_url().'img/anadir.png">')?></p>
 		<?php echo form_close();
 
  } ?>
@@ -45,7 +45,7 @@
 <p>Descripci&oacute;n:</p><br>
  <?php echo $producto->descripcion; ?>
 
-<p><?php echo anchor('/producto/index/'.$producto->cod_subcategoria, '<img src="'.base_url().'images/atras.png">')?></p>
+<p><?php echo anchor('/producto/index/'.$producto->cod_subcategoria, '<img src="'.base_url().'img/atras.png">')?></p>
 </div>
 
 

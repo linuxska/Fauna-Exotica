@@ -41,6 +41,12 @@
 $route['default_controller'] = "inicio";
 $route['404_override'] = '';
 
+/* Rutas propias */
+
+$route['cuenta/(:any)'] = "cuenta/cuenta/$1";
+$route['login/index'] = "cuenta/login/index";
+$route['registro/index'] = "cuenta/registro/index";
+$route['recuperar_password/index'] = "cuenta/recuperar_password/index";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -17,12 +17,12 @@
            $str = $this->uri->assoc_to_uri($data);
            
 		echo "<div class=\"producto grid_3 push_1\">"; 
-		echo "<img src=".base_url()."images/".$fila->foto.">";
+		echo "<img src=".base_url()."img/productos/".$fila->foto.">";
 		echo "<div class=\"info\"><p>".$fila->nombre."</p>";
 		echo "<p class=\"precios\">".$fila->precio." &#8364;</p>";
 		echo "<div class=\"mas_info\">";
-		echo anchor('/carrito/incluir/'.$str, '<img class="derecha" src="'.base_url().'images/comprar.png">');
-		echo "<a href=".base_url()."index.php/producto/mostrar/".$fila->cod."><img src=".base_url()."images/info.png></a>";
+		echo anchor('/carrito/incluir/'.$str, '<img class="derecha" src="'.base_url().'img/comprar.png">');
+		echo "<a href=".base_url()."index.php/producto/mostrar/".$fila->cod."><img src=".base_url()."img/info.png></a>";
 		echo "</div>";
 		echo "</div>";
 		echo "</div>";	

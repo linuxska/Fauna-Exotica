@@ -11,7 +11,7 @@
 				<div class="slides_container">		
 					<?php foreach($novedad as $fila){?>
 					<div class="slide">
-						<a href="<?php echo base_url();?>index.php/producto/mostrar/<?php echo $fila->cod;?>" title="<?php echo $fila->nombre?>" target="_blank"><img src="<?php echo base_url()."images/".$fila->foto?>" width="570" height="270" alt="Slide 2"></a>
+						<a href="<?php echo base_url();?>index.php/producto/mostrar/<?php echo $fila->cod;?>" title="<?php echo $fila->nombre?>" target="_blank"><img src="<?php echo base_url()."img/productos/".$fila->foto?>" width="570" height="270" alt="Slide 2"></a>
 						<div class="caption">
 							<p><?php echo $fila->nombre;?></p>
 						</div>
