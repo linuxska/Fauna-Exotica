@@ -44,11 +44,11 @@ class Login extends CI_Controller {
     		$this->load->view('footer');
        }
        
-       private function comprobar_usuario($usuario){
+       public function comprobar_usuario($usuario){
        		return $this->cuenta_model->existe_usuario($usuario);
        }
        
-       private function comprobar_password($password){
+       public function comprobar_password($password){
        		$usuario = $this->input->post('usuario');
        		if ($this->cuenta_model->comprobar_password($usuario, $password))
        			return true;

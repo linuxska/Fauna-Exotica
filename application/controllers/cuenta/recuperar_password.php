@@ -87,7 +87,7 @@ class Recuperar_password extends CI_Controller {
        
 
 		// Valida si existe el usuario o email en la BD
-		private function comprobar_datos($user_email){
+		public function comprobar_datos($user_email){
 			if (valid_email($user_email))  // Es un email			
 				return $this->cuenta_model->existe_email($user_email);
 			else  // Es un usuario				
