@@ -55,7 +55,7 @@ blockquote,q { quotes:"" ""; }
 	position:absolute;
 	z-index:0;
 	width:739px;
-	height:341px;
+	height:300px;
 	top:-3px;
 	left:-80px;
 }
@@ -69,6 +69,7 @@ blockquote,q { quotes:"" ""; }
 	top:15px;
 	left:4px;
 	z-index:100;
+	
 }
 
 /*
@@ -95,10 +96,15 @@ blockquote,q { quotes:"" ""; }
 
 .slides_container div.slide {
 	width:570px;
-	height:270px;
+	height:240px;
 	display:block;
+	color: black;
 }
 
+.info_slide p{
+	margin: 10px;
+	padding: 10px;
+}
 
 /*
 	Next/prev buttons
