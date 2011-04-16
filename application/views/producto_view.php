@@ -10,30 +10,25 @@
 <p id="precio"><?php echo $producto->precio; ?> &#8364;</p> 
 </div>
 <div class="carro">
+<?php 	
 
+	$data = array(
+               'id'      => $producto->cod,
+               'price'   => $producto->precio,
+               'name'    => $producto->nombre
+            );
+?>
 <?php 
 	if($producto->cantidad_disponible<1){
 		?><p>Producto no disponible</p>
 	<?php }
 	else{?>
-		<?php echo form_open('carrito/index') ?>
+		<?php echo form_open('carrito/incluir','', $data) ?>
 		<p>Cantidad: </p>
-		<?php echo form_input(array('name' => 'cantidad', 'id' => 'cantidad', 'size' => '3' ,'value' => '1')); ?>
+		<?php echo form_input(array('name' => 'cantidad', 'id' => 'cantidad', 'maxlength'   => '3', 'size' => '3', 'value' => set_value('cantidad','1'))) ?>
 		<br><br><p>Cantidad en stock: <?php echo $producto->cantidad_disponible ?></p>
-	<?php 	
-
-	$data = array(
-               'id'      => $producto->cod,
-               'qty'     => '1',
-               'price'   => $producto->precio,
-               'name'    => $producto->nombre
-            );
-            
-           $str = $this->uri->assoc_to_uri($data);
-	?>
 		
-		
-		<p><?php echo anchor('/carrito/incluir/'.$str, '<img src="'.base_url().'img/anadir.png">')?></p>
+		<p><?php echo form_submit('enviar', 'Añadir al carro') ?></p>
 		<?php echo form_close();
 
  } ?>

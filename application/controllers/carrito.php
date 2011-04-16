@@ -5,7 +5,8 @@ class Carrito extends CI_Controller {
        public function __construct()
        {
             parent::__construct();
-            
+            $this->load->helper('form');
+			$this->load->library('form_validation');
 			$this->load->helper('url');
    			$this->load->model('carrito_model');
    			$this->load->model('producto_model');
@@ -34,13 +35,14 @@ class Carrito extends CI_Controller {
        }
        
        public function incluir (){
-       		// Obtener datos del producto mediante URI
-	       	$data_uri = $this->uri->uri_to_assoc(3);
+			$producto = array( 
+							'id'      => $this->input->post('id'),
+							'price'   => $this->input->post('price'),
+							'qty'	  => $this->input->post('cantidad'),
+							'name'    => $this->input->post('name') 
+			);
 
-	       	// Remplazar los espacios url de Html %20...
-	       	$data_uri['name'] = str_replace('%20', ' ', $data_uri['name']);
-	      
-			$this->cart->insert($data_uri); // Insertar a la sesión del carrito
+			$this->cart->insert($producto); // Insertar a la sesión del carrito
 	       	        
 			// Muestra el carrito:
 	       	redirect('carrito/index/');
