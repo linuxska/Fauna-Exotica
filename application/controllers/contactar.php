@@ -74,8 +74,8 @@ class Contactar extends CI_Controller {
 		private function establecer_reglas(){
        		$this->form_validation->set_rules('nombre', 'nombre', 'required|trim|min_length[3]');
 			$this->form_validation->set_rules('email', 'email', 'required|valid_email');
-			$this->form_validation->set_rules('asunto', 'nombre', 'required|trim|min_length[5]');
-			$this->form_validation->set_rules('mensaje', 'nombre', 'required|min_length[5]|max_length[200]');
+			$this->form_validation->set_rules('asunto', 'asunto', 'required|trim|min_length[3]');
+			$this->form_validation->set_rules('mensaje', 'mensaje', 'required|min_length[5]|max_length[200]');
 			
 			$this->form_validation->set_message('required', 'Debe introducir el campo %s');
 			$this->form_validation->set_message('min_length', 'El campo %s debe ser de al menos %s caracteres');
