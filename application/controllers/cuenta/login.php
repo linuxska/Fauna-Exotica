@@ -1,14 +1,21 @@
 <?php
+/*
+ * LOGIN
+ * Loguear un usuario en la sesión
+ * - Las sesiones se inician automaticamente sin datos
+ * - Al loguear, cambia su estado logged_in a verdadero
+ * - Si desloguea se queda en falso
+ */
 
 class Login extends CI_Controller {
 
        public function __construct()
        {
             parent::__construct();
-			$this->load->helper('url');
 			$this->load->helper('form');
 			$this->load->library('form_validation');
 			$this->load->model('cuenta_model');
+			
 			$this->load->helper('email');
 			$this->load->library('email');
        }
@@ -25,12 +32,13 @@ class Login extends CI_Controller {
 
             /* Carga de las vistas */
 			$this->load->view('header', $head);
-    		
-    		
+    		   		
        		if($this->form_validation->run()==FALSE){
+       			// Si el formulario no se ha enviado
        			$this->load->view('menu', $menu);
 				$this->load->view('cuenta/login_view');	
-			}else{
+			
+       		}else{
 				$usuario = $this->input->post('usuario');
 				$password = $this->input->post('password');
 
@@ -38,16 +46,18 @@ class Login extends CI_Controller {
 				
 				if ($login == TRUE){
 					redirect('cuenta/index');
-				} else echo "NO";
+				} else echo "error login";
 			
-			}    		
+			}
     		$this->load->view('footer');
        }
        
+       // Form Validation : comprobar si existe el usuario
        public function comprobar_usuario($usuario){
        		return $this->cuenta_model->existe_usuario($usuario);
        }
        
+       // Form Validation: comprobar si conincide usuario y pass
        public function comprobar_password($password){
        		$usuario = $this->input->post('usuario');
        		if ($this->cuenta_model->comprobar_password($usuario, $password))
@@ -57,6 +67,7 @@ class Login extends CI_Controller {
        		else return false;
        }
        
+       // Reglas Form Validation
        private function establecer_reglas(){
        	    $this->form_validation->set_rules('usuario', 'usuario', 'required|trim|min_length[5]|max_length[25]|callback_comprobar_usuario');
 			$this->form_validation->set_rules('password', 'contraseña', 'required|trim|md5|callback_comprobar_password');

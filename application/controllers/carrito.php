@@ -1,4 +1,9 @@
 <?php
+/*
+ * CARRITO
+ * Mantiene un carro de compra temporal
+ * La información no se guarda hasta procesar el pedido
+ */
 
 class Carrito extends CI_Controller {
 
@@ -7,7 +12,7 @@ class Carrito extends CI_Controller {
             parent::__construct();
             $this->load->helper('form');
 			$this->load->library('form_validation');
-			$this->load->helper('url');
+
    			$this->load->model('carrito_model');
    			$this->load->model('producto_model');
        }
@@ -19,8 +24,6 @@ class Carrito extends CI_Controller {
 	       	
 	        $contenido['total_items'] = $this->cart->total_items(); 
 	        $contenido['total'] = $this->cart->total(); 
-	        
-
 			$contenido['carrito'] = $this->carrito_model->obtener_carrito();
 	        
 	        /* Carga de las vistas */
@@ -30,10 +33,10 @@ class Carrito extends CI_Controller {
 	    	// Contenido principal
 	    	$this->load->view('carrito_view', $contenido);
 	    	
-	    	$this->load->view('footer');
-       	
+	    	$this->load->view('footer');      	
        }
        
+       // Añadir elemento al carro
        public function incluir (){
 			$producto = array( 
 							'id'      => $this->input->post('id'),
@@ -45,18 +48,18 @@ class Carrito extends CI_Controller {
 			$this->cart->insert($producto); // Insertar a la sesión del carrito
 	       	        
 			// Muestra el carrito:
-	       	redirect('carrito/index/');
-       	
+	       	redirect('carrito/index/');      	
        }
        
-       public function eliminar($rowid){
-	      
+       // Borrar elemento del carro
+       public function eliminar($rowid){	      
 			$this->carrito_model->eliminar($rowid);		
 	       	        
 			// Muestra el carrito:
 	       	redirect('carrito/index/');
        }      
        
+       // Procesar el pedido
        public function pedido(){
 	      /*	$this->carrito_model->procesar_pedido();
 			$this->cart->destroy();*/
@@ -65,9 +68,10 @@ class Carrito extends CI_Controller {
 	       	redirect('carrito/index/');
        }   
 
+       // Destruir el carro
        public function destruir(){
        		$this->cart->destroy();
        }
-       
+             
 }
 ?>

@@ -1,9 +1,10 @@
 <?php
 /*
- * 	Cuenta
+ * CUENTA
  * Se encarga de todo el control del usuario y las sesiones.
  * - Si la sesión no se ha iniciado carga el login
  * - Con la sesión iniciada muestra el panel del usuario
+ * 
  */
 class Cuenta extends CI_Controller {
 

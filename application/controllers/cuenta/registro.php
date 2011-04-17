@@ -1,34 +1,35 @@
 <?php
-
+/*
+ * REGISTRO
+ */
 class Registro extends CI_Controller {
 
        public function __construct()
        {
             parent::__construct();
-			$this->load->helper('url');
 			$this->load->helper('form');			
 			$this->load->library('form_validation');
-
 			$this->load->model('cuenta_model');
        }
        
        public function Index(){
        		if( $this->session->userdata('logged_in') ===  TRUE) redirect('cuenta/index');      		
+       		
        		/* Datos para la vista */
        		$head['titulo'] = "Cuenta";
 			$menu['menu'] = $this->menu_model->obtener_menu();
 
             /* Carga de las vistas */
-			$this->load->view('header', $head);
-    		
+			$this->load->view('header', $head);    		
     		
     		// Reglas de validaciÃ³n del formulario
 			$this->establecer_reglas();
 			
 			if($this->form_validation->run()==FALSE){
-				$this->load->view('menu', $menu);
-				// Si no se ha realizado el formulario de registro
+				// Si no se ha enviado el formulario
+				$this->load->view('menu', $menu);				
 				$this->load->view('cuenta/registro_view');	
+			
 			} else {
 				// Formulario enviado
 				$usuario = $this->input->post('usuario');
@@ -37,29 +38,30 @@ class Registro extends CI_Controller {
 
 			    //Registro BD
 				$reg = $this->cuenta_model->registrar($usuario, $password, $email);				
+				
 				if ($reg === TRUE) {
-					// Tras registrarse con Exito:
 					$this->session->sess_destroy();
 					$this->cuenta_model->login($usuario, $password);
 					redirect('cuenta/index');
-				} else echo "ERROR REGISTRO";
-			
-			}
-						
+				} else echo "error registro";			
+			}						
     		
     		$this->load->view('footer');
        }
        
-       private function existe_usuario($usuario){
+       // Form Validation: si existe el usuario
+       public function existe_usuario($usuario){
        		// Devuelve verdadero si NO existe en la BD
        		return !($this->cuenta_model->existe_usuario($usuario));
        }
        
-       private function existe_email($email){
+       // Form Validation: si existe el email
+       public function existe_email($email){
        		// Devuelve verdadero si NO existe en la BD
        		return !($this->cuenta_model->existe_email($email));
        }
        
+       // Reglas Form Validation
        private function establecer_reglas(){
        	    $this->form_validation->set_rules('usuario', 'usuario', 'required|trim|min_length[5]|max_length[25]|callback_existe_usuario');
 			$this->form_validation->set_rules('email', 'email', 'required|valid_email|trim|callback_existe_email');

@@ -5,10 +5,10 @@ class Recuperar_password extends CI_Controller {
        public function __construct()
        {
             parent::__construct();
-			$this->load->helper('url');
 			$this->load->helper('form');
 			$this->load->library('form_validation');
 			$this->load->model('cuenta_model');
+			
 			$this->load->helper('email');
 		    $this->load->library('email');
 		    $this->load->library('encrypt');
@@ -32,7 +32,7 @@ class Recuperar_password extends CI_Controller {
        public function Index(){
        		if( $this->session->userdata('logged_in') ===  TRUE) redirect('cuenta/index');
        			
-       		 // Reglas de validacion del formulario
+       		// Reglas de validacion del formulario
 			$this->establecer_reglas();
 			
        		/* Datos para la vista */
@@ -40,18 +40,19 @@ class Recuperar_password extends CI_Controller {
 			$menu['menu'] = $this->menu_model->obtener_menu();
 
             /* Carga de las vistas */
-			$this->load->view('header', $head);
-    		
+			$this->load->view('header', $head);   		
     		
        		if($this->form_validation->run()==FALSE){
+       			// Si no se ha enviado el formulario
        			$this->load->view('menu', $menu);
 				$this->load->view('cuenta/recuperar_password_view');	
-			}else{
-				
+			
+       		}else{
 				// Dato recibido: Email o Usuario...
 				$user_email = $this->input->post('user_email');
 				
 				// Obtenemos los datos de la cuenta
+				// Comprobamos si es un usuario o el email
 				if (valid_email($user_email)) {
 		       	  	// Es un email
 		       	  	$datos = $this->cuenta_model->recuperar_por_email($user_email);
@@ -61,7 +62,7 @@ class Recuperar_password extends CI_Controller {
 		       	  	$datos = $this->cuenta_model->recuperar_por_usuario($user_email);		       	  	
 		       	}
 		       	
-		       	// Crea nueva contraseña aleatoria
+		       	// Creamos nueva contraseña aleatoria
 		       	$password = random_string('alnum', 8, 'nozero');
 		       	$password_md5 =  md5($password);
 				$this->cuenta_model->registrar_password_recuperacion($password_md5);
@@ -94,6 +95,7 @@ class Recuperar_password extends CI_Controller {
 				return $this->cuenta_model->existe_usuario($user_email);			
        	}
        
+       	// Reglas Form Validation
 		private function establecer_reglas(){
        		$this->form_validation->set_rules('user_email', 'usuario_email', 'trim|min_length[5]|callback_comprobar_datos');
 			
