@@ -172,13 +172,13 @@ class Cuenta extends CI_Controller {
        }
        
         // Form Validation: Si la password coincide con el usuario
-		private function comprobar_password($password){
+		public function comprobar_password($password){
 	    	$usuario = $this->session->userdata('usuario');
 	       	return $this->cuenta_model->comprobar_password($usuario, $password);
 	    }
      
         // Form Validation: Si el email ya existe
-		private function existe_email($email){
+		public function existe_email($email){
        		// Devuelve verdadero si NO existe en la BD 
        		// o es igual al que ya esta registrado
        		$email_bd = $this->cuenta_model->obtener('email', $this->session->userdata('id'));
