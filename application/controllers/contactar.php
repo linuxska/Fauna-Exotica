@@ -1,5 +1,10 @@
 <?php
-
+/*
+ * CONTACTAR
+ * Permite al usuario mandar un email con un mensaje corto.
+ * Se envia a través de gmail por SMTP, con la cuenta lauscar.sl@gmail
+ * El email del usuario se manda también a lauscar.sl@gmail
+ */
 class Contactar extends CI_Controller {
 
        public function __construct()
@@ -28,8 +33,6 @@ class Contactar extends CI_Controller {
        }
        
        public function Index(){
-       	    if( $this->session->userdata('logged_in') ===  TRUE) redirect('cuenta/index');
-       			
        		// Reglas de validacion del formulario
 			$this->establecer_reglas();
 			
@@ -70,9 +73,9 @@ class Contactar extends CI_Controller {
        	// Reglas Form Validation
 		private function establecer_reglas(){
        		$this->form_validation->set_rules('nombre', 'nombre', 'required|trim|min_length[3]');
-			$this->form_validation->set_rules('email', 'email', 'valid_email');
+			$this->form_validation->set_rules('email', 'email', 'required|valid_email');
 			$this->form_validation->set_rules('asunto', 'nombre', 'required|trim|min_length[5]');
-			$this->form_validation->set_rules('mensaje', 'nombre', 'required|min_length[5]|max_length[150]');
+			$this->form_validation->set_rules('mensaje', 'nombre', 'required|min_length[5]|max_length[200]');
 			
 			$this->form_validation->set_message('required', 'Debe introducir el campo %s');
 			$this->form_validation->set_message('min_length', 'El campo %s debe ser de al menos %s caracteres');

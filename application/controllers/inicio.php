@@ -1,11 +1,13 @@
 <?php 
+/*
+ * INICIO
+ * Pagina principal de la aplicacion
+ */
 class Inicio extends CI_Controller {
 
        public function __construct()
        {
             parent::__construct();
-			$this->load->helper('url');
-
        }
        
        public function Index(){
@@ -25,7 +27,8 @@ class Inicio extends CI_Controller {
 			$this->load->view('header', $head);
     		$this->load->view('menu', $menu);
     		
-    		$this->load->view('inicio_view', $contenido); // Contenido
+    		// Contenido principal
+    		$this->load->view('inicio_view', $contenido); 
     		
     		$this->load->view('footer');
        }

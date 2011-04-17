@@ -1,12 +1,12 @@
 <?php
-
+/*
+ * INFORMACION
+ */
 class Informacion extends CI_Controller {
 
        public function __construct()
        {
-            parent::__construct();
-			$this->load->helper('url');
-   
+            parent::__construct();   
        }
        
        public function Index(){
