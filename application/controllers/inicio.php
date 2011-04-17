@@ -5,6 +5,7 @@ class Inicio extends CI_Controller {
        {
             parent::__construct();
 			$this->load->helper('url');
+
        }
        
        public function Index(){

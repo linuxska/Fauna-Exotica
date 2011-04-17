@@ -41,6 +41,7 @@
 $route['default_controller'] = "inicio";
 $route['404_override'] = '';
 
+
 /* Rutas propias */
 
 $route['cuenta/(:any)'] = "cuenta/cuenta/$1";
