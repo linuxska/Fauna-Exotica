@@ -41,9 +41,15 @@ info a{
 	margin-top:0;
 
 }
-img.derecha{
+
+input.derecha{
 	float:left;
+	padding:0;
+	width:50px;
+	height:25px;
+	display:inline;
 }
+
 
 .mas_info{
 	text-align:right;
@@ -74,6 +80,7 @@ img.derecha{
     font-family: Arial,Helvetica,sans-serif;
     font-size: 15px;
 }
+
 .informacion{
 	font-weight:bold;
 }
@@ -97,4 +104,9 @@ div.informacion{
 }
 .carro p{
 	display:inline;
+}
+
+.boton{
+	width:90px;
+	height:25px;
 }

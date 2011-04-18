@@ -38,6 +38,7 @@ class Carrito extends CI_Controller {
        
        // Añadir elemento al carro
        public function incluir (){
+       	
        	$id_producto=$this->carrito_model->esta($this->input->post('id'),$this->cart->contents());
        	if($id_producto!=null){
        		$data = array(

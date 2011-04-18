@@ -23,13 +23,12 @@
 		echo "<div class=\"mas_info\">";
 		
 		echo form_open('carrito/incluir','', $data);
-		echo form_submit('comprar','comprar');
-		echo form_close();
-		//<img src="'.base_url().'img/comprar.png">
-		
-		
+		echo "<input type=\"image\" class=\"derecha\" name=\"comprar\" src=\"".base_url()."img/comprar.png\">";
 		echo "<a href=".base_url()."index.php/producto/mostrar/".$fila->cod."><img src=".base_url()."img/info.png></a>";
-		echo "</div>";
+		echo form_close();		
+		
+		/*echo "<a href=".base_url()."index.php/producto/mostrar/".$fila->cod."><img src=".base_url()."img/info.png></a>";
+	*/	echo "</div>";
 		echo "</div>";
 		echo "</div>";	
 	}
