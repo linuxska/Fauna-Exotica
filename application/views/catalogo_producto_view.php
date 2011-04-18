@@ -13,8 +13,6 @@
 			   'cantidad' => 1,
                'name'    => $fila->nombre
             );
-            
-          // $str = $this->uri->assoc_to_uri($data);
            
 		echo "<div class=\"producto grid_3 push_1\">"; 
 		echo "<img src=".base_url()."img/productos/".$fila->foto.">";
@@ -27,14 +25,13 @@
 		echo "<a href=".base_url()."index.php/producto/mostrar/".$fila->cod."><img src=".base_url()."img/info.png></a>";
 		echo form_close();		
 		
-		/*echo "<a href=".base_url()."index.php/producto/mostrar/".$fila->cod."><img src=".base_url()."img/info.png></a>";
-	*/	echo "</div>";
+		echo "</div>";
 		echo "</div>";
 		echo "</div>";	
 	}
 ?>
 
 <div class=clear></div>
-<?php echo '<p>'.$this->pagination->create_links().'</p>';?>
+<?php echo '<div class="num_paginas">'.$this->pagination->create_links();?></div>
 </div>
 </div> <!--  Fin Contenido -->

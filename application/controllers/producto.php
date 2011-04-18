@@ -22,6 +22,15 @@ class Producto extends CI_Controller {
        		$config['total_rows']=$this->producto_model->total_productos($this->uri->segment(3));
        		$config['per_page'] = '9';
        		$config['uri_segment']=4;
+       		$config['num_links'] = 2;
+       		$config['first_link'] = 'First';
+       		$config['next_link'] = 'Siguiente';
+       		$config['prev_link'] = 'Anterior';	
+       		$config['prev_tag_open'] = '<div class="previous">';
+			$config['prev_tag_close'] = '</div>';
+       		$config['next_tag_open'] = '<div class="next">';
+			$config['next_tag_close'] = '</div>';
+			
        		$this->pagination->initialize($config);
        	
        		/* Carga de modelos */

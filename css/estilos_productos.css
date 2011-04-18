@@ -105,3 +105,33 @@ div.informacion{
 .carro p{
 	display:inline;
 }
+.num_paginas{
+	text-align:center;
+	
+}
+
+div.num_paginas a{
+	color:#66CC33;
+}
+
+.num_paginas strong{
+	color:#000;
+}
+
+.next{
+	margin-left:30px;
+	display:inline;
+	font-color:#00CC00;
+}
+.previous{
+		margin-right:30px;
+		display:inline;
+		font-color:#00CC00;
+}
+
+div.previous a{
+	color:#00CC00;
+}
+div.next a{
+	color:#00CC00;
+}
