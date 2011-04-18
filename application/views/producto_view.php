@@ -27,7 +27,7 @@
 		<p>Cantidad: </p>
 		<?php echo form_input(array('name' => 'cantidad', 'id' => 'cantidad', 'maxlength'   => '3', 'size' => '3', 'value' => set_value('cantidad','1'))) ?>
 		<br><br><p>Cantidad en stock: <?php echo $producto->cantidad_disponible ?></p>
-		<p><input type="image" class="boton" name="boton" src="<?php echo base_url();?>/img/anadir.png"></p>
+		<input type="image" class="boton" name="boton" src="<?php echo base_url();?>img/anadir.png">
 		<?php echo form_close();
 
  } ?>

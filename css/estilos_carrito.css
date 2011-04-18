@@ -24,3 +24,10 @@
 	height:70px;
 	width: 70px;
 }
+
+.boton{
+	width:90px;
+	height:25px;
+	padding:0;
+	margin:0 0 0 10px;
+}
