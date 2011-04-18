@@ -39,15 +39,16 @@ class Carrito extends CI_Controller {
        // Añadir elemento al carro
        public function incluir (){
        	
+       	//Comprobar si el producto ya está en el carro
        	$id_producto=$this->carrito_model->esta($this->input->post('id'),$this->cart->contents());
-       	if($id_producto!=null){
+       	if($id_producto!=null){ //Incrementamos la cantidad del producto
        		$data = array(
                'rowid' => $id_producto['rowid'],
                'qty'   => ($id_producto['qty']) + ($this->input->post('cantidad'))
             );
             
 			$this->cart->update($data); 
-      	}else{
+      	}else{ //Se incluye en el carro
 	       	
 				$producto = array( 
 								'id'      => $this->input->post('id'),
@@ -84,6 +85,12 @@ class Carrito extends CI_Controller {
        public function destruir(){
        		$this->cart->destroy();
        }
-             
+        
+       //Funcion para comprobar si la cantidad solicitada de un producto está en stock
+       private function cantidad_supera_stock($cod_producto,$cantidad){
+       		$qty_producto=$this->producto_model->obtener_producto($cod_producto);
+       		if ($cantidad>$qty_producto['cantidad_disponible']) return true;
+       		else return false;
+       }
 }
 ?>

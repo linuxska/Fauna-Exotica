@@ -4,12 +4,12 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title><?php echo $titulo?></title>
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/960grid.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/estilos.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/estilos_productos.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/estilos_carrito.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/estilos_formulario.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/global.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/960grid.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/estilos.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/estilos_productos.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/estilos_carrito.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/estilos_formulario.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/global.css" />
 
 <script type="text/javascript" src="<?php echo base_url();?>js/jquery.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
@@ -19,9 +19,27 @@
 <script type="text/javascript" src="<?php echo base_url();?>js/producto_redondeado.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/cuenta.js"></script>
 
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+  function initialize() {
+    var latlng = new google.maps.LatLng(28.060317, -15.546641);
+    var myOptions = {
+      zoom: 14,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  }
+
+</script>
+
+
+
+
 </head> 
 
-<body>
+<body onload="initialize()">
 
 <!--  CONTAINER -->
 <div class="container container_12">

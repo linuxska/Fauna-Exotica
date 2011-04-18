@@ -121,12 +121,10 @@ div.num_paginas a{
 .next{
 	margin-left:30px;
 	display:inline;
-	font-color:#00CC00;
 }
 .previous{
 		margin-right:30px;
 		display:inline;
-		font-color:#00CC00;
 }
 
 div.previous a{

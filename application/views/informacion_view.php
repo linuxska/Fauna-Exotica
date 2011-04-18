@@ -3,6 +3,9 @@
 
 <div class='contenido'>
 
+  <div id="map_canvas" style="width:300px; height:200px; display:inline; position:absolute;"></div>
+
+
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquet rutrum risus, 
 et eleifend nibh placerat et. Donec fermentum nisl id enim eleifend ut imperdiet nulla 
 mattis. Maecenas dolor quam, sodales eget venenatis vitae, varius vitae diam. 
