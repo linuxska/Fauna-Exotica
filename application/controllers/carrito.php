@@ -38,17 +38,28 @@ class Carrito extends CI_Controller {
        
        // Añadir elemento al carro
        public function incluir (){
-			$producto = array( 
-							'id'      => $this->input->post('id'),
-							'price'   => $this->input->post('price'),
-							'qty'	  => $this->input->post('cantidad'),
-							'name'    => $this->input->post('name') 
-			);
-
-			$this->cart->insert($producto); // Insertar a la sesión del carrito
-	       	        
-			// Muestra el carrito:
-	       	redirect('carrito/index/');      	
+       	$id_producto=$this->carrito_model->esta($this->input->post('id'),$this->cart->contents());
+       	if($id_producto!=null){
+       		$data = array(
+               'rowid' => $id_producto['rowid'],
+               'qty'   => ($id_producto['qty']) + ($this->input->post('cantidad'))
+            );
+            
+			$this->cart->update($data); 
+      	}else{
+	       	
+				$producto = array( 
+								'id'      => $this->input->post('id'),
+								'price'   => $this->input->post('price'),
+								'qty'	  => $this->input->post('cantidad'),
+								'name'    => $this->input->post('name') 
+				);
+	
+				$this->cart->insert($producto); // Insertar a la sesión del carrito
+       		}       
+				// Muestra el carrito:
+		       	redirect('carrito/index/');      	
+       		
        }
        
        // Borrar elemento del carro

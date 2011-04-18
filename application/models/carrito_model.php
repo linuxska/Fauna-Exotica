@@ -29,10 +29,11 @@ class Carrito_model extends CI_Model{
        
        // Obtener datos del producto en carro, por el codigo de producto
        public function obtener_producto_carrito ($producto_cod){
-       		$carrito =  $carrito = $this->cart->contents(); 
-       		foreach ($carrito as $fila) {
-       			if ($fila->id === $producto_cod) return $fila;
+       		$carrito = $this->cart->contents(); 
+       		foreach ($carrito as $fila => $producto) {
+       			if ($producto['id'] == $producto_cod)	return $fila;
        		}
+       		return 0;
        }
        
        // Devuelve el carro con información añadida de los productos (foto)
