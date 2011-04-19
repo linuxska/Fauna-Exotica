@@ -18,11 +18,12 @@ class Carrito_model extends CI_Model{
 			return null;
 		}
 		
+       
 		// Eliminar un producto del carro 
-		public function eliminar($rowid){
+		public function actualizar_cantidad($rowid, $cantidad){
 	    	$data_update = array(
                			'rowid' => $rowid,
-               			'qty'   => 0
+               			'qty'   => $cantidad
            		 		);
 	       	$this->cart->update($data_update);
        }

@@ -65,12 +65,19 @@ class Carrito extends CI_Controller {
        }
        
        // Borrar elemento del carro
-       public function eliminar($rowid){	      
-			$this->carrito_model->eliminar($rowid);		
+       public function eliminar($rowid){
+			$this->carrito_model->actualizar_cantidad($rowid, '0');		
 	       	        
 			// Muestra el carrito:
 	       	redirect('carrito/index/');
-       }      
+       }
+       
+        public function actualizar(){          	
+			$this->carrito_model->actualizar_cantidad($this->input->post('rowid'),  $this->input->post('cantidad'));		
+	       	        
+			// Muestra el carrito:
+	       	redirect('carrito/index/');
+       }  
        
        // Procesar el pedido
        public function pedido(){
