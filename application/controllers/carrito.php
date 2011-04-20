@@ -92,19 +92,44 @@ class Carrito extends CI_Controller {
 				redirect('login/index');
 				
 			} else {
-           		/* Carga de las vistas */
-				$this->load->view('header', $head);
-    			$this->load->view('menu', $menu);
-    			
-    			// Datos contenido
-    			$contenido['direccion'] = $this->cuenta_model->obtener('direccion', $this->session->userdata('id'));
-
-    			// Contenido principal
-				$this->load->view('procesar_pedido_view', $contenido);
+				/* Datos para la vista */
+	       		$head['titulo'] = "Cuenta";
+				$menu['menu'] = $this->menu_model->obtener_menu();
+	
+	            /* Carga de las vistas */
+				$this->load->view('header', $head);    		
+	    		
+	    		// Reglas de validaciÃ³n del formulario
+				$this->establecer_reglas();
 				
-				$this->load->view('footer');
+				if($this->form_validation->run()==FALSE){
+					// Si no se ha enviado el formulario
+					$this->load->view('menu', $menu);				
+					
+					// Datos contenido
+    				$contenido['direccion'] = $this->cuenta_model->obtener('direccion', $this->session->userdata('id'));
+    				// Contenido principal
+					$this->load->view('procesar_pedido_view', $contenido);	
+				
+				} else {
+					// Formulario enviado
+					$this->load->view('menu', $menu);
+					
+					$datos = array('direccion_envio' => $this->input->post('direccion_envio'),
+									'direccion_factura' => $this->input->post('direccion_factura'),
+									'formaenvio' => $this->input->post('formaenvio'),
+									'formapago' => $this->input->post('formapago')
+									);
+					$this->load->view('confirmar_pedido_view', $datos);			
+				}			
+	    		
+	    		$this->load->view('footer');
 			}
-       }   
+       }  
+      
+       public function confirmar_pedido(){
+       	
+       }
 
        // Destruir el carro
        public function destruir(){
@@ -116,6 +141,21 @@ class Carrito extends CI_Controller {
        		$qty_producto=$this->producto_model->obtener_producto($cod_producto);
        		if ($cantidad>$qty_producto['cantidad_disponible']) return true;
        		else return false;
+       }
+       
+       // Reglas Form Validation
+       private function establecer_reglas(){
+       	    $this->form_validation->set_rules('direccion_envio', 'direccion de envio', 'required|trim|min_length[5]|max_length[50]');
+       	    $this->form_validation->set_rules('direccion_factura', 'direccion de factura', 'required|trim|min_length[5]|max_length[50]');
+       	    $this->form_validation->set_rules('formaenvio', 'forma de envio', 'required');
+			$this->form_validation->set_rules('formapago', 'forma de pago', 'required');
+			$this->form_validation->set_rules('privacidad', 'condiciones de privacidad', 'required');
+			$this->form_validation->set_rules('condiciones', 'condiciones de uso', 'required');
+			
+			$this->form_validation->set_message('required', 'Debe introducir el campo %s');
+			$this->form_validation->set_message('min_length', 'El campo %s debe ser de al menos %s caracteres');
+			$this->form_validation->set_message('max_length', 'El campo %s debe tener como máximo %s caracteres');
+			
        }
 }
 ?>

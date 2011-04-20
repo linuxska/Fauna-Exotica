@@ -53,7 +53,7 @@ div.error{
 	text-aling: center;
 }
 
-.procesar_pedido{
+#procesar_pedido{
 	background-color:#C6D3DA;
 	padding:10px;
 	color: black;
