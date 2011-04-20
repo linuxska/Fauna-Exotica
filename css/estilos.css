@@ -61,6 +61,22 @@ h1{
 	color:#000;
 }
 
-.element_style{
-	position:abolute;
+#map_canvas{
+	width:400px; 
+	height:300px; 
+	float:left;
+	margin:10px 18px 10px 10px;
+}
+
+.parrafo_informacion{
+	font-family:Helvetica;
+	color:#7AFF95;
+	text-align:justify;
+}
+
+.local{
+	width:300px; 
+	height:200px;
+	float:right;
+	margin:10px 10px 10px 18px;
 }

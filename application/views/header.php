@@ -18,24 +18,8 @@
 <script type="text/javascript" src="<?php echo base_url();?>js/jquery.corners.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/producto_redondeado.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/cuenta.js"></script>
-
-
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript">
-  function initialize() {
-    var latlng = new google.maps.LatLng(28.060317, -15.546641);
-    var myOptions = {
-      zoom: 14,
-      center: latlng,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-  }
-
-</script>
-
-
-
+<script type="text/javascript" src="<?php echo base_url();?>js/googlemap.js"></script>
 
 </head> 
 

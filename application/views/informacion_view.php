@@ -3,10 +3,10 @@
 
 <div class='contenido'>
 
-  <div id="map_canvas" style="width:300px; height:200px; display:inline; position:absolute;"></div>
+<div id="map_canvas"></div>
 
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquet rutrum risus, 
+<p class="parrafo_informacion">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquet rutrum risus, 
 et eleifend nibh placerat et. Donec fermentum nisl id enim eleifend ut imperdiet nulla 
 mattis. Maecenas dolor quam, sodales eget venenatis vitae, varius vitae diam. 
 Vestibulum vitae dui tempus erat rhoncus volutpat. Pellentesque mi felis, pulvinar 
@@ -16,8 +16,12 @@ Suspendisse vehicula mi ut velit cursus varius fringilla odio convallis.
 Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; 
 Quisque non vestibulum sem. Donec vel ullamcorper sapien. Donec eget pretium eros.
  Aliquam consequat porttitor turpis a facilisis. Integer lobortis malesuada augue ut auctor.</p>
+ <br>
+ <br>
+ <br>
+ <img class="local" src="<?php echo base_url();?>img/local-fauna.jpg"></img>
 
-<p>Maecenas sit amet augue eget purus ultrices vehicula non non mauris. 
+<p class="parrafo_informacion">Maecenas sit amet augue eget purus ultrices vehicula non non mauris. 
 Aliquam erat volutpat. Integer suscipit, arcu ac facilisis sagittis, lorem nunc vehicula 
 velit, non egestas elit lacus eu purus. Ut eget lacus purus, ut feugiat turpis. 
 Quisque ut eros nunc, quis vehicula turpis. Maecenas libero purus, tristique vitae 
