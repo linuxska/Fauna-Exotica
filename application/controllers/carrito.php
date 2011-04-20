@@ -15,6 +15,7 @@ class Carrito extends CI_Controller {
 
    			$this->load->model('carrito_model');
    			$this->load->model('producto_model');
+   			$this->load->model('cuenta_model');
        }
        
        public function Index(){
@@ -81,11 +82,28 @@ class Carrito extends CI_Controller {
        
        // Procesar el pedido
        public function pedido(){
-	      /*	$this->carrito_model->procesar_pedido();
-			$this->cart->destroy();*/
-	       	        
-			// Muestra el carrito:
-	       	redirect('carrito/index/');
+            		
+       		/* Datos para la vista */
+       		$head['titulo'] = "Procesar pedido";
+			$menu['menu'] = $this->menu_model->obtener_menu();
+
+			if( $this->session->userdata('logged_in') !==  TRUE){
+				// Si no ha iniciado sesión se abre la pagina login
+				redirect('login/index');
+				
+			} else {
+           		/* Carga de las vistas */
+				$this->load->view('header', $head);
+    			$this->load->view('menu', $menu);
+    			
+    			// Datos contenido
+    			$contenido['direccion'] = $this->cuenta_model->obtener('direccion', $this->session->userdata('id'));
+
+    			// Contenido principal
+				$this->load->view('procesar_pedido_view', $contenido);
+				
+				$this->load->view('footer');
+			}
        }   
 
        // Destruir el carro

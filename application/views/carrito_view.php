@@ -38,7 +38,8 @@
 </tbody>
 </table>
 <p style="text-align: right">Total:&nbsp;<?php echo $total; ?>€ &nbsp;&nbsp;</p>
-<p><?php echo anchor('carrito/pedido', 'Procesar pedido'); ?></p>
+<p><?php echo anchor('carrito/pedido', 'Procesar pedido'); 
+if( $this->session->userdata('logged_in') !==  TRUE) echo " (Es nesesario tener una cuenta iniciada)";?></p>
 </div>
 
 

@@ -3,6 +3,16 @@ label,input{
 	padding:5px;
 }
 
+.inline{
+	display:inline;
+}
+
+
+hr {
+	margin-top:15px;
+	margin-bottom:15px;
+}
+
 div.error{
 	background-color:#FF8F8F;
 	border: 1px solid #FF1111;
@@ -38,3 +48,14 @@ div.error{
 	color: black;
 	padding: 5px;
 }
+
+#titulo_envio, #titulo_factura {
+	text-aling: center;
+}
+
+.procesar_pedido{
+	background-color:#C6D3DA;
+	padding:10px;
+	color: black;
+}
+
