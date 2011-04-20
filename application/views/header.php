@@ -18,6 +18,8 @@
 <script type="text/javascript" src="<?php echo base_url();?>js/jquery.corners.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/producto_redondeado.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/cuenta.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>js/pedido.js"></script>
+
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/googlemap.js"></script>
 

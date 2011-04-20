@@ -18,7 +18,7 @@ function(){
 	  $(this).addClass("color");
 		 
 	  $('#datos').hide();
-	  $('#perfil').show();
+	  $('#perfil').show('slow');
 	});
   
   $('#datos_link').click(function() {
@@ -29,7 +29,7 @@ function(){
 	  $(this).addClass("color");
 	  
 	  $('#perfil').hide();
-	  $('#datos').show();
+	  $('#datos').show('slow');
 	});
 }
 
