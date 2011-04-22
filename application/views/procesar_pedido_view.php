@@ -3,9 +3,9 @@
 
 <div class='contenido'>
 
-<!--  Cuenta -->
+<!--  Procesar Pedido -->
 <div class='grid_10 push_1' id='procesar_pedido'>
-
+<span>( por ahora únicamente: CONTRAREEMBOLSO )</span>
 <?php echo validation_errors('<div class="error">','</div>') ?>
 <?php echo form_open('carrito/pedido') ?>
 	<!--  Datos de Envio -->
@@ -30,7 +30,7 @@
 	<?php echo form_input(array('name' => 'direccion_factura', 'id' => 'direccion_factura', 'maxlength'   => '50', 'size' => '50', 'value' => set_value('direccion', $direccion))) ?>
 	<span>Forma de pago <?php echo $direccion?></span>
 	<br>
-	<input type="radio" name="formapago" value="correo" class='inline'> Contra Reembolso<br>
+	<input type="radio" name="formapago" value="contra reembolso" class='inline'> Contra Reembolso<br>
 	<input type="radio" name="formapago" value="x" class='inline'> Tarjeta crédito<br>
 	<input type="radio" name="formapago" value="y" class='inline'> Transferencia Bancaria
 	<p>
@@ -44,9 +44,9 @@
 	<div class=clear></div>
 <?php echo form_close();?>
 </div>
-	
+<div class=clear></div>	
 
-</div><!--  Fin cuenta -->
+</div><!--  Fin Procesar Pedido -->
 
 <div class=clear></div>
 

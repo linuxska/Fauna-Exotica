@@ -115,12 +115,17 @@ class Carrito extends CI_Controller {
 					// Formulario enviado
 					$this->load->view('menu', $menu);
 					
-					$datos = array('direccion_envio' => $this->input->post('direccion_envio'),
+					$datos['pedido'] = array('direccion_envio' => $this->input->post('direccion_envio'),
 									'direccion_factura' => $this->input->post('direccion_factura'),
 									'formaenvio' => $this->input->post('formaenvio'),
 									'formapago' => $this->input->post('formapago')
 									);
-					$this->load->view('confirmar_pedido_view', $datos);			
+									
+					$datos['total_items'] = $this->cart->total_items(); 
+	       			$datos['total'] = $this->cart->total(); 
+					$datos['carrito'] = $this->carrito_model->obtener_carrito();
+						
+					$this->load->view('confirmar_pedido_view', $datos);		
 				}			
 	    		
 	    		$this->load->view('footer');
@@ -128,7 +133,15 @@ class Carrito extends CI_Controller {
        }  
       
        public function confirmar_pedido(){
-       	
+       		$datos_pedido = array('formaenvio'      => $this->input->post('formaenvio'),
+							'formapago'   => $this->input->post('formapago'),
+							'direccion_envio'	  => $this->input->post('direccion_envio'),
+							'direccion_factura'    => $this->input->post('direccion_factura') 
+							);
+			
+       		$this->carrito_model->confirmar_pedido($datos_pedido);
+       		
+       		redirect('inicio/index/'); // CAMBIAR
        }
 
        // Destruir el carro

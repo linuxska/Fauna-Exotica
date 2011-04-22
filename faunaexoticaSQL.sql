@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50051
 File Encoding         : 65001
 
-Date: 2011-04-15 18:47:26
+Date: 2011-04-22 20:33:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -57,16 +57,18 @@ DROP TABLE IF EXISTS `pedido`;
 CREATE TABLE `pedido` (
   `cod` int(8) NOT NULL auto_increment,
   `cod_usuario` int(8) NOT NULL,
-  `direccion` varchar(50) default NULL COMMENT 'Por defecto: direccion usuario',
+  `direccion_envio` varchar(50) NOT NULL COMMENT 'Por defecto: direccion usuario',
+  `direccion_factura` varchar(50) NOT NULL,
   `fecha` date NOT NULL,
+  `comentarios` text,
   PRIMARY KEY  (`cod`),
   KEY `Usuario` (`cod_usuario`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of pedido
 -- ----------------------------
-INSERT INTO `pedido` VALUES ('1', '0', null, '0000-00-00');
+INSERT INTO `pedido` VALUES ('4', '21', 'C/ La Caladora Nº 6', 'C/ La Caladora Nº 6', '2011-04-22', null);
 
 -- ----------------------------
 -- Table structure for `pedido_producto`
@@ -82,6 +84,9 @@ CREATE TABLE `pedido_producto` (
 -- ----------------------------
 -- Records of pedido_producto
 -- ----------------------------
+INSERT INTO `pedido_producto` VALUES ('4', '10', '1');
+INSERT INTO `pedido_producto` VALUES ('4', '6', '1');
+INSERT INTO `pedido_producto` VALUES ('4', '2', '1');
 
 -- ----------------------------
 -- Table structure for `producto`
@@ -169,9 +174,12 @@ CREATE TABLE `usuario` (
   PRIMARY KEY  (`id`),
   UNIQUE KEY `Usuario` USING BTREE (`usuario`),
   UNIQUE KEY `Correo` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of usuario
 -- ----------------------------
-INSERT INTO `usuario` VALUES ('21', 'Oscar', 'arcangel_v_a@hotmail.com', '', '', '', '', 'f156e7995d521f30e6c59a3d6c75e1e5', null);
+INSERT INTO `usuario` VALUES ('21', 'Oscar', 'arcangel_v_a@hotmail.com', 'Oscar', 'Verona', 'Aritles', 'C/ La Caladora Nº 6', 'f156e7995d521f30e6c59a3d6c75e1e5', null);
+INSERT INTO `usuario` VALUES ('23', 'Lauscar', 'asdasd@asd.es', null, null, null, null, '4addea0c69a129912828b7b35b787d59', null);
+INSERT INTO `usuario` VALUES ('24', 'Oscar2', 'asd@as.es', 'Oscar', '', '', '', '4addea0c69a129912828b7b35b787d59', null);
+INSERT INTO `usuario` VALUES ('25', 'Laura', 'oscar_va90@hotmail.com', null, null, null, null, '4addea0c69a129912828b7b35b787d59', null);
