@@ -7,29 +7,41 @@ function(){
   // Bordes redondeados
   $('.cuenta').corners("5px");
   
-  $( '#perfil_link').addClass("color");
-  $('#datos').hide();
+  
+  $('#cuenta_datos').hide();
+  $('#cuenta_perfil').hide();
+  $('#inicio_link').addClass("color");
   
   // Cambio de vista de sección
-  $('#perfil_link').click(function() {
-	  $actual = '#perfil';
-	  $actual_link = '#perfil_link';
+    
+  $('#inicio_link').click(function() {
+	  $('#perfil_link').removeClass("color");
 	  $('#datos_link').removeClass("color");
 	  $(this).addClass("color");
 		 
-	  $('#datos').hide();
-	  $('#perfil').show('slow');
+	  $('#cuenta_datos').hide();
+	  $('#cuenta_perfil').hide();
+	  $('#cuenta_inicio').show('slow');
+	});
+	
+  $('#perfil_link').click(function() {
+	  $('#datos_link').removeClass("color");
+	  $('#inicio_link').removeClass("color");
+	  $(this).addClass("color");
+		 
+	  $('#cuenta_datos').hide();
+	  $('#cuenta_inicio').hide();
+	  $('#cuenta_perfil').show('slow');
 	});
   
   $('#datos_link').click(function() {
-	  $actual = '#datos';
-	  $actual_link = '#datos_link';
-	  
 	  $('#perfil_link').removeClass("color");
+	  $('#inicio_link').removeClass("color");
 	  $(this).addClass("color");
 	  
-	  $('#perfil').hide();
-	  $('#datos').show('slow');
+	  $('#cuenta_perfil').hide();
+	  $('#cuenta_inicio').hide();
+	  $('#cuenta_datos').show('slow');
 	});
 }
 

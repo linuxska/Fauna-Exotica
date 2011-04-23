@@ -9,15 +9,28 @@
 	<!--  Menu de cuenta -->
 	<div class='grid_4 omega push_1'>
 	<ul>
-	<li id='perfil_link'><a href="#">Mi perfil</span></li>
-	<li id='datos_link'><a href="#">Mis datos</span></li>
+	<li id='inicio_link'><a href="#">Cuenta</li>
+	<li id='perfil_link'><a href="#">Mi perfil</li>
+	<li id='datos_link'><a href="#">Mis datos</li>
 	<li>Mis pedidos</li>
 	<li>Mensajes</li>
 	</ul>
 	</div>
-
+	
+	<!--  Inicio Cuenta -->
+	<div class='grid_6 push_1 alpha seccion' id='cuenta_inicio'>
+	<p>Bienvenido <?php echo $usuario?></p>
+	<?php if ($tipo === 'cliente') {
+		echo "<p>Continuar comprando</p>";
+	} else {
+		echo '<p>Tiene usted permiso de '.$tipo.'</p>';
+		echo anchor('backend/index', ' Acceder al Backend');
+		
+	}?>
+	</div>
+	
 	<!--  Datos perfil -->
-	<div class='grid_6 push_1 alpha seccion' id='perfil'>
+	<div class='grid_6 push_1 alpha seccion' id='cuenta_perfil'>
 	Modificar datos personales
 	<?php echo form_error('nombre', '<div class="error">', '</div>'); ?>
 	<?php echo form_error('apellido1', '<div class="error">', '</div>'); ?>
@@ -39,7 +52,7 @@
 	</div>
 
 	<!--  Datos Usuario -->
-	<div class='grid_6 push_1 alpha seccion' id='datos'>
+	<div class='grid_6 push_1 alpha seccion' id='cuenta_datos'>
 	Modificar email
 	<?php echo form_error('email', '<div class="error">', '</div>'); ?>
 	<?php echo form_error('password_email_actual', '<div class="error">', '</div>'); ?>
