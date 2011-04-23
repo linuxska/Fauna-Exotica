@@ -1,9 +1,36 @@
+body { 
+	font-family:"Helvetica", Helvetica, serif;
+}
+
 #backend_header {
-	background-color:#C6D3DA;
+	background-color:#99FFBB;
 	min-height : 50px;
 	padding:10px;
+	text-align:center;
 }
 
 #backend_body {
-	
+
+}
+
+#backend_tabla_menu {
+	text-align:center;
+	padding:10px;
+}
+
+#backend_body table {
+	width:100%;
+}
+
+#backend_body table, td, tr{
+	border:1px solid green;
+}
+
+#backend_body th{
+	background-color:green;
+	color:white;
+}
+
+#backend_body table td{
+	padding:5px;
 }

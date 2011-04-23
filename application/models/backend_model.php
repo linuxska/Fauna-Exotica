@@ -37,12 +37,22 @@ class Backend_model extends CI_Model {
 				$tablas['subcategoria']['nombre'] = 'Subcategorias';
 				$tablas['subcategoria']['descripcion'] = 'subcategorias para el menú.';				
 
-			}		
-
-			
-			return $tablas;
+			}	
+			return $tablas;	
 		}
 		
+		public function info_columnas($nombre_tabla){
+			$fields = $this->db->list_fields($nombre_tabla);
+			foreach ($fields as $field)
+				 $data[] = $field;
+				
+			return $data;
+		}
 		
+		public function obtener_tabla($nombre_tabla){
+			$query = $this->db->get($nombre_tabla);
+			return $query->result_array();
+		}
+	
 }
 ?>
