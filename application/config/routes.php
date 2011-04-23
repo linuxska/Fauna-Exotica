@@ -49,5 +49,7 @@ $route['login/index'] = "cuenta/login/index";
 $route['registro/index'] = "cuenta/registro/index";
 $route['recuperar_password/index'] = "cuenta/recuperar_password/index";
 
+$route['backend/(:any)'] = "backend/backend/$1";
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

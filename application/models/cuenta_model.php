@@ -119,7 +119,7 @@ class Cuenta_model extends CI_Model {
 	    	if ($usuario === false || $password === false) return false;
 	    
 	    
-	   		 $query = $this->db->select('id, nombre, email, password, password_recuperacion')
+	   		 $query = $this->db->select('id, nombre, email, password, password_recuperacion, tipo')
 	                    	   ->where('usuario', $usuario)
 	                    	   ->limit(1)
 	                    	   ->get('usuario');
@@ -133,7 +133,8 @@ class Cuenta_model extends CI_Model {
 					                   'nombre'  => $result->nombre,
 		    						   'usuario' => $usuario,
 					                   'email'     => $result->email,
-					                   'logged_in' => TRUE
+					                   'logged_in' => TRUE,
+		    						   'tipo' => $result->tipo
 		               				);
 		               				
 						// Establece los datos de la sesión
