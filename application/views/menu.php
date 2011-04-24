@@ -3,6 +3,7 @@
 <div class='grid_10 push_2'>
 
 <div class='menu_horizontal'>
+
 <div class='grid_5'>
 <ul>
 	<li><?php echo anchor('inicio', 'Inicio');?></li>
@@ -25,7 +26,8 @@ if ($this->session->userdata('logged_in') === TRUE){
 
 </div>
 </div> <!--  Fin Menu Horizontal -->
-
+  <!--     <script src="http://connect.facebook.net/es_ES/all.js#xfbml=1"></script>
+      <fb:like></fb:like> -->
 <!--  Menu Vertical -->
 <div class='clear'>&nbsp;</div> 
 <div class='grid_2'> 
