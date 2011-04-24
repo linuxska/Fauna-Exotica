@@ -26,9 +26,9 @@ class Producto extends CI_Controller {
        		$config['first_link'] = 'First';
        		$config['next_link'] = 'Siguiente';
        		$config['prev_link'] = 'Anterior';	
-       		$config['prev_tag_open'] = '<div class="previous">';
+       		$config['prev_tag_open'] = '<div class="anterior">';
 			$config['prev_tag_close'] = '</div>';
-       		$config['next_tag_open'] = '<div class="next">';
+       		$config['next_tag_open'] = '<div class="siguiente">';
 			$config['next_tag_close'] = '</div>';
 			
        		$this->pagination->initialize($config);

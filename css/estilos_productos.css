@@ -118,18 +118,18 @@ div.num_paginas a{
 	color:#000;
 }
 
-.next{
+.siguiente{
 	margin-left:30px;
 	display:inline;
 }
-.previous{
+.anterior{
 		margin-right:30px;
 		display:inline;
 }
 
-div.previous a{
+div.anterior a{
 	color:#00CC00;
 }
-div.next a{
+div.siguiente a{
 	color:#00CC00;
 }
