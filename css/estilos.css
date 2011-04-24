@@ -1,7 +1,13 @@
  /* Estilos para ver los grid */ 
-body { background-color: #333; }
+body { 
+	/*background-color: #333;*/
+background: -moz-linear-gradient(90deg, #00B82E , #000);
+}
 
-.container { background-color:#333;}
+.container {
+	/*background-color:#333;*/
+	background: -moz-linear-gradient(90deg, #00B82E , #000);
+}
 
 a{
 	text-decoration:none;
@@ -19,14 +25,13 @@ a{
 
 .menu_horizontal{
 	background-color:#00110D;
-	
 }
 
 .menu_vertical{
 	color: white;
 	margin-top: 0px;
 	min-height: 400px;
-	background-color:#001A0D;
+	/*background-color:#001A0D;*/
 	padding:10px;
 }
 
