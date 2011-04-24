@@ -23,6 +23,8 @@
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/googlemap.js"></script>
 
+<link rel="shortcut icon" href="img/logo.png">
+
 </head> 
 
 <body onload="initialize()">
