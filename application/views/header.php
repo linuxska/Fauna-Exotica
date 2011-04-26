@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/estilos_carrito.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/estilos_formulario.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/global.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/menu_style.css" />
 
 <script type="text/javascript" src="<?php echo base_url();?>js/jquery.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
@@ -22,6 +23,8 @@
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/googlemap.js"></script>
+
+<link href='http://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
 
 <link rel="shortcut icon" href="img/logo.png">
 
@@ -46,7 +49,7 @@
 
 	<!--  TITULO -->
 	<div class="grid_6 "> 
-		<div class='header'>
+		<div> <!--  class='header' -->
 			<h1><?php echo anchor('inicio', 'Fauna exótica')?></h1>
 		</div>	
 	</div>
@@ -54,7 +57,7 @@
 	
 	<!-- Carro -->	
 	<div class="grid_3"> 
-		<div class='header'>
+		<div > <!-- class='header' -->
 		<img src="<?php echo base_url();?>img/carrito.png"></img>
 					 Total: <?php echo $this->cart->total().'&#8364<br>'; ?> 
 					Tienes <?php echo $this->cart->total_items();?> productos.
