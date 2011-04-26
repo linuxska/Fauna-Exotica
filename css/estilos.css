@@ -1,12 +1,18 @@
  /* Estilos para ver los grid */ 
 body { 
-	/*background-color: #333;*/
-background: -moz-linear-gradient(90deg, #00B82E , #000);
+background: #f8ffe8; /* old browsers */
+
+background: -moz-linear-gradient(top, #f8ffe8 0%, #e3f5ab 33%, #A8F475 100%); /* firefox */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8ffe8), color-stop(33%,#e3f5ab), color-stop(100%,#A8F475)); /* webkit */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8ffe8', endColorstr='#A8F475',GradientType=0 ); /* ie */
+
+background: -o-linear-gradient(top, #f8ffe8 0%,#e3f5ab 33%,#A8F475 100%); /* opera */
 }
 
 .container {
 	/*background-color:#333;*/
-	background: -moz-linear-gradient(90deg, #00B82E , #000);
 }
 
 a{
@@ -19,9 +25,16 @@ a{
   /* Estilos de la web */ 
 .header {
 	text-align: center;
-	background-color:#001A0D;
+	background: #b4ddb4; /* old browsers */
+	background: -moz-linear-gradient(top, #b4ddb4 0%, #008a00 7%, #008a00 23%, #005700 51%, #002400 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b4ddb4), color-stop(7%,#008a00), color-stop(23%,#008a00), color-stop(51%,#005700), color-stop(100%,#002400)); /* webkit */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4ddb4', endColorstr='#002400',GradientType=0 ); /* ie */
+	background: -o-linear-gradient(top, #b4ddb4 0%,#008a00 7%,#008a00 23%,#005700 51%,#002400 100%); /* opera */
 	padding:10px;
+	
 }
+
+
 
 .menu_horizontal{
 	background-color:#00110D;
@@ -40,21 +53,44 @@ a{
 }
 
 .menu_horizontal ul li {   /* Lista Horizontal */ 
-      display: inline;  
+      display: inline;
+      background: #9fb988; /* old browsers */
+
+background: -moz-linear-gradient(top, #9fb988 0%, #dfffc3 5%, #b8f57c 7%, #7cce10 93%, #9fb988 100%); /* firefox */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9fb988), color-stop(5%,#dfffc3), color-stop(7%,#b8f57c), color-stop(93%,#7cce10), color-stop(100%,#9fb988)); /* webkit */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9fb988', endColorstr='#9fb988',GradientType=0 ); /* ie */
+
+background: -o-linear-gradient(top, #9fb988 0%,#dfffc3 5%,#b8f57c 7%,#7cce10 93%,#9fb988 100%); /* opera */
 } 
 
 .contenido {
-	color: white;
+	color: #000;
+	font:normal 92.5%/1.5 Helvetica, Arial, sans-serif;
 	min-height: 400px;
-	background-color:#001A0D;
+	
+	background: #f8ffe8; /* old browsers */
+	background: -moz-linear-gradient(top, #f8ffe8 0%, #DBFF89 74%, #DBFF89 91%, #b7df2d 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8ffe8), color-stop(74%,#DBFF89), color-stop(91%,#DBFF89), color-stop(100%,#b7df2d)); /* webkit */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8ffe8', endColorstr='#b7df2d',GradientType=0 ); /* ie */
+	background: -o-linear-gradient(top, #f8ffe8 0%,#DBFF89 74%,#DBFF89 91%,#b7df2d 100%); /* opera */
+	
 	padding:20px;
 }
+
 h1{
+	font-family: 'Bevan', arial, serif; 
 	text-align:center;
+	color:#518f00;
 }
 
 .footer{
-	background-color:#001A00;
+	background: #b4ddb4; /* old browsers */
+	background: -moz-linear-gradient(top, #b4ddb4 0%, #008a00 7%, #008a00 23%, #005700 51%, #002400 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b4ddb4), color-stop(7%,#008a00), color-stop(23%,#008a00), color-stop(51%,#005700), color-stop(100%,#002400)); /* webkit */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4ddb4', endColorstr='#002400',GradientType=0 ); /* ie */
+	background: -o-linear-gradient(top, #b4ddb4 0%,#008a00 7%,#008a00 23%,#005700 51%,#002400 100%); /* opera */
 	color: white;
 	padding:10px;
 	font:normal 62.5%/1.5 Helvetica, Arial, sans-serif;
@@ -75,7 +111,7 @@ h1{
 
 .parrafo_informacion{
 	font-family:Helvetica;
-	color:#7AFF95;
+	color:#000;
 	text-align:justify;
 }
 
@@ -86,8 +122,9 @@ h1{
 	margin:10px 10px 10px 18px;
 }
 
+
 .element_style{
-	position:abolute;
+	position:absolute;
 }
 
 .centrado {
