@@ -52,7 +52,7 @@ class Buscador extends CI_Controller {
        		}else{
 			
 				//Obtener carálogo
-				$busqueda = explode($' ', $this->input->post('busqueda'));
+				$busqueda = explode(' ', $this->input->post('busqueda'));
 				$contenido['productos'] = $this->producto_model->buscar($config['per_page'], 
 										$this->uri->segment(4),
 										$busqueda);
