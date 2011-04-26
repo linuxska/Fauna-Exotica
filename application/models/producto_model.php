@@ -45,6 +45,23 @@ class Producto_model extends CI_Model{
 	   		
 	   		return $query->num_rows();
 	   }
+	   
+	   public function buscar($num_items, $num_pag, $etiquetas){
+			$cod_etiqueta = $this->db->select('cod')
+								->like('nombre',$etiquetas)
+								->get('etiqueta');
+								
+			$cod_productos = $this->db->select('cod_producto')
+									->where_in('cod_etiqueta', $cod_etiqueta->result_array())
+									->get('etiqueta_producto');
+			
+			$query = $this->db->select('cod, nombre, foto, descripcion, precio')
+       							->where_in('cod', $cod_productos->result_array())
+       							->get('producto',$num_items, $num_pag);
+       							
+       		 return $query->result();
+
+	   }
 }
 
 
