@@ -46,7 +46,7 @@ class Producto_model extends CI_Model{
 	   		return $query->num_rows();
 	   }
 	   
-	   public function buscar($num_items, $num_pag, $etiquetas){
+	   public function buscar($etiquetas){
 	   		// Recogemos los codigos de las etiquetas 
 	   		// que coincidan con las palabras buscadas
 	   		$this->db->select('cod');
@@ -77,7 +77,7 @@ class Producto_model extends CI_Model{
 				$query = $this->db->select('cod, nombre, foto, descripcion, precio')
 	       							->where_in('cod', $cod_productos)
 	       							->get('producto');
-	       		foreach ($query->result() as $x) echo $x->cod;
+	       		
 	       		return $query->result();
 			
 			} else return array();
