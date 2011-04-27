@@ -6,3 +6,34 @@
 .green #slatenav ul li a:hover,.green #slatenav ul li a.current{color:#fff;background:transparent url(http://localhost/Fauna-Exotica/img/menu/greenslate_backgroundOVER.gif) no-repeat top center;}
 /* ---------------------- END Greenslate nav ---------------------- */
 
+
+
+.menu_horizontal{
+	background-color:#00110D;
+}
+
+.menu_vertical{
+	color: white;
+	margin-top: 0px;
+	min-height: 400px;
+	padding:10px;
+}
+
+.menu_vertical ul {
+	margin : 0px;
+}
+
+.menu_horizontal ul li {   /* Lista Horizontal */ 
+      display: inline;
+} 
+
+.submenu{
+	display:none;
+}
+
+.menu_vertical li:hover{
+	background:#000;
+}
+.submenu li:hover{
+	background:#0FC;
+}

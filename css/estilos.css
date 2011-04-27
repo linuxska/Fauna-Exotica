@@ -30,26 +30,6 @@ a{
 	
 }
 
-
-.menu_horizontal{
-	background-color:#00110D;
-}
-
-.menu_vertical{
-	color: white;
-	margin-top: 0px;
-	min-height: 400px;
-	padding:10px;
-}
-
-.menu_vertical ul {
-	margin : 0px;
-}
-
-.menu_horizontal ul li {   /* Lista Horizontal */ 
-      display: inline;
-} 
-
 .contenido {
 	color: #000;
 	font:normal 92.5%/1.5 Helvetica, Arial, sans-serif;

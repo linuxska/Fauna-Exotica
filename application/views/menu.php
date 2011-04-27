@@ -11,10 +11,12 @@
 <li><?php echo anchor('contactar', 'Contactar');?></li>
 </ul>
 <ul class="buscador_cuenta">
-<li> <form class="buscador" action="<?php echo base_url();?>index.php/buscador/index" method="POST">
-<input type='text' name='busqueda' id='busqueda' maxlength='30' size='20'/>
-<input type='submit' value='Buscar'/>
-</form></li>
+<li> 
+	<form class="buscador" action="<?php echo base_url();?>buscador/index" method="POST">
+	<input type='text' name='busqueda' id='busqueda' maxlength='30' size='20'/>
+	<input type='submit' value='Buscar'/>
+	</form>
+</li>
 <li><?php echo anchor('cuenta/index', 'Mi cuenta')?></li>
 </ul>
 </div>
@@ -38,7 +40,7 @@
 		 if ($fila['categoria']->tipo == 'animales') {
 	         echo '<li>'.$fila['categoria']->nombre.'</li>';
 	         if (count($fila['subcategorias']) > 0){ // Si existen subcategorias
-		         echo'<ul>';
+		         echo'<ul class="submenu">';
 		         foreach ($fila['subcategorias'] as $sub_fila) {
 		         	echo '<li>'.anchor('producto/index/'.$sub_fila->cod, $sub_fila->nombre).'</li>';
 		         }
@@ -57,7 +59,7 @@
 		 if ($fila['categoria']->tipo == 'articulos') {
 	         echo '<li>'.$fila['categoria']->nombre.'</li>';
 	         if (count($fila['subcategorias']) > 0){ // Si existen subcategorias
-		         echo'<ul>';
+		         echo'<ul class="submenu">';
 		         foreach ($fila['subcategorias'] as $sub_fila) {
 		         	echo '<li>'.anchor('producto/index/'.$sub_fila->cod, $sub_fila->nombre).'</li>';
 		         }
