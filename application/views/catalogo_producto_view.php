@@ -3,7 +3,6 @@
 
 <div class='contenido'> 
 
-
 <?php 
 
 	foreach($productos as $fila){

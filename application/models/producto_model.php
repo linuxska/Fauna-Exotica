@@ -46,30 +46,41 @@ class Producto_model extends CI_Model{
 	   		return $query->num_rows();
 	   }
 	   
-	   public function buscar($etiquetas){
+	   public function buscar($num_items, $num_pag, $etiquetas){
+	   		// Recogemos los codigos de las etiquetas 
+	   		// que coincidan con las palabras buscadas
 	   		$this->db->select('cod');
 			$this->db->like('nombre', $etiquetas[0]);
-			foreach ($etiquetas as $indice => $palabra){
+			foreach ($etiquetas as $indice => $palabra){ 
 				if ($indice === 0) continue;
 				$this->db->or_like('nombre', $palabra);
-			}						
+			}		
 			$query_cod_etiquetas = $this->db->get('etiqueta');
 			
-			if ($query_cod_etiquetas->num_rows()==0) return array();
+			// Lo pasamos a un array
+			$cod_etiquetas = array();
+			foreach ($query_cod_etiquetas->result() as $value ) $cod_etiquetas[] = $value->cod;
+			
+			// Si no hay resultados, devuelve un array vacio
+			if ($query_cod_etiquetas->num_rows()>0){
 				
-			$cod_etiquetas = $query_cod_etiquetas->result_array();
+				// Codigos de productos que tienen las etiquetas encontradas:
+				$query_cod_productos = $this->db->select('cod_producto')
+										->where_in('cod_etiqueta', $cod_etiquetas)
+										->get('producto_etiqueta');
 			
-			$query_cod_productos = $this->db->select('cod_producto')
-									->where_in('cod_etiqueta', $cod_etiquetas[0])
-									->get('producto_etiqueta');
-									
-			$cod_productos = $query_cod_productos->row_array();
+				// Lo pasamos a un array
+				$cod_productos = array();
+				foreach ($query_cod_productos->result() as $v) $cod_productos[] = $v->cod_producto;			
+
+				// Obtenemos los productos resultantes
+				$query = $this->db->select('cod, nombre, foto, descripcion, precio')
+	       							->where_in('cod', $cod_productos)
+	       							->get('producto');
+	       		foreach ($query->result() as $x) echo $x->cod;
+	       		return $query->result();
 			
-			$query = $this->db->select('cod, nombre, foto, descripcion, precio')
-       							->where_in('cod', $cod_productos['cod_producto'])
-       							->get('producto');
-       							
-       		return $query->result();
+			} else return array();
 	   }
 	   
 }
