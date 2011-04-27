@@ -1,37 +1,28 @@
-<!--  Menu Horizontal -->
+<!-- Menu Horizontal -->
 <div class='clear'>&nbsp;</div>
 <div class='grid_10 push_2'>
 
-<div class='menu_horizontal'>
-
-<div class='grid_5'>
+<p>&nbsp;</p>
+<div class="green">
+<div id="slatenav">
 <ul>
-	<li><?php echo anchor('inicio', 'Inicio');?></li>
-	<li><?php echo anchor('informacion', 'Informacion');?></li>
-	<li><?php echo anchor('contactar', 'Contactar');?></li>
+<li><?php echo anchor('inicio', 'Inicio');?></li>
+<li><?php echo anchor('informacion', 'Informacion');?></li>
+<li><?php echo anchor('contactar', 'Contactar');?></li>
+</ul>
+<ul class="buscador_cuenta">
+<li> <form class="buscador" action="<?php echo base_url();?>index.php/buscador/index" method="POST">
+<input type='text' name='busqueda' id='busqueda' maxlength='30' size='20'/>
+<input type='submit' value='Buscar'/>
+</form></li>
+<li><?php echo anchor('cuenta/index', 'Mi cuenta')?></li>
 </ul>
 </div>
-<div class ='grid_3 push_2'>
-<p>
-<?php
-echo anchor('cuenta/index', 'Mi cuenta').' ';
-if ($this->session->userdata('logged_in') === TRUE){
-	echo 'Bienvenido '.$this->session->userdata('usuario').'. ';
-	echo anchor('cuenta/logout', 'Salir');
-}
-?>
-</p>
-<p> 
-<form action='buscador/index' method='POST'>
-<input type='text' name='busqueda' id='busqueda' maxlength='30' size='20'>
-<input type='submit' value='Buscar'
-</form>
-</p>
 </div>
-<div class='clear'>&nbsp;</div> 
 
-</div>
-</div> <!--  Fin Menu Horizontal -->
+</div> <!-- Fin Menu Horizontal -->
+
+
   <!--     <script src="http://connect.facebook.net/es_ES/all.js#xfbml=1"></script>
       <fb:like></fb:like> -->
 <!--  Menu Vertical -->

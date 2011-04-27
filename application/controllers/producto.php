@@ -23,9 +23,8 @@ class Producto extends CI_Controller {
        		$config['per_page'] = '9';
        		$config['uri_segment']=4;
        		$config['num_links'] = 2;
-       		$config['first_link'] = 'First';
-       		$config['next_link'] = 'Siguiente';
-       		$config['prev_link'] = 'Anterior';	
+       		$config['next_link'] = 'Siguiente >>';
+       		$config['prev_link'] = '<< Anterior';	
        		$config['prev_tag_open'] = '<div class="anterior">';
 			$config['prev_tag_close'] = '</div>';
        		$config['next_tag_open'] = '<div class="siguiente">';
