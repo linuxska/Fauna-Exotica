@@ -111,10 +111,15 @@ div.informacion{
 }
 
 div.num_paginas a{
-	color:#66CC33;
+	border: 1px solid #005700;
+	padding:5px 8px 5px 8px;
+	color:#005700;
 }
 
 .num_paginas strong{
+	border: 1px solid #000;
+	background:#005700;
+	padding:5px 8px 5px 8px;
 	color:#000;
 }
 
@@ -123,13 +128,14 @@ div.num_paginas a{
 	display:inline;
 }
 .anterior{
-		margin-right:30px;
-		display:inline;
+	margin-right:30px;
+	display:inline;
 }
 
 div.anterior a{
-	color:#00CC00;
+	color:#005700;
 }
 div.siguiente a{
-	color:#00CC00;
+	color:#005700;
+	
 }
