@@ -1,1 +1,7 @@
 system/
+.settings/
+application/.settings/
+application/.buildpath
+application/.project
+.buildpath
+.project
