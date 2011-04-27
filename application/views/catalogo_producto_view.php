@@ -5,6 +5,7 @@
 
 
 <?php 
+
 	foreach($productos as $fila){
 		
 	$data = array(

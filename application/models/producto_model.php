@@ -46,23 +46,31 @@ class Producto_model extends CI_Model{
 	   		return $query->num_rows();
 	   }
 	   
-	   public function buscar($num_items, $num_pag, $etiquetas){
-			$cod_etiqueta = $this->db->select('cod')
-								->like('nombre',$etiquetas)
-								->get('etiqueta');
-								
-			$cod_productos = $this->db->select('cod_producto')
-									->where_in('cod_etiqueta', $cod_etiqueta->result_array())
-									->get('etiqueta_producto');
+	   public function buscar($etiquetas){
+	   		$this->db->select('cod');
+			$this->db->like('nombre', $etiquetas[0]);
+			foreach ($etiquetas as $indice => $palabra){
+				if ($indice === 0) continue;
+				$this->db->or_like('nombre', $palabra);
+			}						
+			$query_cod_etiquetas = $this->db->get('etiqueta');
+			
+			if ($query_cod_etiquetas->num_rows()==0) return array();
+				
+			$cod_etiquetas = $query_cod_etiquetas->result_array();
+			
+			$query_cod_productos = $this->db->select('cod_producto')
+									->where_in('cod_etiqueta', $cod_etiquetas[0])
+									->get('producto_etiqueta');
+									
+			$cod_productos = $query_cod_productos->row_array();
 			
 			$query = $this->db->select('cod, nombre, foto, descripcion, precio')
-       							->where_in('cod', $cod_productos->result_array())
-       							->get('producto',$num_items, $num_pag);
+       							->where_in('cod', $cod_productos['cod_producto'])
+       							->get('producto');
        							
-       		 return $query->result();
-
+       		return $query->result();
 	   }
+	   
 }
-
-
 ?>

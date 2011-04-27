@@ -16,11 +16,11 @@ class Buscador extends CI_Controller {
 			$this->load->library('pagination');
 
        }
-       
+
        public function Index(){
-			/* Datos de paginacion*/     		
+			 /*Datos de paginacion     		
        		$config['base_url']= base_url().'index.php/producto/index/'.$this->uri->segment(3);
-       		$config['total_rows']=$this->producto_model->total_productos($this->uri->segment(3));
+       		$config['total_rows']=$this->producto_model->total_productos(1);
        		$config['per_page'] = '9';
        		$config['uri_segment']=4;
        		$config['num_links'] = 2;
@@ -32,10 +32,10 @@ class Buscador extends CI_Controller {
        		$config['next_tag_open'] = '<div class="siguiente">';
 			$config['next_tag_close'] = '</div>';
 			
-       		$this->pagination->initialize($config);
+       		$this->pagination->initialize($config);*/
     		
    		     // Reglas de validacion del formulario
-			$this->establecer_reglas();
+			//$this->establecer_reglas();
 			
        		/* Datos para la vista */
        		$head['titulo'] = "Cuenta";
@@ -43,23 +43,18 @@ class Buscador extends CI_Controller {
 
             /* Carga de las vistas */
 			$this->load->view('header', $head);
-			
-			if($this->form_validation->run()==FALSE){
-       			// Si el formulario no se ha enviado
-       			$this->load->view('menu', $menu);
-				$this->load->view('');	
-			
-       		}else{
-			
-				//Obtener carálogo
-				$busqueda = explode(' ', $this->input->post('busqueda'));
-				$contenido['productos'] = $this->producto_model->buscar($config['per_page'], 
-										$this->uri->segment(4),
-										$busqueda);
-										
+			$this->load->view('menu', $menu);
+						
+			//Obtener carálogo
+			$busqueda = explode(' ', $this->input->post('busqueda'));
+		
+			if (count($busqueda)>0 && $busqueda[0] !== "") {
+				$contenido['productos'] = $this->producto_model->buscar($busqueda);
 				$this->load->view('catalogo_producto_view', $contenido); // Contenido
+			}							
+			$this->load->view('catalogo_producto_view'); // Contenido
 			
-			}
+			
     		$this->load->view('footer'); 
        }
        
