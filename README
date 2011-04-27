@@ -1,10 +1,3 @@
-	
-	!!!!!Backend: registrar cuentas de administrador, y configurar su permiso de forma manual en la BD, cambiando
-	 el tipo 'cliente' por 'admin' o 'gestor'. Loguearse en la web como tal (por ahora solo admin) y acceder manualmente a /backend/index 
-	 Si no funciona, no estas logueado, o no tienes privilegios, te redirecciona a otro lao... 
-	 - Solo se muestra una vista así por encima. Habrá que personalizar cada tabla mejor, en vez de hacerlo genérico, ya se hablará
-
-
 /*****  Fauna-Exotica  *****/
 Instalacion BD: faunaexoticaSQL.sq
 Instalacion Mail: habilitar en php.ini => extension=php_openssl.dll (reiniciar servidor) 
@@ -12,7 +5,6 @@ Instalacion Mail: habilitar en php.ini => extension=php_openssl.dll (reiniciar s
 
 Datos cuenta GMAIL: 
 nombre =>	lauscar.sl@gmail.com
-pass =>		faunaexotica
 
 /* Proceso de la web */
 
