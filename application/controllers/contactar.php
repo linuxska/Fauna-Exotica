@@ -22,16 +22,19 @@ class Contactar extends CI_Controller {
        		// Reglas de validacion del formulario
 			$this->establecer_reglas();
 			
-       		/* Datos para la vista 
+       		// Datos para la vista 
        		$head['titulo'] = "Inicio";
        		$menu['menu'] = $this->menu_model->obtener_menu();
 
-            /* Carga de las vistas 
+            // Carga de las vistas 
 			$this->load->view('header', $head);
-    		$this->load->view('menu', $menu);*/
+    		$this->load->view('menu', $menu);
     		
     		if($this->form_validation->run()==FALSE){
-    			$this->load->view('contactar_view');
+    			// Si no se ha enviado el formulario se muestra 
+    			// se muestran con tabs
+    			$this->load->view('tab_contactar_view'); 
+    			  			
     		} else {
     			$nombre = $this->input->post('nombre');
     			$email = $this->input->post('email');
@@ -47,13 +50,17 @@ class Contactar extends CI_Controller {
 				
 				// Enviando email
 		       	if ($this->email->send()){
-		       		//$this->load->view('menu', $menu);
 					$this->load->view('cuenta/email_enviado_view');
 					
-		       	} else show_error($this->email->print_debugger());	
-    		} 
+		       	} else "Error email";	
+    		}
     		
-    		//$this->load->view('footer');
+    		$this->load->view('footer');
+       }
+       
+       public function tab(){
+       		// Solo formulario, sin tabs
+       		$this->load->view('contactar_view');
        }
 
        	// Reglas Form Validation

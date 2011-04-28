@@ -20,6 +20,7 @@ class Login extends CI_Controller {
 			$this->load->library('email');
        }
        
+
        public function Index(){
        		if( $this->session->userdata('logged_in') ===  TRUE) redirect('cuenta/index');
        			
@@ -27,6 +28,7 @@ class Login extends CI_Controller {
 			$this->establecer_reglas();
     		   		
        		if($this->form_validation->run()==FALSE) {
+       			
 				$this->load->view('cuenta/login_view');	
 			
        		} else {

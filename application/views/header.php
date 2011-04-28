@@ -33,6 +33,7 @@
 		<script type="text/javascript" src="<?php echo base_url();?>js/jquery-1.5.1.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url();?>js/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url();?>js/ui.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>js/jquery.cookie.js"></script>
 </head> 
 
 <body onload="initialize()">
