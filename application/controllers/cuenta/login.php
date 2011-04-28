@@ -25,20 +25,11 @@ class Login extends CI_Controller {
        			
        		 // Reglas de validacion del formulario
 			$this->establecer_reglas();
-			
-       		/* Datos para la vista */
-       		$head['titulo'] = "Cuenta";
-			$menu['menu'] = $this->menu_model->obtener_menu();
-
-            /* Carga de las vistas */
-			$this->load->view('header', $head);
     		   		
-       		if($this->form_validation->run()==FALSE){
-       			// Si el formulario no se ha enviado
-       			$this->load->view('menu', $menu);
+       		if($this->form_validation->run()==FALSE) {
 				$this->load->view('cuenta/login_view');	
 			
-       		}else{
+       		} else {
 				$usuario = $this->input->post('usuario');
 				$password = $this->input->post('password');
 
@@ -49,7 +40,6 @@ class Login extends CI_Controller {
 				} else echo "error login";
 			
 			}
-    		$this->load->view('footer');
        }
        
        // Form Validation : comprobar si existe el usuario

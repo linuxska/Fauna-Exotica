@@ -1,7 +1,3 @@
-<!--  Contenido -->
-<div class='grid_10'> 
-
-<div class='contenido'>
 
 <div id="map_canvas"></div>
 
@@ -31,7 +27,3 @@ magnis dis parturient montes, nascetur ridiculus mus. Suspendisse viverra felis 
 quam sollicitudin sodales dictum mi dapibus. Integer ornare mauris nec nulla elementum
  quis elementum tellus placerat. Sed sapien mi, condimentum nec aliquam a, pellentesque
   ac orci. Quisque eget nulla ligula. Proin a massa dolor, ornare tempus nibh.</p>
-
-</div> 
-
-</div> <!--  Fin Contenido -->

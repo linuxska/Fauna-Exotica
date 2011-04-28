@@ -1,5 +1,7 @@
 system/
 application/.settings
 .project
-.setting
+.setting/
 .buildpath
+
+

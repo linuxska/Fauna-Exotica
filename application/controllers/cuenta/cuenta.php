@@ -19,27 +19,17 @@ class Cuenta extends CI_Controller {
        }
        
        public function Index(){
-       		
-       		/* Datos para la vista */
-       		$head['titulo'] = "Cuenta";
-			$menu['menu'] = $this->menu_model->obtener_menu();
-
 			if( $this->session->userdata('logged_in') !==  TRUE){
 				// Si no ha iniciado sesión se abre la pagina login
 				redirect('login/index');
 				
-			} else {			
-           		/* Carga de las vistas */
-				$this->load->view('header', $head);
-    			$this->load->view('menu', $menu);
-    			
+			} else {			   			
     			// Datos del usuario para el formulario
     			$cuenta= $this->cuenta_model->obtener_todo($this->session->userdata('id'));
     			
     			// Contenido principal
 				$this->load->view('cuenta/cuenta_view', $cuenta);
 				
-				$this->load->view('footer');
 			}
        }
        

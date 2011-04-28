@@ -1,9 +1,8 @@
 <!--  Contenido -->
-<div class='grid_10'> 
 
-<div class='contenido'>
+<h1>Cuenta</h1>
 
-<div class='grid_4 push_2'> <!--  Formulario LOGIN -->
+<div class='grid_4 push_1'> <!--  Formulario LOGIN -->
 <p>Iniciar sesión:</p>
 <?php echo validation_errors('<div class="error">','</div>') ?>
 <?php echo form_open('login/index') ?>
@@ -16,12 +15,12 @@
 <p><?php echo anchor('recuperar_password/index', '¿Has olvidado tu contraseña?')?></p>
 </div>
 
-<div class='grid_4 push_2'> <!--  Enlaces -->
+<div class='grid_4 push_3'> <!--  Enlaces -->
 <p>¿Nuevo usuario?</p>
 <p><?php echo anchor('registro/index', '¡REGISTRATE AQUÍ!')?></p>
 </div>
 
 <div class=clear></div>
-</div> 
-</div> <!--  Fin Contenido -->
+
+
 

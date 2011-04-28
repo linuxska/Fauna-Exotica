@@ -9,9 +9,8 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/estilos_productos.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/estilos_carrito.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/estilos_formulario.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/global.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/menu_style.css" />
 
+		
 <script type="text/javascript" src="<?php echo base_url();?>js/jquery.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/slides.min.jquery.js"></script>
@@ -20,6 +19,7 @@
 <script type="text/javascript" src="<?php echo base_url();?>js/producto_redondeado.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/cuenta.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/pedido.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>js/descripcion_producto.js"></script>
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/googlemap.js"></script>
@@ -28,6 +28,11 @@
 
 <link rel="shortcut icon" href="img/logo.png">
 
+		<!-- JQuery UI -->
+		<link type="text/css" href="<?php echo base_url();?>css/jquery-ui.css" rel="stylesheet" />	
+		<script type="text/javascript" src="<?php echo base_url();?>js/jquery-1.5.1.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>js/ui.js"></script>
 </head> 
 
 <body onload="initialize()">
@@ -61,7 +66,7 @@
 		<img src="<?php echo base_url();?>img/carrito.png"></img>
 					 Total: <?php echo $this->cart->total().'&#8364<br>'; ?> 
 					Tienes <?php echo $this->cart->total_items();?> productos.
-					<?php echo anchor('/carrito/index/', 'Ver Carrito')?>
+					<?php echo anchor('carrito/index/', 'Ver Carrito')?>
 		</div>	
 	</div> 
 	<!--  Fin Carro -->

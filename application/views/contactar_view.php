@@ -1,8 +1,3 @@
-<!--  Contenido -->
-<div class='grid_10'>
-
-<div class='contenido'>
-
 	<div class='grid_6 push_3'>
 	<p>Envienos un mesaje breve:</p>
 	<?php echo validation_errors('<div class="error">','</div>') ?>
@@ -19,7 +14,4 @@
 	<?php echo form_close() ?>
 	<p>Para comunicarse con mas rigor, contácte con nosotros directamente por email a lauscar.sl@gmail.com</p>
 	</div>
-
-</div>
-
-</div> <!--  Fin Contenido -->
+	<div class=clear></div>
