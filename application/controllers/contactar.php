@@ -47,7 +47,7 @@ class Contactar extends CI_Controller {
 				
 				// Enviando email
 		       	if ($this->email->send()){
-		       		$this->load->view('menu', $menu);
+		       		//$this->load->view('menu', $menu);
 					$this->load->view('cuenta/email_enviado_view');
 					
 		       	} else show_error($this->email->print_debugger());	

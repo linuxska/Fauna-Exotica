@@ -45,7 +45,7 @@ class Producto extends CI_Controller {
             /* Carga de las vistas */
 			$this->load->view('header', $head);
     		$this->load->view('menu', $menu);
-    		
+
     		$this->load->view('catalogo_producto_view', $contenido); // Contenido
     		
     		$this->load->view('footer');

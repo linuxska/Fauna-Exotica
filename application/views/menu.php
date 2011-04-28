@@ -1,15 +1,12 @@
 <!-- Menu Horizontal -->
 <div class='clear'>&nbsp;</div>
-	<div class='grid_10 push_2'>
-		<?php echo anchor('cuenta/index', 'Mi cuenta')?>
-		<form class="buscador" action="<?php echo base_url();?>buscador/index" method="POST">
-		<input type='text' name='busqueda' id='busqueda' maxlength='30' size='20'/>
-		<input type='submit' value='Buscar'/>
-		</form>
 
-
+	<div class='grid_10 push_2'>		
+	<form class="buscador" action="<?php echo base_url();?>buscador/index" method="POST">
+	<input type='text' name='busqueda' id='busqueda' maxlength='30' size='20'/>
+	<input type='submit' value='Buscar'/>
+	</form>
 	</div> <!-- Fin Menu Horizontal -->
-
 
 <!--  Menu Vertical -->
 <div class='clear'>&nbsp;</div> 
