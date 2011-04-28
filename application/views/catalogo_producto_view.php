@@ -1,8 +1,15 @@
 <!--  Contenido -->
 <div class='grid_10'> 
-
-<div class='contenido'> 
-
+	<!-- Tabs -->
+	<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Catálogo</a></li>
+		<li><?php echo anchor('inicio/indextab', 'Inicio');?></li>
+		<li><?php echo anchor('informacion', 'Informacion');?></li>
+		<li><?php echo anchor('contactar', 'Contactar');?></li>
+	</ul>
+	<div id="tabs-1">
+		<h1>Catálogo</h1>
 <?php 
 	if (empty($productos)) echo "No se encontraron resultados para su búsqueda";
 		else {foreach($productos as $fila){
@@ -31,8 +38,12 @@
 		}
 	}
 ?>
+	<div class=clear></div>
+	</div>
+	
+	<?php echo '<div class="num_paginas">'.$this->pagination->create_links();?>
+	
+	</div> <!-- Fin Tabs -->
 
-<div class=clear></div>
-<?php echo '<div class="num_paginas">'.$this->pagination->create_links();?></div>
-</div>
+
 </div> <!--  Fin Contenido -->

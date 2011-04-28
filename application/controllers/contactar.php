@@ -22,13 +22,13 @@ class Contactar extends CI_Controller {
        		// Reglas de validacion del formulario
 			$this->establecer_reglas();
 			
-       		/* Datos para la vista */
+       		/* Datos para la vista 
        		$head['titulo'] = "Inicio";
        		$menu['menu'] = $this->menu_model->obtener_menu();
 
-            /* Carga de las vistas */
+            /* Carga de las vistas 
 			$this->load->view('header', $head);
-    		$this->load->view('menu', $menu);
+    		$this->load->view('menu', $menu);*/
     		
     		if($this->form_validation->run()==FALSE){
     			$this->load->view('contactar_view');
@@ -53,7 +53,7 @@ class Contactar extends CI_Controller {
 		       	} else show_error($this->email->print_debugger());	
     		} 
     		
-    		$this->load->view('footer');
+    		//$this->load->view('footer');
        }
 
        	// Reglas Form Validation

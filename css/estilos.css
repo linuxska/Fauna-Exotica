@@ -1,32 +1,17 @@
  /* Estilos para ver los grid */ 
 body { 
-	background: #f8ffe8; /* old browsers */
-	background: -moz-linear-gradient(top, #f8ffe8 0%, #8CF243 15%, #9EF263 36%, #a8f475 55%); /* firefox */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8ffe8), color-stop(15%,#8CF243), color-stop(36%,#9EF263), color-stop(55%,#a8f475)); /* webkit */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8ffe8', endColorstr='#a8f475',GradientType=0 ); /* ie */
-	background: -o-linear-gradient(top, #f8ffe8 0%,#8CF243 15%,#9EF263 36%,#a8f475 55%); /* opera */
+
 }
 
 .container {
-	/*background-color:#333;*/
+
 }
 
-a{
-	text-decoration:none;
-	color: white;
-}
  /* Fin */ 
 
  
-  /* Estilos de la web */ 
+ /* Estilos de la web */ 
 .header {
-	text-align: center;
-	background: #b4ddb4; /* old browsers */
-	background: -moz-linear-gradient(top, #b4ddb4 0%, #008a00 7%, #008a00 23%, #005700 51%, #002400 100%); /* firefox */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b4ddb4), color-stop(7%,#008a00), color-stop(23%,#008a00), color-stop(51%,#005700), color-stop(100%,#002400)); /* webkit */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4ddb4', endColorstr='#002400',GradientType=0 ); /* ie */
-	background: -o-linear-gradient(top, #b4ddb4 0%,#008a00 7%,#008a00 23%,#005700 51%,#002400 100%); /* opera */
-	padding:10px;
 	
 }
 
@@ -34,11 +19,7 @@ a{
 	color: #000;
 	font:normal 92.5%/1.5 Helvetica, Arial, sans-serif;
 	min-height: 400px;	
-	background: #f8ffe8; /* old browsers */
-	background: -moz-linear-gradient(top, #f8ffe8 32%, #DEFF93 61%, #D4FF72 78%, #dbff89 95%); /* firefox */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(32%,#f8ffe8), color-stop(61%,#DEFF93), color-stop(78%,#D4FF72), color-stop(95%,#dbff89)); /* webkit */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8ffe8', endColorstr='#dbff89',GradientType=0 ); /* ie */
-	background: -o-linear-gradient(top, #f8ffe8 32%,#DEFF93 61%,#D4FF72 78%,#dbff89 95%); /* opera */
+	
 	padding:20px;
 }
 
@@ -96,4 +77,12 @@ h1{
 
 .buscador_cuenta{
 	float:right;
+}
+
+ul {
+ padding: 3px;
+ margin : 3px;
+}
+a {
+	text-decoration : none;
 }
