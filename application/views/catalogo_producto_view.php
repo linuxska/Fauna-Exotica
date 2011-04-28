@@ -40,9 +40,10 @@
 	}
 ?>
 	<div class=clear></div>
-	</div>
 	
 	<?php echo '<div class="num_paginas">'.$this->pagination->create_links();?>
+	</div>
+	
 	
 	</div> <!-- Fin Tabs -->
 
