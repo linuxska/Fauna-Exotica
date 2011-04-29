@@ -23,7 +23,7 @@ class Inicio extends CI_Controller {
     		$this->load->view('menu', $menu);
     		
     		// Tabs
-    		$this->load->view('tab_view'); 
+    		$this->load->view('tab_view');
     		
     		$this->load->view('footer');
        }

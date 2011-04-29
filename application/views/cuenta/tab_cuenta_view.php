@@ -1,7 +1,22 @@
 <!--  Contenido -->
 <div class='grid_10'> 
 
-<!--  Menu de cuenta -->
+	<!-- El input tab_seleccionada sirve a ui.js mostrar que pestaña abrir -->
+	<input type="hidden" id='tab_seleccionada' value="4"/>
+	
+	<div id="tabs">
+	<ul>
+		<li><?php echo anchor('inicio/indextab', 'Inicio');?></li>
+		<li><?php echo anchor('informacion', 'Informacion');?></li>
+		<li><?php echo anchor('contactar/tab', 'Contactar');?></li>
+		<li><a href="#tabs-4">Mi Cuenta</a></li>
+	</ul>
+	<div id='tabs-4'>	
+
+	<!--  Cuenta -->
+	<div class='grid_10 push_1'>
+	
+		<!--  Menu de cuenta -->
 		<div id="acordeon_cuenta">
 		<h3><a href="#">Cuenta</a></h3>	
 		<div>
@@ -86,6 +101,10 @@
 		</div>
 		
 		</div> <!--  Fin Acordeon -->
-
-
+		
+		
+		<div class=clear></div>
+		</div><!--  Fin cuenta -->
+		</div>
+<div class=clear></div>
 </div> <!--  Fin Contenido -->
