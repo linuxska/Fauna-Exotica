@@ -23,17 +23,10 @@ class Inicio extends CI_Controller {
     		$this->load->view('menu', $menu);
     		
     		// Tabs
-    		$this->load->view('tab_view');
+    		$this->load->view('inicio_view');
     		
     		$this->load->view('footer');
        }
 	   
-	   public function indextab() {
-			 //Obtener novedades
-            $contenido['novedad'] = $this->novedades_model->obtener_novedades();
-       
-            // Contenido principal
-			$this->load->view('inicio_view', $contenido); 
-	   }
 }
 ?>

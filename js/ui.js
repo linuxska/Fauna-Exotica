@@ -6,6 +6,14 @@ $(document).ready( function(){
 	
 
 	$( "#tabs" ).tabs({
+		select: function(event, ui) {
+	        var url = $.data(ui.tab, 'load.tabs');
+	        if( url ) {
+	            location.href = url;
+	            return false;
+	        }
+	        return true;
+	    },
 			ajaxOptions: {
 				error: function( xhr, status, index, anchor ) {
 					$( anchor.hash ).html(
@@ -13,6 +21,8 @@ $(document).ready( function(){
 				}
 			}
 		});
+
+
 	
 	// Obtener de un input el numero de pestaña que debe abrirse por defecto
 	var tab_seleccionada = $("#tab_seleccionada").val();
