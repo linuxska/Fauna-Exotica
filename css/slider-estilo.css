@@ -7,7 +7,6 @@
     height:357px;
     margin:0 auto;
     padding-top:15px;
-
 }
 
 #slider {
@@ -17,6 +16,7 @@
     margin-left:160px;
 	background:url(../img/loading.gif) no-repeat 50% 50%;
 }
+
 #slider img {
 	position:absolute;
 	top:0px;
@@ -30,7 +30,7 @@
 
 .nivo-controlNav {
 	position:absolute;
-	left:260px;
+	left:220px;
 	bottom:-42px;
 }
 .nivo-controlNav a {

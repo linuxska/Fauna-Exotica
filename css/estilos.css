@@ -1,6 +1,6 @@
  /* Estilos para ver los grid */ 
 body { 
-
+	background:url(../img/background.png);
 }
 
 .container {
@@ -11,9 +11,35 @@ body {
 
  
  /* Estilos de la web */ 
-.header {
+#header {
 	
 }
+
+#menu_vertical{
+	margin-top: 20px;
+	min-height: 400px;
+	padding:10px;
+}
+
+#menu_vertical ul {
+	margin : 0px;
+}
+
+#menu_vertical p {
+ 	text-decoration:overline;
+	margin-top : 0px;
+	font-family: 'Bevan', arial, serif;
+	font-size:12px;
+}
+
+ #menu_vertical img {
+ 	text-decoration:overline;
+	margin-top : 15px;
+	font-family: 'Bevan', arial, serif;
+	font-size:12px;
+}
+
+
 
 .contenido {
 	color: #000;

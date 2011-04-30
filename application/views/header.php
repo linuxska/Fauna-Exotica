@@ -12,7 +12,6 @@
 
 		
 <script type="text/javascript" src="<?php echo base_url();?>js/jquery.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/jquery.corners.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/producto_redondeado.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/cuenta.js"></script>
@@ -53,7 +52,7 @@
 <!--  Cabecera -->
 <div class="grid_12">
 
-<div class='header'>
+<div class='header' id='header' >
 	<!-- Logo -->	
 	<div class="grid_3"> 
 		<div>
