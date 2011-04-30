@@ -12,9 +12,6 @@
 
 		
 <script type="text/javascript" src="<?php echo base_url();?>js/jquery.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>js/slides.min.jquery.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>js/slider.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/jquery.corners.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/producto_redondeado.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/cuenta.js"></script>
@@ -28,12 +25,23 @@
 
 <link rel="shortcut icon" href="img/logo.png">
 
-		<!-- JQuery UI -->
-		<link type="text/css" href="<?php echo base_url();?>css/jquery-ui.css" rel="stylesheet" />	
-		<script type="text/javascript" src="<?php echo base_url();?>js/jquery-1.5.1.min.js"></script>
-		<script type="text/javascript" src="<?php echo base_url();?>js/jquery-ui.min.js"></script>
-		<script type="text/javascript" src="<?php echo base_url();?>js/ui.js"></script>
-		<script type="text/javascript" src="<?php echo base_url();?>js/jquery.cookie.js"></script>
+	<!-- JQuery UI -->
+	<link type="text/css" href="<?php echo base_url();?>css/jquery-ui.css" rel="stylesheet" />	
+	<script type="text/javascript" src="<?php echo base_url();?>js/jquery-1.5.1.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>js/ui.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>js/jquery.cookie.js"></script>
+	
+	<!-- Nivo Slider -->
+	
+	<link rel="stylesheet" href="<?php echo base_url();?>css/slider.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php echo base_url();?>css/slider-estilo.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="<?php echo base_url();?>js/jquery.slider.js"></script>
+    <script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+    </script>
 </head> 
 
 <body onload="initialize()">
@@ -44,7 +52,7 @@
 <!--  Cabecera -->
 <div class="grid_12">
 
-<div class='header'>
+<div class='header' id='header' >
 	<!-- Logo -->	
 	<div class="grid_3"> 
 		<div>
@@ -61,14 +69,25 @@
 	</div>
 	<!--  Fin Titulo -->
 	
-	<!-- Carro -->	
+	<!-- Carro & Buscador-->	
 	<div class="grid_3"> 
-		<div > <!-- class='header' -->
+	
+		<div >
 		<img src="<?php echo base_url();?>img/carrito.png"></img>
-					 Total: <?php echo $this->cart->total().'&#8364<br>'; ?> 
-					Tienes <?php echo $this->cart->total_items();?> productos.
-					<?php echo anchor('carrito/index/', 'Ver Carrito')?>
-		</div>	
+		Total: <?php echo $this->cart->total().'&#8364<br>'; ?> 
+		Tienes <?php echo $this->cart->total_items();?> productos.
+		<?php echo anchor('carrito/index/', 'Ver Carrito')?>
+		</div>
+			
+		<div>
+		<form class="buscador" accept-charset="utf-8" method="post" action="<?php echo base_url();?>buscador/index">
+		<br/>
+		<input type='text' name='busqueda' id='busqueda' maxlength='30' size='20'/>
+		<input type='submit' value='Buscar'/>
+		<br/>
+		</form>
+		</div>
+		
 	</div> 
 	<!--  Fin Carro -->
 	

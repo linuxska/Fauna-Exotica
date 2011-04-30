@@ -33,7 +33,7 @@ class Contactar extends CI_Controller {
     		if($this->form_validation->run()==FALSE){
     			// Si no se ha enviado el formulario se muestra 
     			// se muestran con tabs
-    			$this->load->view('tab_contactar_view'); 
+    			$this->load->view('contactar_view'); 
     			  			
     		} else {
     			$nombre = $this->input->post('nombre');
@@ -58,10 +58,6 @@ class Contactar extends CI_Controller {
     		$this->load->view('footer');
        }
        
-       public function tab(){
-       		// Solo formulario, sin tabs
-       		$this->load->view('contactar_view');
-       }
 
        	// Reglas Form Validation
 		private function establecer_reglas(){

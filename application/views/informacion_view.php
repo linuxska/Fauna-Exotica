@@ -1,4 +1,17 @@
+<!--  Contenido -->
+<div class='grid_10'> 
 
+	<!-- El input tab_seleccionada sirve a ui.js mostrar que pestaña abrir -->
+	<input type="hidden" id='tab_seleccionada' value="2"/>
+	
+	<div id="tabs">
+	<ul>
+		<li><?php echo anchor('inicio', 'inicio');?></li>
+		<li><a href='#tabs-2'>Informacion</a></li>
+		<li><?php echo anchor('contactar/index', 'Contactar');?></li>
+		<li><?php echo anchor('cuenta/index', 'Mi Cuenta');?></li>
+	</ul>
+	<div id='tabs-2'>
 <div id="map_canvas"></div>
 
 
@@ -27,3 +40,10 @@ magnis dis parturient montes, nascetur ridiculus mus. Suspendisse viverra felis 
 quam sollicitudin sodales dictum mi dapibus. Integer ornare mauris nec nulla elementum
  quis elementum tellus placerat. Sed sapien mi, condimentum nec aliquam a, pellentesque
   ac orci. Quisque eget nulla ligula. Proin a massa dolor, ornare tempus nibh.</p>
+  
+  	</div>
+	<div class=clear></div>
+</div>
+
+<div class=clear></div>
+</div> <!--  Fin Contenido -->

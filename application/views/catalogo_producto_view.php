@@ -4,9 +4,9 @@
 	<div id="tabs">
 	<ul>
 		<li><a href="#tabs-1">Catálogo</a></li>
-		<li><?php echo anchor('inicio/indextab', 'Inicio');?></li>
+		<li><?php echo anchor('inicio', 'Inicio');?></li>
 		<li><?php echo anchor('informacion', 'Informacion');?></li>
-		<li><?php echo anchor('contactar', 'Contactar');?></li>
+		<li><?php echo anchor('contactar/index', 'Contactar');?></li>
 		<li><?php echo anchor('cuenta/index', 'Mi Cuenta');?></li>
 	</ul>
 	<div id="tabs-1">

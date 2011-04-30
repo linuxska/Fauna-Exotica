@@ -1,6 +1,6 @@
  /* Estilos para ver los grid */ 
 body { 
-
+	background:url(../img/background.png);
 }
 
 .container {
@@ -11,9 +11,35 @@ body {
 
  
  /* Estilos de la web */ 
-.header {
+#header {
 	
 }
+
+#menu_vertical{
+	margin-top: 20px;
+	min-height: 400px;
+	padding:10px;
+}
+
+#menu_vertical ul {
+	margin : 0px;
+}
+
+#menu_vertical p {
+ 	text-decoration:overline;
+	margin-top : 0px;
+	font-family: 'Bevan', arial, serif;
+	font-size:12px;
+}
+
+ #menu_vertical img {
+ 	text-decoration:overline;
+	margin-top : 15px;
+	font-family: 'Bevan', arial, serif;
+	font-size:12px;
+}
+
+
 
 .contenido {
 	color: #000;
@@ -23,12 +49,15 @@ body {
 	padding:20px;
 }
 
-h1{
+h1, h2{
 	font-family: 'Bevan', arial, serif; 
 	text-align:center;
 	color:#518f00;
 }
+h2{
 
+	margin-top: 5px;
+}
 .footer{
 background: #3a8104; /* old browsers */
 
@@ -83,10 +112,4 @@ background: -o-linear-gradient(top, #3a8104 78%,#487F1E 91%,#579921 100%); /* op
 	float:right;
 }
 
-ul {
- padding: 3px;
- margin : 3px;
-}
-a {
-	text-decoration : none;
-}
+

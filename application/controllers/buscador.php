@@ -34,7 +34,7 @@ class Buscador extends CI_Controller {
 			$this->load->view('header', $head);
 			$this->load->view('menu', $menu);
 						
-			//Obtener carálogo
+			//Obtener palabras
 			$busqueda = explode(' ', $this->input->post('busqueda'));
 		
 			if (count($busqueda)>0 && $busqueda[0] !== "") {

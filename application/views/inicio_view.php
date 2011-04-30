@@ -1,4 +1,34 @@
-<h2>Novedades</h2>
-<p>
-En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor. Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados, lantejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda. El resto della concluían sayo de velarte, calzas de velludo para las fiestas, con sus pantuflos de lo mesmo, y los días de entresemana se honraba con su vellorí de lo más fino. Tenía en su casa una ama que pasaba de los cuarenta, y una sobrina que no llegaba a los veinte, y un mozo de campo y plaza, que así ensillaba el rocín como tomaba la podadera. Frisaba la edad de nuestro hidalgo con los cincuenta años; era de complexión recia, seco de carnes, enjuto de rostro, gran madrugador y amigo de la caza. Quieren decir que tenía el sobrenombre de Quijada, o Quesada, que en esto hay alguna diferencia en los autores que deste caso escriben; aunque, por conjeturas verosímiles, se deja entender que se llamaba Quejana. Pero esto importa poco a nuestro cuento; basta que en la narración dél no se salga un punto de la verdad.
-</p>
+<!--  Contenido -->
+<div class='grid_10'> 
+
+	<!-- El input tab_seleccionada sirve a ui.js mostrar que pestaña abrir -->
+	<input type="hidden" id='tab_seleccionada' value="0"/>
+	
+	<div id="tabs">
+	<ul>
+		<li><a href='#tabs-1'>Inicio</a></li>
+		<li><?php echo anchor('informacion', 'Informacion');?></li>
+		<li><?php echo anchor('contactar/index', 'Contactar');?></li>
+		<li><?php echo anchor('cuenta/index', 'Mi Cuenta');?></li>
+	</ul>
+	<div id='tabs-1'>
+	<h2>Novedades</h2>
+		<div id='slider-wrapper'>
+            <div id="slider" class="nivoSlider">
+
+            <?php foreach($novedad as $fila){?>
+				<a href="<?php echo base_url();?>producto/mostrar/<?php echo $fila->cod;?>" title="<?php echo $fila->nombre?>">
+				<img src="<?php echo base_url()."img/productos/".$fila->foto?>" alt="" title='<?php echo $fila->nombre." ".$fila->precio." €";?>' width="500" height="300"/>
+				</a>
+			<?php }?>		
+            
+            </div>
+		</div>
+
+	</div>
+
+	</div>
+	<div class=clear></div>
+	
+</div> <!--  Fin Contenido -->
+

@@ -1,21 +1,15 @@
 <!-- Menu Horizontal -->
 <div class='clear'>&nbsp;</div>
 
-	<div class='grid_10 push_2'>		
-	<form class="buscador" action="<?php echo base_url();?>buscador/index" method="POST">
-	<input type='text' name='busqueda' id='busqueda' maxlength='30' size='20'/>
-	<input type='submit' value='Buscar'/>
-	</form>
-	</div> <!-- Fin Menu Horizontal -->
 
 <!--  Menu Vertical -->
 <div class='clear'>&nbsp;</div> 
 <div class='grid_2'> 
 
-<div class='menu_vertical'>
+<div class='menu_vertical' id='menu_vertical'>
 
 	<!-- Accordion -->
-	<p>ANIMALES</p>
+	<p class='inline'>ANIMALES</p><img src='<?php echo base_url();?>img/tortuga.png'>
 	<div id="acordeon_animales">	
 	<?php foreach ($menu as $fila){
 		 if ($fila['categoria']->tipo == 'animales') {
@@ -32,7 +26,7 @@
 	?>
 	</div>
 	
-	<p>ARTICULOS</p>
+	<p class='inline'>ARTICULOS</p><img src='<?php echo base_url();?>img/hueso.png'>
 	<div id="acordeon_articulos">
 	<?php foreach ($menu as $fila){
 		 if ($fila['categoria']->tipo == 'articulos') {
