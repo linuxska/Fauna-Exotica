@@ -22,6 +22,7 @@
 <script type="text/javascript" src="<?php echo base_url();?>js/googlemap.js"></script>
 
 <link href='http://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
+<!-- <link href='http://fonts.googleapis.com/css?family=Luckiest+Guy' rel='stylesheet' type='text/css'> -->
 
 <link rel="shortcut icon" href="img/logo.png">
 
@@ -52,7 +53,7 @@
 <!--  Cabecera -->
 <div class="grid_12">
 
-<div class='header' id='header' >
+<div class='header'>
 	<!-- Logo -->	
 	<div class="grid_3"> 
 		<div>
@@ -64,28 +65,24 @@
 	<!--  TITULO -->
 	<div class="grid_6 "> 
 		<div> <!--  class='header' -->
-			<h1><?php echo anchor('inicio', 'Fauna exótica')?></h1>
+			<img src="<?php echo base_url();?>img/titulo.png">
+			<!-- <h1><?php echo anchor('inicio', 'Fauna exótica')?></h1>-->
 		</div>	
 	</div>
 	<!--  Fin Titulo -->
 	
-	<!-- Carro & Buscador-->	
+	<!-- Carro & Mi cuenta-->	
 	<div class="grid_3"> 
 	
-		<div >
+		<div class="carrito_header">
 		<img src="<?php echo base_url();?>img/carrito.png"></img>
 		Total: <?php echo $this->cart->total().'&#8364<br>'; ?> 
 		Tienes <?php echo $this->cart->total_items();?> productos.
 		<?php echo anchor('carrito/index/', 'Ver Carrito')?>
 		</div>
 			
-		<div>
-		<form class="buscador" accept-charset="utf-8" method="post" action="<?php echo base_url();?>buscador/index">
-		<br/>
-		<input type='text' name='busqueda' id='busqueda' maxlength='30' size='20'/>
-		<input type='submit' value='Buscar'/>
-		<br/>
-		</form>
+		<div class="micuenta">
+			<?php echo anchor('cuenta/index', 'Mi Cuenta');?>
 		</div>
 		
 	</div> 
