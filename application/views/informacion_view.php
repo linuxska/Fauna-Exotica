@@ -9,13 +9,18 @@
 		<li><?php echo anchor('inicio', 'inicio');?></li>
 		<li><a href='#tabs-2'>Informacion</a></li>
 		<li><?php echo anchor('contactar/index', 'Contactar');?></li>
-		<li><?php echo anchor('cuenta/index', 'Mi Cuenta');?></li>
+		
+		<form class="buscador" accept-charset="utf-8" method="post" action="<?php echo base_url();?>buscador/index">
+			<input type='text' name='busqueda' id='busqueda' maxlength='30' size='20'/>
+			<input type='submit' value='Buscar'/>
+			<br/>
+		</form>
 	</ul>
 	<div id='tabs-2'>
 <div id="map_canvas"></div>
 
 
-<p class="parrafo_informacion">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquet rutrum risus, 
+<p class="parrafo_Informacion">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquet rutrum risus, 
 et eleifend nibh placerat et. Donec fermentum nisl id enim eleifend ut imperdiet nulla 
 mattis. Maecenas dolor quam, sodales eget venenatis vitae, varius vitae diam. 
 Vestibulum vitae dui tempus erat rhoncus volutpat. Pellentesque mi felis, pulvinar 
@@ -30,7 +35,7 @@ Quisque non vestibulum sem. Donec vel ullamcorper sapien. Donec eget pretium ero
  <br>
  <img class="local" src="<?php echo base_url();?>img/local-fauna.jpg"></img>
 
-<p class="parrafo_informacion">Maecenas sit amet augue eget purus ultrices vehicula non non mauris. 
+<p class="parrafo_Informacion">Maecenas sit amet augue eget purus ultrices vehicula non non mauris. 
 Aliquam erat volutpat. Integer suscipit, arcu ac facilisis sagittis, lorem nunc vehicula 
 velit, non egestas elit lacus eu purus. Ut eget lacus purus, ut feugiat turpis. 
 Quisque ut eros nunc, quis vehicula turpis. Maecenas libero purus, tristique vitae 

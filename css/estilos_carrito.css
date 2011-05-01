@@ -2,6 +2,7 @@
 	background:#C6D3DA;
 	padding:5px;
 	margin:10px;
+
 }
 
 .carrito table {
@@ -31,4 +32,14 @@
 	height:25px;
 	padding:0;
 	margin:0 0 0 10px;
+}
+
+.carrito_header{
+	margin-top:20px;
+	margin-right:70px;
+	float:right;
+	text-decoration:none;
+	font-family:Trebuchet Ms,verdana,arial,Sans-Serif;
+	size:92.5%;
+	color:#FFF;
 }

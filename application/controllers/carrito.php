@@ -2,7 +2,7 @@
 /*
  * CARRITO
  * Mantiene un carro de compra temporal
- * La información no se guarda hasta procesar el pedido
+ * La Informacion no se guarda hasta procesar el pedido
  */
 
 class Carrito extends CI_Controller {

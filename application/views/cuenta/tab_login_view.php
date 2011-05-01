@@ -6,9 +6,14 @@
 	<div id="tabs">
 	<ul>
 		<li><?php echo anchor('inicio/indextab', 'Inicio');?></li>
-		<li><?php echo anchor('informacion', 'Informacion');?></li>
+		<li><?php echo anchor('Informacion', 'Informacion');?></li>
 		<li><a href="#tabs-4">Contactar</a></li>
-		<li><?php echo anchor('cuenta/index', 'Mi Cuenta');?></li>
+		
+		<form class="buscador" accept-charset="utf-8" method="post" action="<?php echo base_url();?>buscador/index">
+			<input type='text' name='busqueda' id='busqueda' maxlength='30' size='20'/>
+			<input type='submit' value='Buscar'/>
+			<br/>
+		</form>
 	</ul>
 	<div id='tabs-4'>
 	<h1>Cuenta</h1>

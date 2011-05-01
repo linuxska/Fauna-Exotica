@@ -5,15 +5,21 @@
 	<ul>
 		<li><a href="#tabs-1">Producto</a></li>
 		<li><?php echo anchor('inicio', 'Inicio');?></li>
-		<li><?php echo anchor('informacion', 'Informacion');?></li>
+		<li><?php echo anchor('Informacion', 'Informacion');?></li>
 		<li><?php echo anchor('contactar/index', 'Contactar');?></li>
-		<li><?php echo anchor('cuenta/index', 'Mi Cuenta');?></li>
+	
+			<form class="buscador" accept-charset="utf-8" method="post" action="<?php echo base_url();?>buscador/index">
+			<input type='text' name='busqueda' id='busqueda' maxlength='30' size='20'/>
+			<input type='submit' value='Buscar'/>
+			<br/>
+			</form>
+		
 	</ul>
 	<div id="tabs-1">
 		<h1>Producto</h1>
 		<div class='zoom_producto grid_10 push_1 producto'>
 			<div class="grid_4"><?php echo "<img src=".base_url()."img/productos/".$producto->foto.">"; ?> </div>
-			<div class="grid _2 informacion">
+			<div class="grid _2 Informacion">
 			<p><?php echo $producto->nombre; ?></p>
 			<p id="precio"><?php echo $producto->precio; ?> &#8364;</p> 
 			</div>

@@ -37,7 +37,7 @@ class Carrito_model extends CI_Model{
        		return 0;
        }
        
-       // Devuelve el carro con información añadida de los productos (foto)
+       // Devuelve el carro con Informacion añadida de los productos (foto)
        public function obtener_carrito(){
        		 $carrito = $this->cart->contents(); 
 

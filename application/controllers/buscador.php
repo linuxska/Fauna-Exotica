@@ -2,7 +2,7 @@
 /*
  * PRODUCTO
  * Muestra en principio el catálogo de productos separado por subcategorias
- * Al solicitar un producto en concreto se muestra informacion mas detallada del mismo
+ * Al solicitar un producto en concreto se muestra Informacion mas detallada del mismo
  * Se podrá filtrar los resultados por etiquetas * (no empezado)
  */
 class Buscador extends CI_Controller {
@@ -27,7 +27,7 @@ class Buscador extends CI_Controller {
        		 */
 			
        		/* Datos para la vista */
-       		$head['titulo'] = "Cuenta";
+       		$head['titulo'] = "Búsqueda";
 			$menu['menu'] = $this->menu_model->obtener_menu();
 
             /* Carga de las vistas */

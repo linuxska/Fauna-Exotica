@@ -2,7 +2,7 @@
 /*
  * PRODUCTO
  * Muestra en principio el catálogo de productos separado por subcategorias
- * Al solicitar un producto en concreto se muestra informacion mas detallada del mismo
+ * Al solicitar un producto en concreto se muestra Informacion mas detallada del mismo
  * Se podrá filtrar los resultados por etiquetas * (no empezado)
  */
 class Producto extends CI_Controller {
@@ -52,7 +52,7 @@ class Producto extends CI_Controller {
        }
        
        
-		// Muestra una vista con un solo producto elegido mostrando mas informacion
+		// Muestra una vista con un solo producto elegido mostrando mas Informacion
 		public function mostrar() {      	
         	$cod_producto = $this->uri->segment(3);
     		$producto['producto'] = $this->producto_model->obtener_producto($cod_producto);
