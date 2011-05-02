@@ -1,10 +1,11 @@
 body { 
 	background:url(../img/background.png);
 }
-.header {
+
+#header {
 	background-image: url('../img/fondo-header.png');
 	background-repeat: no-repeat;
-	min-height:215px;
+	height:150px;
 	font:normal 95.5%/1.5 Helvetica, Arial, sans-serif;
 }
 
@@ -36,8 +37,7 @@ body {
 .contenido {
 	color: #000;
 	font:normal 92.5%/1.5 Helvetica, Arial, sans-serif;
-	min-height: 400px;	
-	
+	min-height: 400px;		
 	padding:20px;
 }
 
@@ -101,9 +101,20 @@ form.buscador{
 	float:right;
 }
 
+#titulo {
+	text-align:center;;
+	margin-top:20px;
+}
+#titulo img{
+	height:100px;
+	      
+}
 .micuenta{
-	margin-top:40px;
-	margin-right:70px;
+	margin-top:5px;
 	float:right;
-	text-align:center;
+
+}
+
+.inline{
+	display:inline;
 }

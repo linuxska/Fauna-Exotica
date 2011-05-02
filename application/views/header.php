@@ -13,7 +13,7 @@
 		
 <script type="text/javascript" src="<?php echo base_url();?>js/jquery.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/jquery.corners.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>js/producto_redondeado.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>js/redondeado.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/cuenta.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/pedido.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/descripcion_producto.js"></script>
@@ -40,7 +40,7 @@
     <script type="text/javascript" src="<?php echo base_url();?>js/jquery.slider.js"></script>
     <script type="text/javascript">
     $(window).load(function() {
-        $('#slider').nivoSlider();
+        $('#slider').nivoSlider();       
     });
     </script>
 </head> 
@@ -53,7 +53,7 @@
 <!--  Cabecera -->
 <div class="grid_12">
 
-<div class='header'>
+<div class='header' id='header'>
 	<!-- Logo -->	
 	<div class="grid_3"> 
 		<div>
@@ -63,10 +63,9 @@
 	<!--  Fin Logo -->
 
 	<!--  TITULO -->
-	<div class="grid_6 "> 
-		<div> <!--  class='header' -->
-			<img src="<?php echo base_url();?>img/titulo.png">
-			<!-- <h1><?php echo anchor('inicio', 'Fauna exótica')?></h1>-->
+	<div class="grid_6"> 
+		<div id='titulo' class='titulo'>
+			<a href='<?php echo base_url();?>inicio'><img src="<?php echo base_url();?>img/titulo.png"></a>
 		</div>	
 	</div>
 	<!--  Fin Titulo -->
@@ -74,20 +73,22 @@
 	<!-- Carro & Mi cuenta-->	
 	<div class="grid_3"> 
 	
-		<div class="carrito_header">
-		<img src="<?php echo base_url();?>img/carrito.png"></img>
-		Total: <?php echo $this->cart->total().'&#8364<br>'; ?> 
-		Tienes <?php echo $this->cart->total_items();?> productos.
-		<?php echo anchor('carrito/index/', 'Ver Carrito')?>
+		<div class="carrito_header" id="carrito_header">
+			<div class='grid_3'><img src="<?php echo base_url();?>img/carrito.png"></div>
+			Total: <?php echo $this->cart->total().'&#8364<br>';?>
+			Tienes <?php echo $this->cart->total_items();?> productos</br>
+			<?php echo anchor('carrito/index/', 'Ver Carrito')?>
+			<div class='clear'>&nbsp;</div>
 		</div>
-			
+
+	</div> <!--  Fin Carro -->
+
+	<div class="grid_3"> 
 		<div class="micuenta">
 			<?php echo anchor('cuenta/index', 'Mi Cuenta');?>
 		</div>
-		
-	</div> 
-	<!--  Fin Carro -->
-	
+	</div>
+			
 	<div class='clear'>&nbsp;</div> <!--  Colocacion Header -->
 </div>
 </div> <!--  Fin Cabecera -->
