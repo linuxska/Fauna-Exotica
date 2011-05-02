@@ -10,9 +10,8 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/estilos_carrito.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/estilos_formulario.css" />
 
-		
-<script type="text/javascript" src="<?php echo base_url();?>js/jquery.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>js/jquery.corners.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>js/jquery-1.5.2.min.js"></script>		
+<script type="text/javascript" src="<?php echo base_url();?>js/jquery.corners.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/redondeado.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/cuenta.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/pedido.js"></script>
@@ -27,10 +26,8 @@
 
 	<!-- JQuery UI -->
 	<link type="text/css" href="<?php echo base_url();?>css/jquery-ui.css" rel="stylesheet" />	
-	<script type="text/javascript" src="<?php echo base_url();?>js/jquery-1.5.1.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url();?>js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url();?>js/ui.js"></script>
-	<script type="text/javascript" src="<?php echo base_url();?>js/jquery.cookie.js"></script>
 	
 	<!-- Nivo Slider -->
 	
@@ -55,7 +52,7 @@
 
 <div id='header'>
 	<!-- Logo -->	
-	<div class="grid_3"> 
+	<div class="grid_3" id='logo'> 
 		<div>
 		<img src="<?php echo base_url();?>img/logo.png">
 		</div>		
@@ -73,18 +70,19 @@
 	<!-- Carro & Mi cuenta-->	
 	<div class="grid_3"> 
 	
-		<div class="carrito_header" id="carrito_header">
-			<div class='grid_3'><img src="<?php echo base_url();?>img/carrito.png"></div>
+		 <div id="carrito_header">
+			<div class='grid_3'><a href='<?php echo base_url();?>carrito/index/'>
+			<img src="<?php echo base_url();?>img/carrito.png"></a>
+			</div>
 			Total: <?php echo $this->cart->total().'&#8364<br>';?>
 			Tienes <?php echo $this->cart->total_items();?> productos</br>
-			<?php echo anchor('carrito/index/', 'Ver Carrito')?>
 			<div class='clear'>&nbsp;</div>
 		</div>
 
 	</div> <!--  Fin Carro -->
 
 	<div class="grid_3"> 
-		<div class="micuenta">
+		<div id="micuenta">
 			<?php echo anchor('cuenta/index', 'Mi Cuenta');?>
 		</div>
 	</div>

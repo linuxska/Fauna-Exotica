@@ -4,7 +4,7 @@ $(document).ready( function(){
 	$( "#acordeon_articulos" ).accordion({ autoHeight: false, collapsible: true, active: false });
 	$( "#acordeon_cuenta" ).accordion({ autoHeight: false, icons: { 'header': 'ui-icon-circle-arrow-e', 'headerSelected': 'ui-icon-circle-arrow-s' } });
 	$( "button, input:submit" ).button();
-	$(".micuenta").button({
+	$("#micuenta").button({
         icons: {
         primary: "ui-icon-person"
     }
