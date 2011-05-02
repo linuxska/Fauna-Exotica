@@ -100,16 +100,20 @@ form.buscador{
 	float:right;
 }
 
+#logo {
+	padding-top:5px;
+}
 #titulo {
-	text-align:center;;
+	text-align:center;
 	margin-top:20px;
 }
 #titulo img{
 	height:100px;
 	      
 }
-.micuenta{
-	margin-top:5px;
+
+#micuenta{
+	margin-top:10px;
 	float:right;
 
 }

@@ -34,9 +34,8 @@
 	margin:0 0 0 10px;
 }
 
-#carrito_header{
+#carrito_header {
 	background-color: #D9FFCC;
-	border: 3px solid #72B42D;
 	margin-top:15px;
 	padding: 5px;
 	text-decoration:none;
@@ -44,6 +43,7 @@
 	size:92.5%;
     color: #000000;
 }
+
 
 #carrito_header img {
 	vertical-align:text-top;
