@@ -51,8 +51,10 @@
 <div class="container container_12">
 
 <!--  Cabecera -->
+
 <div class="grid_12">
-<div class='header' id='header'>
+
+<div id='header'>
 	<!-- Logo -->	
 	<div class="grid_3"> 
 		<div>

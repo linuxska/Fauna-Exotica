@@ -1,14 +1,11 @@
-body { 
-	background:url(../img/background.png);
-}
-
 #header {
-	background:url(../img/fh1.png), url(../img/fh2.png), url(../img/fh3.png);
-	background-repeat: no-repeat, repeat-y, no-repeat;
-	background-position: top left, 642px 0px, top right;
+	background:url(../img/fh1.png), url(../img/fh3.png), url(../img/fh2.png);
+	background-repeat: no-repeat, no-repeat, repeat;
+	background-position: top left, top right, 642px 0px;
 
 	height:150px;
 	font:normal 95.5%/1.5 Helvetica, Arial, sans-serif;
+	margin-bottom:5px;
 }
 
 #menu_vertical{
