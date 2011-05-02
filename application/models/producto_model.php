@@ -46,7 +46,7 @@ class Producto_model extends CI_Model{
 	   		return $query->num_rows();
 	   }
 	   
-	   public function buscar($etiquetas){
+	   public function buscar($num_items,$num_pag,$etiquetas){
 	   		// Recogemos los codigos de las etiquetas 
 	   		// que coincidan con las palabras buscadas
 	   		$this->db->select('cod');
