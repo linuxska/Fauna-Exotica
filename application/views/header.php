@@ -52,7 +52,6 @@
 
 <!--  Cabecera -->
 <div class="grid_12">
-
 <div class='header' id='header'>
 	<!-- Logo -->	
 	<div class="grid_3"> 

@@ -3,8 +3,10 @@ body {
 }
 
 #header {
-	background-image: url('../img/fondo-header.png');
-	background-repeat: no-repeat;
+	background:url(../img/fh1.png), url(../img/fh2.png), url(../img/fh3.png);
+	background-repeat: no-repeat, repeat-y, no-repeat;
+	background-position: top left, 642px 0px, top right;
+
 	height:150px;
 	font:normal 95.5%/1.5 Helvetica, Arial, sans-serif;
 }
