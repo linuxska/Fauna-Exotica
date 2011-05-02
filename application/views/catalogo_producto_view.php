@@ -8,7 +8,7 @@
 		<li><?php echo anchor('Informacion', 'Informacion');?></li>
 		<li><?php echo anchor('contactar/index', 'Contactar');?></li>
 		
-		<form class="buscador" accept-charset="utf-8" method="post" action="<?php echo base_url();?>buscador/index">
+		<form class="buscador" accept-charset="utf-8" method="get" action="<?php echo base_url();?>buscador/index">
 			<input type='text' name='busqueda' id='busqueda' maxlength='30' size='20'/>
 			<input type='submit' value='Buscar'/>
 			<br/>
@@ -46,7 +46,7 @@
 ?>
 	<div class=clear></div>
 	
-	<?php echo '<div class="num_paginas">'.$this->pagination->create_links();?>
+	<?php echo '<div class="num_paginas">'.$this->pagination->create_links().'</div>'?>
 	</div>
 	
 	

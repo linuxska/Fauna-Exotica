@@ -18,19 +18,18 @@ class Buscador extends CI_Controller {
        }
 
        public function Index(){
-
-       		/*
-       		 * La paginación no puede funcionar bien porque los datos de la busqueda
-       		 * se pasan por POST y no por URI
-       		 * Por ahora se muestra sin paginacion, pero se me ocurre una forma...
-       		 *
-       		 */
-       	
-       	
-       		/* Datos de paginacion*/     		
-       		$config['base_url']= base_url().'index.php/buscador/index';
-       		/*$config['total_rows']=$this->producto_model->total_productos($this->uri->segment(3));*/
-       		$config['total_rows']=2;
+    		
+       	    /* Datos de paginacion*/ 
+       	    		
+       		if ($this->uri->segment(3) === FALSE)
+			{
+    			$config['base_url']= base_url().'index.php/buscador/index/'.$this->input->get('busqueda');
+			}
+			else
+			{
+				$config['base_url']= base_url().'index.php/buscador/index/'.$this->uri->segment(3);
+			}
+       		$config['total_rows']=$this->producto_model->total_resultados($busqueda = explode(' ', $this->uri->segment(3)));
        		$config['per_page'] = '9';
        		$config['uri_segment']=4;
        		$config['num_links'] = 2;
@@ -51,9 +50,17 @@ class Buscador extends CI_Controller {
 			$this->load->view('header', $head);
 			$this->load->view('menu', $menu);
 						
+			if ($this->uri->segment(3) === FALSE)
+			{
+    			$busqueda = explode(' ', $this->input->get('busqueda'));
+			}
+			else
+			{
+				$busqueda = explode(' ', $this->uri->segment(3));
+			}
+			
 			//Obtener palabras
-			$busqueda = explode(' ', $this->input->post('busqueda'));
-		
+			/*$busqueda = explode(' ', $this->input->get('busqueda'));*/
 			if (count($busqueda)>0 && $busqueda[0] !== "") {
 				$contenido['productos'] = $this->producto_model->buscar($config['per_page'], $this->uri->segment(4),$busqueda);
 				$this->load->view('catalogo_producto_view', $contenido); // Contenido

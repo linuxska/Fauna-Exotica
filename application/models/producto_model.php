@@ -76,9 +76,45 @@ class Producto_model extends CI_Model{
 				// Obtenemos los productos resultantes
 				$query = $this->db->select('cod, nombre, foto, descripcion, precio')
 	       							->where_in('cod', $cod_productos)
-	       							->get('producto');
-	       		
+	       							->get('producto', $num_items, $num_pag);
 	       		return $query->result();
+			
+			} else return array();
+	   }
+	   
+	   
+	   public function total_resultados($etiquetas){
+	   			   		// Recogemos los codigos de las etiquetas 
+	   		// que coincidan con las palabras buscadas
+	   		$this->db->select('cod');
+			$this->db->like('nombre', $etiquetas[0]);
+			foreach ($etiquetas as $indice => $palabra){ 
+				if ($indice === 0) continue;
+				$this->db->or_like('nombre', $palabra);
+			}		
+			$query_cod_etiquetas = $this->db->get('etiqueta');
+			
+			// Lo pasamos a un array
+			$cod_etiquetas = array();
+			foreach ($query_cod_etiquetas->result() as $value ) $cod_etiquetas[] = $value->cod;
+			
+			// Si no hay resultados, devuelve un array vacio
+			if ($query_cod_etiquetas->num_rows()>0){
+				
+				// Codigos de productos que tienen las etiquetas encontradas:
+				$query_cod_productos = $this->db->select('cod_producto')
+										->where_in('cod_etiqueta', $cod_etiquetas)
+										->get('producto_etiqueta');
+			
+				// Lo pasamos a un array
+				$cod_productos = array();
+				foreach ($query_cod_productos->result() as $v) $cod_productos[] = $v->cod_producto;			
+
+				// Obtenemos los productos resultantes
+				$query = $this->db->select('cod, nombre, foto, descripcion, precio')
+	       							->where_in('cod', $cod_productos)
+	       							->get('producto');
+	       		return $query->num_rows();
 			
 			} else return array();
 	   }
