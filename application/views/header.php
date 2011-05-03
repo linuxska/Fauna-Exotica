@@ -36,7 +36,7 @@
     <script type="text/javascript" src="<?php echo base_url();?>js/jquery.slider.js"></script>
     <script type="text/javascript">
     $(window).load(function() {
-        $('#slider').nivoSlider();       
+        $('#slider').nivoSlider();      
     });
     </script>
 </head> 

@@ -84,14 +84,14 @@ class Producto_model extends CI_Model{
 	   
 	   
 	   public function total_resultados($etiquetas){
-	   			   		// Recogemos los codigos de las etiquetas 
+	   		// Recogemos los codigos de las etiquetas 
 	   		// que coincidan con las palabras buscadas
 	   		$this->db->select('cod');
 			$this->db->like('nombre', $etiquetas[0]);
 			foreach ($etiquetas as $indice => $palabra){ 
 				if ($indice === 0) continue;
 				$this->db->or_like('nombre', $palabra);
-			}		
+			}	
 			$query_cod_etiquetas = $this->db->get('etiqueta');
 			
 			// Lo pasamos a un array
@@ -119,5 +119,11 @@ class Producto_model extends CI_Model{
 			} else return array();
 	   }
 	   
+	   public function obtener_etiquetas(){
+	   		$query = $this->db->select('nombre')
+	   						->get('etiqueta');
+	   		
+	   		 return $query->result();	
+	   }
 }
 ?>

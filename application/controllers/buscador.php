@@ -71,5 +71,15 @@ class Buscador extends CI_Controller {
     		$this->load->view('footer'); 
        }
        
+		public function callback () {
+      		$datos = $this->producto_model->obtener_etiquetas();
+      		$etiquetas = array();
+      		foreach ($datos as $valor){
+      			$etiquetas[]= array("value" => '', "name" => $valor->nombre);
+      		}
+
+			echo json_encode($etiquetas);
+		}
+       
 }
 ?>

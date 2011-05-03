@@ -31,20 +31,22 @@ $(document).ready( function(){
 	// Obtener de un input el numero de pestaña que debe abrirse por defecto
 	var tab_seleccionada = $("#tab_seleccionada").val();
 	$( "#tabs" ).tabs( "option", "selected", tab_seleccionada );
+
 	
-	var availableTags = [
-	                    "Perro",
-	                    "Gato",
-	                    "Pienso",
-	                    "Carlino",
-	                    "Reptiles",
-	                    "Roedores",
-	                    "Camaleón",
-	                    "Pitbull",
-	                    "Adulto"
-	         		];
+	// Callback post metodo JSON, recogemos todas las etiquetas y guardamos en tags
+	tags = new Array();
+	$.post("http://localhost/Fauna-Exotica/buscador/callback", 
+		    function(data)
+		    {
+				$.each(data, function(index, item) {
+					  tags[index] = item.name;	
+					  alert(tags[index]);
+					});
+		    }, "json"
+		 );
+	
 	$( "#busqueda" ).autocomplete({
-	         			source: availableTags
+	        source: tags
 	});
 });
 
