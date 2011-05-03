@@ -34,19 +34,23 @@ $(document).ready( function(){
 
 	
 	// Callback post metodo JSON, recogemos todas las etiquetas y guardamos en tags
-	tags = new Array();
+	var tags = new Array();
 	$.post("http://localhost/Fauna-Exotica/buscador/callback", 
 		    function(data)
 		    {
 				$.each(data, function(index, item) {
 					  tags[index] = item.name;	
-					  alert(tags[index]);
 					});
+				
+				$( "#busqueda" ).autocomplete({
+			        source: tags
+				});
+				
 		    }, "json"
 		 );
 	
-	$( "#busqueda" ).autocomplete({
+	/*$( "#busqueda" ).autocomplete({
 	        source: tags
-	});
+	});*/
 });
 
