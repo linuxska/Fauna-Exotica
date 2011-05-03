@@ -14,9 +14,8 @@
 	<?php echo form_input(array('name' => 'direccion_envio', 'id' => 'direccion_envio', 'maxlength'   => '50', 'size' => '50', 'value' => set_value('direccion', $direccion))) ?>
 	<span>Forma de envío</span>
 	<br>
-	<input type="radio" name="formaenvio" value="correo" class='inline'> Correo<br>
-	<input type="radio" name="formaenvio" value="x" class='inline'> Lorem<br>
-	<input type="radio" name="formaenvio" value="y" class='inline'> Ipsum
+	<input type="radio" name="formaenvio" value="correo" class='inline'> Correos<br>
+	<input type="radio" name="formaenvio" value="x" class='inline'> Seur (Transporte urgente 24h)
 	</div>
 	<div class=clear></div>
 	
@@ -31,8 +30,11 @@
 	<span>Forma de pago <?php echo $direccion?></span>
 	<br>
 	<input type="radio" name="formapago" value="contra reembolso" class='inline'> Contra Reembolso<br>
-	<input type="radio" name="formapago" value="x" class='inline'> Tarjeta crédito<br>
-	<input type="radio" name="formapago" value="y" class='inline'> Transferencia Bancaria
+	<input type="radio" name="formapago" value="x" class='inline'> <img src="<?php echo base_url();?>img/pago/Maestro.png"></img>
+																   <img src="<?php echo base_url();?>img/pago/Mastercard.png"></img>
+																   <img src="<?php echo base_url();?>img/pago/American-Express.png"></img>
+																   <img src="<?php echo base_url();?>img/pago/Visa.png"></img><br>
+	<input type="radio" name="formapago" value="y" class='inline'> <img src="<?php echo base_url();?>img/pago/Paypal.png"></img>
 	<p>
 	<input type="checkbox" name="privacidad" value="privacidad" class='inline'> He leído y acepto la Política de Privacidad *<br>
 	<input type="checkbox" name="condiciones" value="condiciones" class='inline'> He leído y acepto las Condiciones de compra *
