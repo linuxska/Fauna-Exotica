@@ -194,7 +194,8 @@ class Cuenta_model extends CI_Model {
 	        // Tabla usuario
 			$data = array('usuario' => $usuario, 
 						  'password' => $password, 
-						  'email'    => $email);
+						  'email'    => $email,
+						  'tipo'     => 'cliente');
 	    	
 			$this->db->insert('usuario', $data);
 			
