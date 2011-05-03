@@ -27,7 +27,7 @@
 			<div class='grid_6 push_1 alpha' id='cuenta_inicio'>
 			<p>Bienvenido <?php echo $usuario?></p>
 			<?php if ($tipo === 'cliente') {
-				echo "<p>Continuar comprando</p>";
+				echo "<p>".anchor('carrito/pedido', ' Continuar comprando')."</p>";
 			} else {
 				echo '<p>Tiene usted permiso de '.$tipo.'</p>';
 				echo anchor('backend/index', ' Acceder al Backend');

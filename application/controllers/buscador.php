@@ -19,17 +19,19 @@ class Buscador extends CI_Controller {
 
        public function Index(){
     		
-       	    /* Datos de paginacion*/ 
-       	    		
-       		if ($this->uri->segment(3) === FALSE)
+       		/* Datos de paginacion y obtener palabras de la búsqueda*/
+            if ($this->uri->segment(3) === FALSE)
 			{
+    			$busqueda = explode(' ', $this->input->get('busqueda'));
     			$config['base_url']= base_url().'index.php/buscador/index/'.$this->input->get('busqueda');
 			}
 			else
 			{
+				$busqueda = explode(' ', $this->uri->segment(3));
 				$config['base_url']= base_url().'index.php/buscador/index/'.$this->uri->segment(3);
 			}
-       		$config['total_rows']=$this->producto_model->total_resultados($busqueda = explode(' ', $this->uri->segment(3)));
+			
+			$config['total_rows']=$this->producto_model->total_resultados($busqueda);
        		$config['per_page'] = '9';
        		$config['uri_segment']=4;
        		$config['num_links'] = 2;
@@ -49,18 +51,7 @@ class Buscador extends CI_Controller {
             /* Carga de las vistas */
 			$this->load->view('header', $head);
 			$this->load->view('menu', $menu);
-						
-			if ($this->uri->segment(3) === FALSE)
-			{
-    			$busqueda = explode(' ', $this->input->get('busqueda'));
-			}
-			else
-			{
-				$busqueda = explode(' ', $this->uri->segment(3));
-			}
 			
-			//Obtener palabras
-			/*$busqueda = explode(' ', $this->input->get('busqueda'));*/
 			if (count($busqueda)>0 && $busqueda[0] !== "") {
 				$contenido['productos'] = $this->producto_model->buscar($config['per_page'], $this->uri->segment(4),$busqueda);
 				$this->load->view('catalogo_producto_view', $contenido); // Contenido

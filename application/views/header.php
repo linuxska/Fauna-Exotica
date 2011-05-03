@@ -3,42 +3,43 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title><?php echo $titulo?></title>
+	
+	<!-- Css -->
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/960grid.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/estilos.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/estilos_productos.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/estilos_carrito.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/estilos_formulario.css" />
+	
+	<!-- Javascript -->
+	<script type="text/javascript" src="<?php echo base_url();?>js/jquery-1.5.2.min.js"></script>		
+	<script type="text/javascript" src="<?php echo base_url();?>js/jquery.corners.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>js/redondeado.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>js/cuenta.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>js/pedido.js"></script>
+	
+	<!-- google maps -->
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>js/googlemap.js"></script>
+	
+	<!-- Fuentes -->
+	<link href='http://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
+	
+	<!-- Icono navegador -->
+	<link rel="shortcut icon" href="<?php echo base_url();?>img/logo.png">
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/960grid.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/estilos.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/estilos_productos.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/estilos_carrito.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/estilos_formulario.css" />
-
-<script type="text/javascript" src="<?php echo base_url();?>js/jquery-1.5.2.min.js"></script>		
-<script type="text/javascript" src="<?php echo base_url();?>js/jquery.corners.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>js/redondeado.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>js/cuenta.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>js/pedido.js"></script>
-
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="<?php echo base_url();?>js/googlemap.js"></script>
-
-<link href='http://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
-<!-- <link href='http://fonts.googleapis.com/css?family=Luckiest+Guy' rel='stylesheet' type='text/css'> -->
-
-<link rel="shortcut icon" href="img/logo.png">
-
-	<!-- JQuery UI -->
+	<!-- Menu pestañas y acordeón -->
 	<link type="text/css" href="<?php echo base_url();?>css/jquery-ui.css" rel="stylesheet" />	
 	<script type="text/javascript" src="<?php echo base_url();?>js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url();?>js/ui.js"></script>
 	
-	<!-- Nivo Slider -->
-	
+	<!-- Slider -->
 	<link rel="stylesheet" href="<?php echo base_url();?>css/slider.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="<?php echo base_url();?>css/slider-estilo.css" type="text/css" media="screen" />
     <script type="text/javascript" src="<?php echo base_url();?>js/jquery.slider.js"></script>
-    <script type="text/javascript">
-    $(window).load(function() {
-        $('#slider').nivoSlider();      
-    });
-    </script>
+
+    <script type="text/javascript" src="<?php echo base_url();?>js/slider.js"></script>
+
 </head> 
 
 <body onload="initialize()">
