@@ -20,9 +20,8 @@
 <script type="text/javascript" src="<?php echo base_url();?>js/googlemap.js"></script>
 
 <link href='http://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
-<!-- <link href='http://fonts.googleapis.com/css?family=Luckiest+Guy' rel='stylesheet' type='text/css'> -->
 
-<link rel="shortcut icon" href="img/logo.png">
+<link rel="shortcut icon" href="<?php echo base_url();?>img/logo.png">
 
 	<!-- JQuery UI -->
 	<link type="text/css" href="<?php echo base_url();?>css/jquery-ui.css" rel="stylesheet" />	
