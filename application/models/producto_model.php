@@ -116,7 +116,7 @@ class Producto_model extends CI_Model{
 	       							->get('producto');
 	       		return $query->num_rows();
 			
-			} else return array();
+			} else return 0;
 	   }
 	   
 	   public function obtener_etiquetas(){
