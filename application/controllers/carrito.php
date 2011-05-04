@@ -170,5 +170,17 @@ class Carrito extends CI_Controller {
 			$this->form_validation->set_message('max_length', 'El campo %s debe tener como máximo %s caracteres');
 			
        }
+       
+       public function transactionID(){
+		/*	$tx = $this->input->get('tx');
+       		echo "<form method=post action='https://www.sandbox.paypal.com/cgi-bin/webscr'>
+			<input type='hidden' name='cmd' value='_notify-synch'>
+			<input type='hidden' name='tx' value='$tx'>
+			<input type='hidden' name='at' value='e5ToGxzfIKWjDmmpR93UCGpQC6Z7t5IlJIZMFvMorXYWxs6HJe-sO4eeDM0'>
+			<input type='submit' value='PDT'>
+			</form> ";*/
+       	
+       	
+       }
 }
 ?>

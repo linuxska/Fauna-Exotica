@@ -5,7 +5,7 @@
 
 <!--  Procesar Pedido -->
 <div class='grid_10 push_1' id='procesar_pedido'>
-<span>( por ahora únicamente: CONTRAREEMBOLSO )</span>
+
 <?php echo validation_errors('<div class="error">','</div>') ?>
 <?php echo form_open('carrito/pedido') ?>
 	<!--  Datos de Envio -->

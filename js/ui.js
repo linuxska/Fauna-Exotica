@@ -48,9 +48,6 @@ $(document).ready( function(){
 				
 		    }, "json"
 		 );
-	
-	/*$( "#busqueda" ).autocomplete({
-	        source: tags
-	});*/
+
 });
 
