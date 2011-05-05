@@ -107,14 +107,15 @@ div.Informacion{
 }
 .num_paginas{
 	text-align:center;
-	
+	margin-top: 15px;
 }
 
 div.num_paginas a{
-	border: 1px solid #3a8104;
+	/*border: 1px solid #3a8104;*/
 	padding:5px 8px 5px 8px;
 	color: #3a8104;
 	text-decoration:none;
+	background:#b8f57c;
 }
 
 div.num_paginas a:hover{
@@ -148,5 +149,4 @@ div.anterior a{
 div.siguiente a{
 	color:#3a8104;
 	text-decoration:none;
-	
 }
