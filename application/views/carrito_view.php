@@ -74,6 +74,7 @@
             <INPUT TYPE="hidden" NAME="return" value="http://localhost/Fauna-Exotica/carrito/transactionID">
             <input type="submit" value="PayPal"> 
             
-            </form> 
+            </form>
+        </div> 
 	</div>
 </div> <!--  Fin Contenido -->

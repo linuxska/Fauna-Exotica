@@ -105,17 +105,14 @@ form.buscador{
 }
 #titulo {
 	text-align:center;
-	margin-top:20px;
 }
 #titulo img{
-	height:100px;
-	      
+	height:140px;	      
 }
 
 #micuenta{
 	margin-top:10px;
 	float:right;
-
 }
 
 .inline{
