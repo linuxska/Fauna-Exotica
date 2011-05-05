@@ -111,16 +111,25 @@ div.Informacion{
 }
 
 div.num_paginas a{
-	border: 1px solid #005700;
+	border: 1px solid #3a8104;
 	padding:5px 8px 5px 8px;
-	color:#005700;
+	color: #3a8104;
+	text-decoration:none;
+}
+
+div.num_paginas a:hover{
+	text-decoration:underline;
 }
 
 .num_paginas strong{
-	border: 1px solid #000;
-	background:#005700;
+	border: 1px solid #3a8104;
+	background: #3a8104; /* old browsers */
+	background: -moz-linear-gradient(top, #3a8104 78%, #487F1E 91%, #579921 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(78%,#3a8104), color-stop(91%,#487F1E), color-stop(100%,#579921)); /* webkit */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3a8104', endColorstr='#579921',GradientType=0 ); /* ie */
+	background: -o-linear-gradient(top, #3a8104 78%,#487F1E 91%,#579921 100%); /* opera */
 	padding:5px 8px 5px 8px;
-	color:#000;
+	color:#FFF;
 }
 
 .siguiente{
@@ -133,9 +142,11 @@ div.num_paginas a{
 }
 
 div.anterior a{
-	color:#005700;
+	color:#3a8104;
+	text-decoration:none;
 }
 div.siguiente a{
-	color:#005700;
+	color:#3a8104;
+	text-decoration:none;
 	
 }
