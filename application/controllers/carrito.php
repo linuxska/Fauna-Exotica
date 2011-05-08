@@ -172,14 +172,83 @@ class Carrito extends CI_Controller {
        }
        
        public function transactionID(){
-		/*	$tx = $this->input->get('tx');
-       		echo "<form method=post action='https://www.sandbox.paypal.com/cgi-bin/webscr'>
-			<input type='hidden' name='cmd' value='_notify-synch'>
-			<input type='hidden' name='tx' value='$tx'>
-			<input type='hidden' name='at' value='e5ToGxzfIKWjDmmpR93UCGpQC6Z7t5IlJIZMFvMorXYWxs6HJe-sO4eeDM0'>
-			<input type='submit' value='PDT'>
-			</form> ";*/
-       	
+			// read the post from PayPal system and add 'cmd'
+			$req = 'cmd=_notify-synch';
+			
+			$tx_token =  $this->input->get('tx');
+			
+			$auth_token = "e5ToGxzfIKWjDmmpR93UCGpQC6Z7t5IlJIZMFvMorXYWxs6HJe-sO4eeDM0";
+			
+			$req .= "&tx=$tx_token&at=$auth_token";
+			
+			
+			// post back to PayPal system to validate
+			$header = "";
+			$header .= "POST /cgi-bin/webscr HTTP/1.0\r\n";
+			$header .= "Content-Type: application/x-www-form-urlencoded\r\n";
+			$header .= "Content-Length: " . strlen($req) . "\r\n\r\n";
+			$fp = fsockopen ('www.sandbox.paypal.com', 80, $errno, $errstr, 30);
+			// If possible, securely post back to paypal using HTTPS
+			// Your PHP server will need to be SSL enabled
+			// $fp = fsockopen ('ssl://www.sandbox.paypal.com', 443, $errno, $errstr, 30);
+			
+			if (!$fp) {
+				echo "<p><h3>HTTP Error</h3></p>";
+			} else {
+			fputs ($fp, $header . $req);
+			// read the body data
+			$res = '';
+			$headerdone = false;
+			while (!feof($fp)) {
+			$line = fgets ($fp, 1024);
+			if (strcmp($line, "\r\n") == 0) {
+			// read the header
+			$headerdone = true;
+			}
+			else if ($headerdone)
+			{
+			// header has been read. now read the contents
+			$res .= $line;
+			}
+			}
+			
+			// parse the data
+			$lines = explode("\n", $res);
+			$keyarray = array();
+			if (strcmp ($lines[0], "SUCCESS") == 0) {
+
+				for ($i=1; $i<count($lines);$i++){
+					if ( strpos($lines[$i],'=') !== false ){
+						list($key,$val) = explode("=", $lines[$i]);
+						$keyarray[urldecode($key)] = urldecode($val);
+					} 
+				}
+
+				$datos['nombre'] = $keyarray['first_name'];
+				$datos['apellidos'] = $keyarray['first_name'];
+				$datos['coste_total'] = $keyarray['mc_gross'];
+
+			}
+			else if (strcmp ($lines[0], "FAIL") == 0) {
+				// log for manual investigation
+				echo "<p><h3>ERROR transactionID</h3></p>";
+			}
+			
+			}
+			
+			fclose ($fp);
+			
+			/* Carga de las vistas */
+			
+			$head['titulo'] = "Carrito";
+	       	$menu['menu'] = $this->menu_model->obtener_menu();
+			$this->load->view('header', $head);
+	    	$this->load->view('menu', $menu);
+	    	
+	    	// Contenido principal
+	    	$this->load->view('transaccion_view', $datos);
+	    	
+	    	$this->load->view('footer');   
        	
        }
 }

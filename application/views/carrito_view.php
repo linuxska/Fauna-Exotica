@@ -69,7 +69,8 @@
             <?php foreach ($carrito as $indice => $producto): ?>
             <input type="hidden" name="item_name_<?php echo $i;?>" value="<?php echo $producto['name'];?>"> 
             <input type="hidden" name="amount_<?php echo $i;?>" value="<?php echo $producto['price'];?>"> 
-			<?php $i++; ?>
+			<input type="hidden" name="quantity_<?php echo $i;?>" value="<?php echo $producto['qty'];?>">
+            <?php $i++; ?>
             <?php endforeach; ?>
             <INPUT TYPE="hidden" NAME="return" value="http://localhost/Fauna-Exotica/carrito/transactionID">
             <input type="submit" value="PayPal"> 
