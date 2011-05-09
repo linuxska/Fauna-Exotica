@@ -9,10 +9,6 @@ body {
 	text-align:center;
 }
 
-#backend_body {
-
-}
-
 #backend_tabla_menu {
 	text-align:center;
 	padding:10px;
@@ -20,6 +16,7 @@ body {
 
 #backend_body table {
 	width:100%;
+	text-align:center
 }
 
 #backend_body table, td, tr{
