@@ -25,7 +25,7 @@
     	<?php endforeach;?>
     	<td>
     		<?php echo "<a href='http://www.google.es'><img src='".base_url()."img/editar.png'></a>";
-			echo "<a href='".base_url()."index.php/backend/eliminar/".$this->uri->segment(3)."/".$datos['cod']."'><img src='".base_url()."img/x.png'></a>";?>
+			echo "<a href='".base_url()."index.php/backend/eliminar/".$this->uri->segment(3)."/".$datos['id']."'><img src='".base_url()."img/x.png'></a>";?>
     	</td>
     </tr>
 
