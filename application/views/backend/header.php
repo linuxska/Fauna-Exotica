@@ -14,3 +14,4 @@
 	Bienvenido '<?php echo $usuario;?>' Tienes permisos de '<?php echo $privilegio;?>'.
 	<?php  echo anchor('inicio/index', 'Volver a FaunaExotica')?></p>
 	</div>
+	<br></br>
