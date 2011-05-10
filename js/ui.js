@@ -9,6 +9,9 @@ $(document).ready( function(){
         primary: "ui-icon-person"
     }
 });
+	
+	// Añadir botones enlaces con la clase:
+	$(".boton_ui" ).button();
 
 	$( "#tabs" ).tabs({
 		select: function(event, ui) {

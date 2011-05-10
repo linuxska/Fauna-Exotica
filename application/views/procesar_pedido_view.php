@@ -1,7 +1,19 @@
 <!--  Contenido -->
 <div class='grid_10'> 
-
-<div class='contenido'>
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Procesar Pedido</a></li>
+		<li><?php echo anchor('inicio', 'Inicio');?></li>
+		<li><?php echo anchor('Informacion', 'Informacion');?></li>
+		<li><?php echo anchor('contactar/index', 'Contactar');?></li>
+		
+		<form class="buscador" accept-charset="utf-8" method="get" action="<?php echo base_url();?>buscador/index">
+			<input type='text' name='busqueda' id='busqueda' maxlength='30' size='20'/>
+			<input type='submit' value='Buscar'/>
+			<br/>
+		</form>
+	</ul>
+	<div id="tabs-1">
 
 <!--  Procesar Pedido -->
 <div class='grid_10 push_1' id='procesar_pedido'>
@@ -23,7 +35,7 @@
 	
 	<span class='grid_6 push_3 centrado' id='continuar_pedido'>Continuar</span>
 	
-	<hr></hr>
+	<hr id='barra'></hr>
 	
 	<!--  OPCION 1 : Datos de Envio -->
 	<div class='grid_6 push_3' id='envio'>
@@ -59,14 +71,14 @@
             <?php $i++; ?>
             <?php endforeach; ?>
             <INPUT TYPE="hidden" NAME="return" value="http://localhost/Fauna-Exotica/carrito/transactionID">
-            <span class='grid_6 push_5' id='solicitar'><input id='submit_paypal' type="submit" value="PayPal"> </span>
-            
+            <span class='grid_6 push_5' id='solicitar'><input id='submit_paypal' type="submit" value="PayPal"> </span>          
             </form>
+            <div class=clear></div>	
 </div>
 <div class=clear></div>	
 
 </div><!--  Fin Procesar Pedido -->
-
+</div> 
 <div class=clear></div>
-
+</div>
 </div> <!--  Fin Contenido -->

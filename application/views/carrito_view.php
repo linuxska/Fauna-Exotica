@@ -50,13 +50,14 @@
 			</tbody>
 			</table>
 			<p style="text-align: right">Total:&nbsp;<?php echo $total; ?>€ &nbsp;&nbsp;</p>
-			<p><?php 
-				if ($total_items>0) {
-					echo anchor('carrito/pedido', 'Procesar pedido'); 
-					if( $this->session->userdata('logged_in') !==  TRUE)
-						echo " (Es nesesario tener una cuenta iniciada)";
-				}
-			?></p>
+			
+			<?php if ($total_items>0) {
+				echo '<p class="centrado">'.anchor('carrito/pedido', 'Procesar pedido', 'class="boton_ui"').'</p>'; 
+				if( $this->session->userdata('logged_in') !==  TRUE)
+					echo '<p class="centrado">(Es nesesario tener una cuenta iniciada)</p>';
+				} 
+			?>
+			
 			</div>
 			<div class=clear></div>	
 

@@ -172,6 +172,7 @@ class Carrito extends CI_Controller {
        }
        
        public function transactionID(){
+       	
 			// read the post from PayPal system and add 'cmd'
 			$req = 'cmd=_notify-synch';
 			
@@ -237,6 +238,16 @@ class Carrito extends CI_Controller {
 			}
 			
 			fclose ($fp);
+			
+			
+			// Items comprados
+			$datos['carrito'] = $this->carrito_model->obtener_carrito();
+			
+			// Registrar pedido
+			//$this->almacenar_pedido();
+			
+			//Destruccion del carrito
+			$this->destruir();
 			
 			/* Carga de las vistas */
 			

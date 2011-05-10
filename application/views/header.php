@@ -72,7 +72,7 @@
 	<div class="grid_3"> 
 	
 		 <div id="carrito_header">
-			<div class='grid_5'><a href='<?php echo base_url();?>carrito/index/'>
+			<div class='grid_6'><a href='<?php echo base_url();?>carrito/index/'>
 			<img src="<?php echo base_url();?>img/vercarro.png"></a>
 			</div>
 			Total: <?php echo $this->cart->total().'&#8364<br>';?>

@@ -11,17 +11,33 @@ function(){
   $('#solicitar').hide();
   $('#submit_paypal').hide();
   $('#continuar_pedido').addClass("color");
-  
+  $('#barra').hide();
 	// Cambio de vista de sección
 	$('#continuar_pedido').click(function() {
-		$('#continuar_pedido').hide('slow');
+
 		if ($('input:radio[name=formapago]:checked').val() == "contra_reembolso") {
+			$('#continuar_pedido').hide('slow');
+			$('#barra').show();
 			$('#envio').show('slow');
 			  $('#solicitar').show();
-		}  else {
+		}  else if ($('input:radio[name=formapago]:checked').val() == "paypal") {
+			$('#continuar_pedido').hide('slow');
+			$('#barra').show();
 			$('#paypal').show('slow');
 			$('#submit_paypal').show();
-		}  
+		} else {
+			alert('Seleccione una opción y acepte las condiciones');
+		}
+	});
+	
+	$('#submit_paypal').click( function (){
+		if ($('input:checkbox[name=condiciones]:checked').length > 0) {
+			return true;
+		} else {
+			alert('Acepte las condiciones de uso');
+			return false;
+		}
+		
 	});
 }
 
