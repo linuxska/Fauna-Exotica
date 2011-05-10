@@ -59,7 +59,14 @@ class Backend_model extends CI_Model {
 		}
 		
 		public function borrar_registro($tabla,$registro){
+			if ($tabla=='usuario'){
 			$this->db->where('id', $registro);
+			/*$this->db->delete($tabla);*/
+			}
+			else{
+				$this->db->where('cod', $registro);
+				/*$this->db->delete($tabla);*/
+			}
 			$this->db->delete($tabla);
 		}
 	
