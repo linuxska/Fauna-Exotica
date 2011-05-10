@@ -49,7 +49,7 @@ class Backend extends CI_Controller {
        			$datos['tabla'] = $this->backend_model->obtener_tabla($nombre_tabla);
        			$datos['columnas'] = $this->backend_model->info_columnas($nombre_tabla);	
   				$this->load->view('backend/header', $datos);
-       			$this->load->view('backend/usuario_view');  
+       			$this->load->view('backend/tabla_view');  
   									
        			
        		} else redirect('cuenta/index');

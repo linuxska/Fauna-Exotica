@@ -51,7 +51,7 @@ class Backend_model extends CI_Model {
 		
 		public function obtener_tabla($nombre_tabla){
 			if($nombre_tabla==='usuario'){
-				$query = $this->db->select('cod, usuario, email, nombre, apellido1, apellido2, direccion, tipo')
+				$query = $this->db->select('id, usuario, email, nombre, apellido1, apellido2, direccion, tipo')
 									->get($nombre_tabla);
 			}
 			else $query = $this->db->get($nombre_tabla);
@@ -59,7 +59,7 @@ class Backend_model extends CI_Model {
 		}
 		
 		public function borrar_registro($tabla,$registro){
-			$this->db->where('cod', $registro);
+			$this->db->where('id', $registro);
 			$this->db->delete($tabla);
 		}
 	
