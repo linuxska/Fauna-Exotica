@@ -24,9 +24,11 @@
 			</td>
     	<?php endforeach;?>
     	<td>
-    		<?php echo "<a href='http://www.google.es'><img src='".base_url()."img/editar.png'></a>";
-    		if ($this->uri->segment(3)=='usuario')
-			echo "<a href='".base_url()."index.php/backend/eliminar/".$this->uri->segment(3)."/".$datos['id']."'><img src='".base_url()."img/x.png'></a>";
+    		<?php 
+    		if ($this->uri->segment(3)=='usuario') echo "<a href='".base_url()."index.php/backend/editar/".$this->uri->segment(3)."/".$datos['id']."'><img src='".base_url()."img/editar.png'></a>";
+    		else echo "<a href='".base_url()."index.php/backend/editar/".$this->uri->segment(3)."/".$datos['cod']."'><img src='".base_url()."img/editar.png'></a>";
+    		
+    		if ($this->uri->segment(3)=='usuario') echo "<a href='".base_url()."index.php/backend/eliminar/".$this->uri->segment(3)."/".$datos['id']."'><img src='".base_url()."img/x.png'></a>";
     		else echo "<a href='".base_url()."index.php/backend/eliminar/".$this->uri->segment(3)."/".$datos['cod']."'><img src='".base_url()."img/x.png'></a>";?>
     	</td>
     </tr>
