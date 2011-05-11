@@ -108,6 +108,7 @@ class Carrito extends CI_Controller {
 					
 					// Datos contenido
     				$contenido['direccion'] = $this->cuenta_model->obtener('direccion', $this->session->userdata('id'));
+					$contenido['carrito'] = $this->carrito_model->obtener_carrito();
     				// Contenido principal
 					$this->load->view('procesar_pedido_view', $contenido);	
 				
@@ -162,8 +163,7 @@ class Carrito extends CI_Controller {
        	    $this->form_validation->set_rules('direccion_factura', 'direccion de factura', 'required|trim|min_length[5]|max_length[50]');
        	    $this->form_validation->set_rules('formaenvio', 'forma de envio', 'required');
 			$this->form_validation->set_rules('formapago', 'forma de pago', 'required');
-			$this->form_validation->set_rules('privacidad', 'condiciones de privacidad', 'required');
-			$this->form_validation->set_rules('condiciones', 'condiciones de uso', 'required');
+			$this->form_validation->set_rules('condiciones', 'privacidad y condiciones de uso', 'required');
 			
 			$this->form_validation->set_message('required', 'Debe introducir el campo %s');
 			$this->form_validation->set_message('min_length', 'El campo %s debe ser de al menos %s caracteres');
@@ -172,6 +172,7 @@ class Carrito extends CI_Controller {
        }
        
        public function transactionID(){
+       	
 			// read the post from PayPal system and add 'cmd'
 			$req = 'cmd=_notify-synch';
 			
@@ -237,6 +238,16 @@ class Carrito extends CI_Controller {
 			}
 			
 			fclose ($fp);
+			
+			
+			// Items comprados
+			$datos['carrito'] = $this->carrito_model->obtener_carrito();
+			
+			// Registrar pedido
+			//$this->almacenar_pedido();
+			
+			//Destruccion del carrito
+			$this->destruir();
 			
 			/* Carga de las vistas */
 			

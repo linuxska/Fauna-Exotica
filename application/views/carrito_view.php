@@ -50,32 +50,17 @@
 			</tbody>
 			</table>
 			<p style="text-align: right">Total:&nbsp;<?php echo $total; ?>€ &nbsp;&nbsp;</p>
-			<p><?php 
-				if ($total_items>0) {
-					echo anchor('carrito/pedido', 'Procesar pedido'); 
-					if( $this->session->userdata('logged_in') !==  TRUE)
-						echo " (Es nesesario tener una cuenta iniciada)";
-				}
-			?></p>
+			
+			<?php if ($total_items>0) {
+				echo '<p class="centrado">'.anchor('carrito/pedido', 'Procesar pedido', 'class="boton_ui"').'</p>'; 
+				if( $this->session->userdata('logged_in') !==  TRUE)
+					echo '<p class="centrado">(Es nesesario tener una cuenta iniciada)</p>';
+				} 
+			?>
+			
 			</div>
 			<div class=clear></div>	
-			
-			
-			<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post"> 
-            <input type="hidden" name="cmd" value="_cart"> 
-            <input type="hidden" name="upload" value="1"> 
-            <input type="hidden" name="business" value="lausca_1304508702_biz@gmail.com"> 
-            <?php $i=1; ?>
-            <?php foreach ($carrito as $indice => $producto): ?>
-            <input type="hidden" name="item_name_<?php echo $i;?>" value="<?php echo $producto['name'];?>"> 
-            <input type="hidden" name="amount_<?php echo $i;?>" value="<?php echo $producto['price'];?>"> 
-			<input type="hidden" name="quantity_<?php echo $i;?>" value="<?php echo $producto['qty'];?>">
-            <?php $i++; ?>
-            <?php endforeach; ?>
-            <INPUT TYPE="hidden" NAME="return" value="http://localhost/Fauna-Exotica/carrito/transactionID">
-            <input type="submit" value="PayPal"> 
-            
-            </form>
+
         </div> 
 	</div>
 </div> <!--  Fin Contenido -->
