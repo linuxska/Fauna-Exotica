@@ -1,3 +1,6 @@
+<?php echo validation_errors('<div class="error" title="Error en formulario">	<p>
+		<span class="ui-icon ui-icon-circle-close" style="float:left; margin:0 7px 50px 0;"></span>', '</p></div>');?>
+
 <!--  Contenido -->
 <div class='grid_10'> 
 
@@ -18,23 +21,23 @@
 		</form>
 	</ul>
 	<div id='tabs-4'>
-	<!--  Menu de cuenta -->
+		<!--  Menu de cuenta -->
+		<div class=' grid_8 push_2'>
 		<div id="acordeon_cuenta">
 		<h3><a href="#">Cuenta</a></h3>	
 		<div>
-			<?php echo anchor('cuenta/logout', ' Terminar Sesión');?>
-			<!--  Inicio Cuenta -->
-			<div class='grid_6 push_1 alpha' id='cuenta_inicio'>
-			<p>Bienvenido <?php echo $usuario?></p>
+			<!--  Inicio Cuenta -->			
+			<p class="centrado"><?php echo anchor('cuenta/logout', ' Terminar Sesión');?></p>
+			
+			<p>Bienvenido <?php echo $usuario?></p>		
 			<?php if ($tipo === 'cliente') {
 				echo "<p>".anchor('carrito/pedido', ' Continuar comprando')."</p>";
 			} else {
-				echo '<p>Tiene usted permiso de '.$tipo.'</p>';
-				echo anchor('backend/index', ' Acceder al Backend');
+				echo '<p>Tiene usted permiso de '.$tipo.': ';
+				echo anchor('backend/index', 'Acceder al Backend').'</p>';
 				
 			}?>
-			</div>
-		
+				
 		</div>
 		
 		<h3><a href="#">Mi perfil</a></h3>	
@@ -43,18 +46,15 @@
 			<!--  Datos perfil -->
 			<div class='grid_6 push_1 alpha' id='cuenta_perfil'>
 			Modificar datos personales
-			<?php echo form_error('nombre', '<div class="error">', '</div>'); ?>
-			<?php echo form_error('apellido1', '<div class="error">', '</div>'); ?>
-			<?php echo form_error('apellido2', '<div class="error">', '</div>'); ?>
-			<?php echo form_error('direccion', '<div class="error">', '</div>'); ?>
+
 			<?php echo form_open('cuenta/perfil') ?>
 			
 			<?php echo form_label('Nombre: ', 'nombre') ?>
 			<?php echo form_input(array('name' => 'nombre', 'id' => 'nombre', 'maxlength'   => '25', 'size' => '50', 'value' => set_value('nombre', $nombre))) ?>
 			<?php echo form_label('1º Apellido: ', 'apellido1') ?>
-			<?php echo form_input(array('name' => 'apellido1', 'id' => 'apellido1', 'maxlength'   => '30', 'size' => '50', 'value' => set_value('apellido1', $apellido1))) ?>
+			<?php echo form_input(array('name' => 'apellido1', 'id' => 'apellido1', 'maxlength'   => '40', 'size' => '50', 'value' => set_value('apellido1', $apellido1))) ?>
 			<?php echo form_label('2ºApellido: ', 'apellido2') ?>
-			<?php echo form_input(array('name' => 'apellido2', 'id' => 'apellido2', 'maxlength'   => '30', 'size' => '50', 'value' => set_value('apellido2', $apellido2))) ?>
+			<?php echo form_input(array('name' => 'apellido2', 'id' => 'apellido2', 'maxlength'   => '40', 'size' => '50', 'value' => set_value('apellido2', $apellido2))) ?>
 			<?php echo form_label('Dirección: ', 'direccion') ?>
 			<?php echo form_input(array('name' => 'direccion', 'id' => 'direccion', 'maxlength'   => '50', 'size' => '50', 'value' => set_value('direccion', $direccion))) ?>	
 		
@@ -69,8 +69,6 @@
 			<!--  Datos Usuario -->
 			<div class='grid_6 push_1 alpha' id='cuenta_datos'>
 			Modificar email
-			<?php echo form_error('email', '<div class="error">', '</div>'); ?>
-			<?php echo form_error('password_email_actual', '<div class="error">', '</div>'); ?>
 			<?php echo form_open('cuenta/email') ?>	
 			
 			<?php echo form_label('Email:', 'email'); ?>
@@ -84,9 +82,6 @@
 			<hr>
 			
 			Cambiar de contraseña
-			<?php echo form_error('password_actual', '<div class="error">', '</div>'); ?>
-			<?php echo form_error('password_nueva', '<div class="error">', '</div>'); ?>
-			<?php echo form_error('repassword', '<div class="error">', '</div>'); ?>
 			<?php echo form_open('cuenta/password') ?>		
 			
 			<?php echo form_label('Contraseña actual:', 'password_actual'); ?>
@@ -99,10 +94,10 @@
 			<?php echo form_submit('enviar', 'Guardar') ?>
 			<?php echo form_close() ?>
 			</div>
-		
+
 		</div>
-		
-		</div> 
+		</div>
+		</div> <div class='clear'>&nbsp;</div><!--  Fin grid_8 -->
 		</div><!--  Fin Tabs4 -->
 		</div><!--  Fin Tabs -->
 

@@ -35,7 +35,7 @@ class Cuenta extends CI_Controller {
     			// Datos del usuario para el formulario
     			$cuenta= $this->cuenta_model->obtener_todo($this->session->userdata('id'));
     			
-    			// Contenido principal
+    			// Contenido principal  
 				$this->load->view('cuenta/cuenta_view', $cuenta);
 				
 				$this->load->view('footer');
@@ -84,11 +84,10 @@ class Cuenta extends CI_Controller {
 			    // Update BD
 			    $cod_usuario = $this->session->userdata('id');
 				$reg = $this->cuenta_model->actualizar_usuario($datos_perfil, $cod_usuario);	
-				
-				if ($reg) {
-					$this->load->view('menu', $menu);
-					$this->load->view('cuenta/cuenta_view', $cuenta);
-				} else echo "Error Update Cuenta/perfil";			
+							
+				$this->load->view('menu', $menu);
+				$this->load->view('cuenta/cuenta_view', $cuenta);
+						
 			} 
 			$this->load->view('footer');
 
@@ -124,10 +123,8 @@ class Cuenta extends CI_Controller {
 			    $cod_usuario = $this->session->userdata('id');
 				$reg = $this->cuenta_model->actualizar_usuario($email, $cod_usuario);	
 				
-				if ($reg) {
-					$this->load->view('menu', $menu);
-					$this->load->view('cuenta/cuenta_view', $cuenta);
-				} else echo "Error Update Cuenta/email";			
+				$this->load->view('menu', $menu);
+				$this->load->view('cuenta/cuenta_view', $cuenta);		
 			}
 			$this->load->view('footer');
        }
@@ -162,10 +159,8 @@ class Cuenta extends CI_Controller {
 			    $cod_usuario = $this->session->userdata('id');
 				$reg = $this->cuenta_model->actualizar_usuario($password, $cod_usuario);	
 				
-				if ($reg) {
-					$this->load->view('menu', $menu);
-					$this->load->view('cuenta/cuenta_view', $cuenta);
-				} else echo "Error Update Cuenta/password";				
+				$this->load->view('menu', $menu);
+				$this->load->view('cuenta/cuenta_view', $cuenta);			
 			}
 			$this->load->view('footer');
        }

@@ -51,6 +51,18 @@ $(document).ready( function(){
 				
 		    }, "json"
 		 );
+	
+	// MENU CUENTA Form validation dialogoMODAL 
+	$( "#dialog:ui-dialog" ).dialog( "destroy" );
+	$( ".error" ).dialog({
+		modal: true,
+		buttons: {
+			Ok: function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+	
 
 });
 
