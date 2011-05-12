@@ -23,7 +23,7 @@
 				  <th></th>
 			      <th></th>
 			      <th>Cantidad</th>
-			      <th></th>
+			      <th>Actualizar</th>
 				  <th>Precio unidad</th>
 				  <th>Precio total</th>
 				  <th></th>
@@ -32,19 +32,21 @@
 			<tfoot></tfoot>
 			<tbody>
 			
-			<?php foreach ($carrito as $indice => $producto): ?>
-				<?php echo form_open('carrito/actualizar') ?>
+			<?php foreach ($carrito as $indice => $producto):?>
+				
+								
 			    <tr>
+			    <form accept-charset="utf-8" method="post" action="http://localhost/Fauna-Exotica/carrito/actualizar">
 					<td><?php echo "<img src=".base_url()."img/productos/".$producto['foto']." class='carrito_img'>"; ?></td>
 				    <td><?php echo $producto['name']; ?></td>
 				    <td><?php echo form_hidden('rowid', $producto['rowid']); ?>
 				    <?php echo form_input(array('name' => 'cantidad', 'id' => 'cantidad', 'maxlength'   => '3', 'size' => '3', 'value' => set_value('cantidad',$producto['qty']))) ?></td>
-				    <td><input type="image" name="actualizar" src="<?php echo base_url();?>img/actualizar.png">Actualizar</td>	    	    
+				    <td><p><span class='actu'></span></p></td>	    	    
 				    <td><?php echo $producto['price'];?>€</td>
 				    <td><?php echo ($producto['price'] * $producto['qty']);?>€</td>
 				    <td><a href= '<?php echo base_url()?>index.php/carrito/eliminar/<?php echo $producto['rowid'];?>'><img src="<?php echo base_url().'img/x.png'?>"></a>
-			    </tr>
-			    <?php echo form_close();?>
+			    </form></tr>
+			    
 			<?php endforeach; ?>
 			
 			</tbody>
@@ -52,10 +54,15 @@
 			<p style="text-align: right">Total:&nbsp;<?php echo $total; ?>€ &nbsp;&nbsp;</p>
 			
 			<?php if ($total_items>0) {
-				echo '<p class="centrado">'.anchor('carrito/pedido', 'Procesar pedido', 'class="boton_ui"').'</p>'; 
-				if( $this->session->userdata('logged_in') !==  TRUE)
-					echo '<p class="centrado">(Es nesesario tener una cuenta iniciada)</p>';
-				} 
+				echo '<p class="centrado">'.anchor('carrito/pedido', 'Procesar pedido', 'class="boton_ui" id="B_procesar_pedido"').'</p>'; 
+				if( $this->session->userdata('logged_in') !==  TRUE) {
+					echo '<p class="centrado">(Es nesesario tener una cuenta iniciada)</p>';					
+					// Si no ha iniciado sesión mostrará este dialogo:
+					echo '<div id="D_procesar_pedido" title="Abre tu cuenta"><p>
+							<span class="ui-icon ui-icon-circle-close" style="float:left; margin:0 7px 50px 0;"></span>
+							Para proceder al pago debe abrir su cuenta. Vaya a '.anchor('cuenta/index', 'Mi Cuenta').' e inice sesión o registrese como nuevo usuario.</p></div>';
+				}
+			} 
 			?>
 			
 			</div>
