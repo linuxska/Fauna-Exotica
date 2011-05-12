@@ -83,9 +83,7 @@
 	</div> <!--  Fin Carro -->
 
 	<div class="grid_3"> 
-		<div id="micuenta">
-			<?php echo anchor('cuenta/index', 'Mi Cuenta');?>
-		</div>
+		<a href="http://localhost/Fauna-Exotica/cuenta/index"><span id="micuenta">Mi Cuenta</span></a>
 	</div>
 			
 	<div class='clear'>&nbsp;</div> <!--  Colocacion Header -->

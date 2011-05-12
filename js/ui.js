@@ -4,11 +4,48 @@ $(document).ready( function(){
 	$( "#acordeon_articulos" ).accordion({ autoHeight: false, collapsible: true, active: false });
 	$( "#acordeon_cuenta" ).accordion({ autoHeight: false, icons: { 'header': 'ui-icon-circle-arrow-e', 'headerSelected': 'ui-icon-circle-arrow-s' } });
 	$( "button, input:submit" ).button();
+	
+	// Boton acutalizar del carro
+	$( ".actu" ).button({
+        icons: {
+            primary: "ui-icon-refresh"
+        },
+        text: false
+    });
+	
+	$(".actu").click(function() {
+		var tr = $(this).closest('tr');
+		var form = tr.find('form');
+		form.submit();
+	});
+	
+	//Condicion login procesar pedido:
+	
+	$( "#dialog:ui-dialog" ).dialog( "destroy" );
+	$( "#D_procesar_pedido" ).dialog({
+		autoOpen: false, 
+		modal: true,
+		width: 360,
+		buttons: {
+			Ok: function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+	
+	$("#B_procesar_pedido").click(function (){
+		if ($("#D_procesar_pedido").length>0){
+			$("#D_procesar_pedido").dialog('open');
+			return false;
+		}
+	});
+	
+	//Boton de mi cuenta
 	$("#micuenta").button({
         icons: {
         primary: "ui-icon-person"
-    }
-});
+    }});
+	
 	
 	// Añadir botones enlaces con la clase:
 	$(".boton_ui" ).button();

@@ -26,6 +26,10 @@
 	width: 70px;
 }
 
+.carrito table tr td input {
+	text-align: right;
+	float: right;
+}
 
 .boton{
 	width:90px;
