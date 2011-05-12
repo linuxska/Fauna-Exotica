@@ -31,3 +31,46 @@ body {
 #backend_body table td{
 	padding:5px;
 }
+
+img{
+	height:25px;
+	width:25px;
+	margin:0 5px 0 5px;
+}
+div#mas{
+	margin:15px 15px 15px 25px;
+}
+
+a{
+	color:#000;
+}
+a:hover{
+	color:green;
+}
+#principal tr:hover{
+	background:green;
+	color:#FFF;
+}
+#principal tr:hover a{
+	color:#FFF;
+}
+
+h1, td{
+	text-align:center;
+}
+
+#users{
+	margin:auto;
+}
+
+td, th{
+	padding:5px;
+}
+
+.form{
+	margin-bottom:5px;
+}
+
+input:focus{
+	border: 3px solid #000;
+}

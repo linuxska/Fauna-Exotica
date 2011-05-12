@@ -82,8 +82,11 @@ class Backend_model extends CI_Model {
 		}
 		
 		public function actualizar_registro($tabla,$condicion,$registro_nuevo){
-			$str=$this->db->update_string($tabla,$registro_nuevo,$condicion);
-			echo $str;
+			$this->db->update($tabla,$registro_nuevo,$condicion);
+		}
+		
+		public function insertar_registro($tabla,$registro_nuevo){
+			$this->db->insert($tabla, $registro_nuevo);
 		}
 }
 ?>
