@@ -88,5 +88,20 @@ class Backend_model extends CI_Model {
 		public function insertar_registro($tabla,$registro_nuevo){
 			$this->db->insert($tabla, $registro_nuevo);
 		}
+		
+		public function obtener_subcategorias(){
+			$query = $this->db->select('cod,nombre')
+	   						->get('subcategoria');
+	   				return $query->result_array();
+		}
+		
+		public function obtener_pedido($cod){
+			$query = $this->db->select('nombre,cod_producto, cantidad')
+								->where('cod_pedido',$cod)
+								->join("producto", "producto.cod = pedido_producto.cod_producto")
+	   							->get('pedido_producto');
+	   							
+	   		return $query->result_array();
+		}
 }
 ?>

@@ -14,6 +14,8 @@ class Backend extends CI_Controller {
             parent::__construct();
 			$this->load->model('backend_model');
 			$this->load->helper('form');
+			$this->load->helper('date');
+			$this->load->model('producto_model');
        }
        
        public function Index(){
@@ -48,10 +50,11 @@ class Backend extends CI_Controller {
        		if ($privilegio !== 'cliente') {
        			$datos['tabla'] = $this->backend_model->obtener_tabla($nombre_tabla);
        			$datos['columnas'] = $this->backend_model->info_columnas($nombre_tabla);	
-  				$this->load->view('backend/header', $datos);
-       			$this->load->view('backend/tabla_view');  
-  									
+       			$datos['subcategorias'] = $this->backend_model->obtener_subcategorias();
+       	
        			
+  				$this->load->view('backend/header', $datos);
+       			$this->load->view('backend/tabla_view');    			
        		} else redirect('cuenta/index');
        }  
          
@@ -86,8 +89,8 @@ class Backend extends CI_Controller {
 	       		$datos['registro'] = $this->backend_model->obtener_registro($nombre_tabla,$num_registro);
 	       		$datos['columnas'] = $this->backend_model->info_columnas($nombre_tabla);
 	       		
-	       		$this->load->view('backend/header', $datos);
-	       		$this->load->view('backend/editar_view');	
+	       	/*	$this->load->view('backend/header', $datos);
+	       		$this->load->view('backend/editar_view');*/	
        		} else redirect('cuenta/index');     	
        }
        
@@ -120,8 +123,6 @@ class Backend extends CI_Controller {
        		
        		if ($privilegio !== 'cliente') {
 	       		$nombre_tabla = $this->uri->segment(3);
-	       		/*$num_registro=$this->uri->segment(4);
-	       		$datos['registro'] = $this->backend_model->obtener_registro($nombre_tabla,$num_registro);*/
 	       		$datos['columnas'] = $this->backend_model->info_columnas($nombre_tabla);
 	       		
 	       		$this->load->view('backend/header', $datos);
@@ -148,12 +149,41 @@ class Backend extends CI_Controller {
        		} else redirect('cuenta/index');
        }
        
-       public function ver_pedido(){
-       	
+       public function ver_producto(){
+       		if($this->session->userdata('logged_in') !==  TRUE) redirect('login/index');
+       		
+       		$privilegio = $this->session->userdata('tipo');
+       		
+       		$datos['privilegio'] = $privilegio;    	
+       		$datos['usuario'] = $this->session->userdata('usuario'); 
+       		
+       		if ($privilegio !== 'cliente') {
+    			$producto = $this->uri->segment(3);
+       			$datos['imagen'] = $this->producto_model->obtener_foto_producto($producto);
+       			$this->load->view('backend/foto_view',$datos);  					
+       		} else redirect('cuenta/index');
        	
        }
        
-       
+		public function ver_pedido(){
+       		if($this->session->userdata('logged_in') !==  TRUE) redirect('login/index');
+       		
+       		$privilegio = $this->session->userdata('tipo');
+       		
+       		$datos['privilegio'] = $privilegio;    	
+       		$datos['usuario'] = $this->session->userdata('usuario'); 
+       		
+       		if ($privilegio !== 'cliente') {
+    			$producto = $this->uri->segment(3);
+    			$datos['columnas'] = $this->backend_model->info_columnas('pedido_producto');
+    			$datos['tabla'] = $this->backend_model->obtener_tabla('pedido_producto');
+       			$datos['pedido'] = $this->backend_model->obtener_pedido($producto);
+      			
+       			$this->load->view('backend/header', $datos);
+       			$this->load->view('backend/pedido_view',$datos);  					
+       		} else redirect('cuenta/index');
+       	
+       	}
        
 }
 ?>

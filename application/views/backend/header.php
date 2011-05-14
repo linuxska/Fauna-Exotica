@@ -13,9 +13,7 @@
 	<link type="text/css" href="<?php echo base_url();?>css/jquery-ui.css" rel="stylesheet" />	
 	<script type="text/javascript" src="<?php echo base_url();?>js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url();?>js/ui.js"></script>
-	
-
-	
+	<script type="text/javascript" src="<?php echo base_url();?>js/backend_insertar.js"></script>
 	
 </head>
 <body>
