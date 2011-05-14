@@ -67,6 +67,12 @@ class Backend_model extends CI_Model {
 			}
 			$this->db->delete($tabla);
 		}
+		
+		public function borrar_productos_pedido($cod_pedido){
+			$this->db->where('cod_pedido', $cod_pedido);
+			$this->db->delete('pedido_producto');
+		}
+		
 	
 		public function obtener_registro($tabla,$registro){
 			if ($tabla=='usuario'){

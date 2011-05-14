@@ -70,6 +70,7 @@ class Backend extends CI_Controller {
        			$nombre_tabla = $this->uri->segment(3);
        			$datos['tabla'] = $this->backend_model->obtener_tabla($nombre_tabla);
        			$registro = $this->uri->segment(4);
+       			if ($nombre_tabla=='pedido') $this->backend_model->borrar_productos_pedido($registro);
        			$this->backend_model->borrar_registro($nombre_tabla,$registro);
        			$this->tabla($nombre_tabla); 	
        		} else redirect('cuenta/index');
