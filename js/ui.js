@@ -13,6 +13,12 @@ $(document).ready( function(){
         text: false
     });
 	
+	$( "#logout" ).button({
+        icons: {
+            primary: "ui-icon-power"
+        }
+    });
+	
 	$(".actu").click(function() {
 		var tr = $(this).closest('tr');
 		var form = tr.find('form');

@@ -27,17 +27,19 @@
 		<h3><a href="#">Cuenta</a></h3>	
 		<div>
 			<!--  Inicio Cuenta -->			
-			<p class="centrado"><?php echo anchor('cuenta/logout', ' Terminar Sesión');?></p>
+			<a href='<?php echo base_url();?>cuenta/logout'><span id='logout'>Terminar sesión</span></a>
 			
-			<p>Bienvenido <?php echo $usuario?></p>		
-			<?php if ($tipo === 'cliente') {
+			<p>Bienvenido <?php echo $cuenta->usuario?></p>		
+			<?php if ($cuenta->tipo === 'cliente') {
 				echo "<p>".anchor('carrito/pedido', ' Continuar comprando')."</p>";
 			} else {
-				echo '<p>Tiene usted permiso de '.$tipo.': ';
+				echo '<p>Tiene usted permiso de '.$cuenta->tipo.': ';
 				echo anchor('backend/index', 'Acceder al Backend').'</p>';
 				
 			}?>
-				
+			<?php if ( $this->cart->total_items()>0) {
+				echo '<p>Tienes productos en el carro. Comprueba el pedido y haz tu compra '.anchor('carrito/index', 'aquí');
+			}?>		
 		</div>
 		
 		<h3><a href="#">Mi perfil</a></h3>	
@@ -50,13 +52,13 @@
 			<?php echo form_open('cuenta/perfil') ?>
 			
 			<?php echo form_label('Nombre: ', 'nombre') ?>
-			<?php echo form_input(array('name' => 'nombre', 'id' => 'nombre', 'maxlength'   => '25', 'size' => '50', 'value' => set_value('nombre', $nombre))) ?>
+			<?php echo form_input(array('name' => 'nombre', 'id' => 'nombre', 'maxlength'   => '25', 'size' => '50', 'value' => set_value('nombre', $cuenta->nombre))) ?>
 			<?php echo form_label('1º Apellido: ', 'apellido1') ?>
-			<?php echo form_input(array('name' => 'apellido1', 'id' => 'apellido1', 'maxlength'   => '40', 'size' => '50', 'value' => set_value('apellido1', $apellido1))) ?>
+			<?php echo form_input(array('name' => 'apellido1', 'id' => 'apellido1', 'maxlength'   => '40', 'size' => '50', 'value' => set_value('apellido1', $cuenta->apellido1))) ?>
 			<?php echo form_label('2ºApellido: ', 'apellido2') ?>
-			<?php echo form_input(array('name' => 'apellido2', 'id' => 'apellido2', 'maxlength'   => '40', 'size' => '50', 'value' => set_value('apellido2', $apellido2))) ?>
+			<?php echo form_input(array('name' => 'apellido2', 'id' => 'apellido2', 'maxlength'   => '40', 'size' => '50', 'value' => set_value('apellido2', $cuenta->apellido2))) ?>
 			<?php echo form_label('Dirección: ', 'direccion') ?>
-			<?php echo form_input(array('name' => 'direccion', 'id' => 'direccion', 'maxlength'   => '50', 'size' => '50', 'value' => set_value('direccion', $direccion))) ?>	
+			<?php echo form_input(array('name' => 'direccion', 'id' => 'direccion', 'maxlength'   => '50', 'size' => '50', 'value' => set_value('direccion', $cuenta->direccion))) ?>	
 		
 			<?php echo form_submit('enviar', 'Guardar') ?>
 			<?php echo form_close() ?>
@@ -72,7 +74,7 @@
 			<?php echo form_open('cuenta/email') ?>	
 			
 			<?php echo form_label('Email:', 'email'); ?>
-			<?php echo form_input(array('name' => 'email', 'id' => 'email', 'maxlength'   => '40', 'size' => '50', 'value' => set_value('email', $email))); ?>
+			<?php echo form_input(array('name' => 'email', 'id' => 'email', 'maxlength'   => '40', 'size' => '50', 'value' => set_value('email', $cuenta->email))); ?>
 			<?php echo form_label('Contraseña actual:', 'password_email_actual'); ?>
 			<?php echo form_password(array('name' => 'password_actual', 'id' => 'password', 'maxlength'   => '40', 'size' => '50')); ?>
 			
@@ -96,6 +98,17 @@
 			</div>
 
 		</div>
+		
+		<h3><a href="#">Mis pedidos</a></h3>	
+		<div>
+			<ul>
+			<?php foreach ($pedidos as $fila) {
+				echo '<a href ="'.base_url().'cuenta/pedido/'.$fila->cod.'">';
+				echo '<li>'.$fila->fecha.' - Vía '.$fila->formapago.'</li></a>';
+			}?>
+			</ul>
+		</div>
+		
 		</div>
 		</div> <div class='clear'>&nbsp;</div><!--  Fin grid_8 -->
 		</div><!--  Fin Tabs4 -->

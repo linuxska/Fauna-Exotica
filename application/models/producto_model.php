@@ -16,6 +16,7 @@ class Producto_model extends CI_Model{
        		 return $query->result();
 	   }
 	   
+	   
 	   // Obtener un solo producto por su código
        public function obtener_producto ($cod_producto) {
 

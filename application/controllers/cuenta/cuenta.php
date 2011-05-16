@@ -16,6 +16,8 @@ class Cuenta extends CI_Controller {
 			$this->load->library('form_validation');
 			
 			$this->load->model('cuenta_model');
+			$this->load->model('pedido_model');
+			$this->load->model('producto_model');
        }
        
        public function Index(){
@@ -33,13 +35,32 @@ class Cuenta extends CI_Controller {
 				$this->load->view('menu', $menu);
 						   			
     			// Datos del usuario para el formulario
-    			$cuenta= $this->cuenta_model->obtener_todo($this->session->userdata('id'));
-    			
+
+    			$datos['cuenta'] = $this->cuenta_model->obtener_todo($this->session->userdata('id'));
+    			$datos['pedidos'] =  $this->pedido_model->obtener_pedidos($this->session->userdata('id'));
     			// Contenido principal  
-				$this->load->view('cuenta/cuenta_view', $cuenta);
+				$this->load->view('cuenta/cuenta_view', $datos);
 				
 				$this->load->view('footer');
 			}
+       }
+       
+       public function pedido($cod_pedido){
+       		// Datos para la vista 
+	       	$head['titulo'] = "Cuenta";
+			$menu['menu'] = $this->menu_model->obtener_menu();
+	
+	           // Carga de las vistas 
+			$this->load->view('header', $head);    	
+			$this->load->view('menu', $menu);
+						   			
+    		// Lista de productos del pedido
+    		$datos['productos'] =  $this->pedido_model->obtener_productos_pedido($cod_pedido);
+    		
+    		// Contenido principal  
+			$this->load->view('cuenta/pedido_view', $datos);
+				
+			$this->load->view('footer');
        }
        
 

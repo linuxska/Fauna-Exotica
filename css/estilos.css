@@ -114,7 +114,9 @@ form.buscador{
 	margin-top:15px;
 	float:right;
 }
-
+#logout {
+	float:right;
+}
 .inline{
 	display:inline;
 }
