@@ -1,4 +1,7 @@
+
+
 /*****  Fauna-Exotica  *****/
+
 Instalacion BD: faunaexoticaSQL.sq
 Instalacion Mail: habilitar en php.ini => extension=php_openssl.dll (reiniciar servidor) 
 .htaccess : habilitar en apache httpd.conf => LoadModule rewrite_module modules/mod_rewrite.so (reiniciar servidor) 
@@ -6,20 +9,5 @@ Instalacion Mail: habilitar en php.ini => extension=php_openssl.dll (reiniciar s
 Datos cuenta GMAIL: 
 nombre =>	lauscar.sl@gmail.com
 
-/* Proceso de la web */
-
-Terminado / Revisando:
-- Cuenta usuarios
-- Mandar emails (Gmail)
-- Menu productos
-- Productos
-- Carrito
-
-En proceso:
-- Procesar pedido
-- Filtrar productos
-- Vista web principal
-- Backend
-
-Sin empezar:
-- Procesar pedidos paypal
+Datos cuenta Sandbox Paypal:  
+nombre =>	lauscar.sl

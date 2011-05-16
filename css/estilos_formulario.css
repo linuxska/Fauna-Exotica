@@ -58,3 +58,20 @@ div.error{
 .buscador input{
 	display:inline;
 }
+
+#confirmar_contrareembolso table {
+	margin: auto;
+	border: 1px solid green;
+	height:50px;
+	padding: 10px;
+}
+
+#confirmar_contrareembolso th {
+	text-align: left;
+}
+
+#confirmar_contrareembolso td {
+	text-align: center;
+}
+
+

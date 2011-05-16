@@ -32,7 +32,7 @@ class Carrito_model extends CI_Model{
        public function obtener_producto_carrito ($producto_cod){
        		$carrito = $this->cart->contents(); 
        		foreach ($carrito as $fila => $producto) {
-       			if ($producto['id'] == $producto_cod)	return $fila;
+       			if ($producto['id'] == $producto_cod) return $fila;
        		}
        		return 0;
        }
@@ -43,25 +43,26 @@ class Carrito_model extends CI_Model{
 
        		 // Añadimos la foto del producto 
        		 foreach ($carrito as $indice => $producto){
-       		 	$producto_bd = $this->producto_model->obtener_foto_producto($producto['id']);
-       		 	$carrito[$indice]['foto'] = $producto_bd->foto;
+       		 	$producto_bd_foto = $this->producto_model->obtener_foto_producto($producto['id']);
+       		 	$producto_bd_disponible = $this->producto_model->obtener_stock_producto($producto['id']);
+       		 	$carrito[$indice]['foto'] = $producto_bd_foto->foto;
+       		 	$carrito[$indice]['disponible'] = $producto_bd_disponible->cantidad_disponible;
        		 }    		 
        		 return $carrito;
        }
        
        // Crea al pedido en la BD
        public function confirmar_pedido ($datos_pedido){
-       		/* 
-       		 * SIN TERMINAR !!!!!!!!!!!!!! Solo contrareembolso
-       		 */
        	
        		// Insertar datos de pedido
-       		$pedido = array('cod_usuario' => $this->session->userdata('id'),
-						   		'fecha' => date("Y-m-d"),
-       							'direccion_envio' => $datos_pedido['direccion_envio'],
-       							'direccion_factura' => $datos_pedido['direccion_factura'],
-       		);
-       		
+       		// NOTA: Si es paypal, por ahora no podemos registrar la direccion
+	       		$pedido = array('cod_usuario' => $this->session->userdata('id'),
+							   		'fecha' => date("Y-m-d"),
+	       							'direccion_envio' => $datos_pedido['direccion_envio'],
+	       							'direccion_factura' => $datos_pedido['direccion_factura'],
+	       							'formaenvio' => $datos_pedido['formaenvio'],
+	       							'formapago' => $datos_pedido['formapago'],
+	       		);
        		$this->db->insert('pedido', $pedido);
        		
        		$cod_pedido = $this->db->insert_id();
@@ -76,8 +77,20 @@ class Carrito_model extends CI_Model{
        			$this->db->insert('pedido_producto', $producto);
        		}
        		
-       		// Borrar carrito
-       		$this->cart->destroy();
+       }
+       
+       // Reduce la cantidad  disponible 
+       public function reducir_stock ($producto){  
+       		   
+       		if ($producto['disponible']>0 && $producto['disponible']>= $producto['qty']){ 	
+	       		$data = array(
+	               'cantidad_disponible' => ($producto['disponible'] - $producto['qty'])
+	            );
+	
+				$this->db->where('cod', $producto['id']);
+				$this->db->update('producto', $data); 
+       		}
+
        }
 }
 

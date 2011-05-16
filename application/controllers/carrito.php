@@ -133,22 +133,40 @@ class Carrito extends CI_Controller {
 			}
        }  
       
-       public function confirmar_pedido(){
+       public function confirmar_contrareembolso(){
        		$datos_pedido = array('formaenvio'      => $this->input->post('formaenvio'),
-							'formapago'   => $this->input->post('formapago'),
+							'formapago'   => 'contrareembolso',
 							'direccion_envio'	  => $this->input->post('direccion_envio'),
 							'direccion_factura'    => $this->input->post('direccion_factura') 
 							);
 			
        		$this->carrito_model->confirmar_pedido($datos_pedido);
+       		       
+       		// Destruir el carro
+       		$this->cart->destroy();
        		
-       		redirect('inicio/index/'); // CAMBIAR
+       		// ¿Necesario reducir stock? O esperar a confirmacion de los datos..
+       		redirect('cuenta/index/'); // Redireccion al inicio, falta mensaje al usuario
+       }
+       
+       public function confirmar_paypal(){
+       		$datos_pedido = array('formaenvio'      => '',
+							'formapago'   => 'paypal',
+							'direccion_envio'	  => '',
+							'direccion_factura'    => '' 
+							);
+			
+       		$this->carrito_model->confirmar_pedido($datos_pedido);
+       		
+       		$carrito = $this->carrito_model->obtener_carrito();
+       		// Reducir stock
+       		foreach ($carrito as $producto) {
+       			$this->carrito_model->reducir_stock($producto);
+       		}
+
        }
 
-       // Destruir el carro
-       public function destruir(){
-       		$this->cart->destroy();
-       }
+
         
        //Funcion para comprobar si la cantidad solicitada de un producto está en stock
        private function cantidad_supera_stock($cod_producto,$cantidad){
@@ -239,15 +257,11 @@ class Carrito extends CI_Controller {
 			
 			fclose ($fp);
 			
-			
-			// Items comprados
-			$datos['carrito'] = $this->carrito_model->obtener_carrito();
-			
 			// Registrar pedido
-			//$this->almacenar_pedido();
+			$this->confirmar_paypal();
 			
 			//Destruccion del carrito
-			$this->destruir();
+			$this->cart->destroy();
 			
 			/* Carga de las vistas */
 			
@@ -262,5 +276,6 @@ class Carrito extends CI_Controller {
 	    	$this->load->view('footer');   
        	
        }
+
 }
 ?>

@@ -1,11 +1,23 @@
 <!--  Contenido -->
 <div class='grid_10'> 
 
-<div class='contenido'>
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Confirmar Pedido</a></li>
+		<li><?php echo anchor('inicio', 'Inicio');?></li>
+		<li><?php echo anchor('Informacion', 'Informacion');?></li>
+		<li><?php echo anchor('contactar/index', 'Contactar');?></li>
+		
+		<form class="buscador" accept-charset="utf-8" method="get" action="<?php echo base_url();?>buscador/index">
+			<input type='text' name='busqueda' id='busqueda' maxlength='30' size='20'/>
+			<input type='submit' value='Buscar'/>
+			<br/>
+		</form>
+	</ul>
+	<div id="tabs-1">
+	<h2 class = 'centrado'>Confirmar pedido Contrareembolso</h2>	
+	<div class='grid_6 push_3' id='confirmar_contrareembolso'>
 
-	<div class='grid_10 push_1'>
-	
-	<p>Confirmar pedido</p>	
 	<table>
 	<thead>
 	    <tr>
@@ -27,21 +39,17 @@
 	<p>Precio total pedido:<?php echo $total?> €</p>
 	
 	<p>Direccion de envio: <?php echo $pedido['direccion_envio']?></p>
-	<p>Envio: <?php echo $pedido['formaenvio']?></p>
-	<p> Gastos de envío: 5 €</p>
+	<p>Envio por: <?php echo $pedido['formaenvio']?></p>
 	
-	<p>Dirección de factura: <?php echo $pedido['direccion_factura']?></p>
-	<p>Pago: <?php echo $pedido['formapago']?></p>
+	<p>Dirección de factura: <?php echo $pedido['direccion_factura']?> (contrareembolso)</p>
 	
-	<p>Total Factura: <?php echo ($total + 5)?> €</p>
-	</div>
-	
-<div class='grid_10 push_1'>
-<?php echo form_open('carrito/confirmar_pedido', '', $pedido) ?>
-<?php echo form_submit('enviar', 'Confirmar')?>
-<?php echo form_close();?>
-</div>
+	<p>Total Factura: <?php echo ($total)?> € (mas gastos de envío)</p>
 
-</div> 
+	<?php echo form_open('carrito/confirmar_contrareembolso', '', $pedido) ?>
+	<p class='centrado'><?php echo form_submit('enviar', 'Confirmar')?></p>
+	<?php echo form_close();?>
+	</div>
+
+</div>
 <div class=clear></div>
 </div> <!--  Fin Contenido -->

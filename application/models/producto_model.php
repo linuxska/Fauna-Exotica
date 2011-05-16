@@ -37,6 +37,17 @@ class Producto_model extends CI_Model{
 
 	   }
 	   
+	   // Obtener el registro foto de un producto por su código
+       public function obtener_stock_producto ($cod_producto) {
+
+	         $query = $this->db->select('cantidad_disponible')
+	         					->where('cod',$cod_producto)
+       							->get('producto');
+   
+       		if ($query->num_rows() == 1 ) return $query->row();
+
+	   }
+	   
 	   //Obtener el n� total de productos de una subcategoria
 	   public function total_productos($cod_subcategoria){
 	   		$query = $this->db->select('cod')
