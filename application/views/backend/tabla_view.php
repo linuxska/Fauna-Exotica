@@ -1,9 +1,22 @@
 <div class="demo">
-
+<!-- <div id="dialog-form2" title="Editar <?php echo $this->uri->segment(3);?>">
+	<?php  
+		echo form_open('backend/actualizar/'.$this->uri->segment(3).'/'.$this->uri->segment(4));
+			foreach ($columnas as $col){ 
+				if ($col!='password' && $col!='password_recuperacion'){
+							echo form_label($col);
+		  					echo form_input($col,$registro->$col);			
+				}
+			}
+			echo form_submit('','Guardar');
+		echo form_close();
+	?>
+</div>
+ -->
 <?php if($this->uri->segment(3)!='producto'){?>
 <div id="dialog-form" title="Insertar nuevo <?php echo $this->uri->segment(3);?>">
 	<?php  
-		echo form_open('backend/insertar/'.$this->uri->segment(3).'/'.$this->uri->segment(4));
+		echo form_open('backend/insertar/'.$this->uri->segment(3));
 			foreach ($columnas as $col){ 
 				if ($col!='password_recuperacion' && $col!='cod' && $col!='id' ){
 					echo "<div class='form'>".form_label($col.":");
@@ -18,7 +31,7 @@
 else{?>
 <div id="dialog-form" title="Insertar nuevo <?php echo $this->uri->segment(3);?>">
 	<?php  
-		echo form_open('backend/insertar/'.$this->uri->segment(3).'/'.$this->uri->segment(4));
+		echo form_open('backend/insertar/'.$this->uri->segment(3));
 			foreach ($columnas as $col){
 				if($col!='cod'){ 
 					if ($col!='cod_subcategoria'){
@@ -41,7 +54,13 @@ else{?>
 <?php }?>
 
 <div id="users-contain" class="ui-widget">
+
+
 	<h1><?php echo $this->uri->segment(3);?>s</h1>
+		<?php if ($this->uri->segment(3)!='pedido'){?>
+<center><button id="create-user">Insertar nuevo <?php echo $this->uri->segment(3);?></button></center>
+<?php }?>
+<br>
 	<table id="users" class="ui-widget ui-widget-content">
 		<thead>
 			<tr class="ui-widget-header ">
@@ -68,10 +87,9 @@ else{?>
 			
 			if ($this->uri->segment(3)=='pedido_producto')echo "<a href='".base_url()."index.php/backend/ver_producto/".$this->uri->segment(3)."/".$datos['cod_producto']."/".$datos['cod_pedido']."'><img src='".base_url()."img/ver.gif'></a>";
     		
-    		if ($this->uri->segment(3)=='usuario') echo "<a href='".base_url()."index.php/backend/editar/".$this->uri->segment(3)."/".$datos['id']."'><img src='".base_url()."img/editar.png'></a>";
-    		else if($this->uri->segment(3)!='pedido_producto') echo "<a href='".base_url()."index.php/backend/editar/".$this->uri->segment(3)."/".$datos['cod']."'><img src='".base_url()."img/editar.png'></a>";
-    		else echo "<a href='".base_url()."index.php/backend/editar/".$this->uri->segment(3)."/".$datos['cod_producto']."/".$datos['cod_pedido']."'><img src='".base_url()."img/editar.png'></a>";
-    		
+    		if ($this->uri->segment(3)=='usuario') echo "<a id='edit' href='".base_url()."index.php/backend/editar/".$this->uri->segment(3)."/".$datos['id']."' ><img src='".base_url()."img/editar.png'></a>";
+    		else if($this->uri->segment(3)!='pedido_producto') echo "<a id='edit' href='".base_url()."index.php/backend/editar/".$this->uri->segment(3)."/".$datos['cod']."'><img src='".base_url()."img/editar.png'></a>"; 
+	
     		if ($this->uri->segment(3)=='usuario') echo "<a href='".base_url()."index.php/backend/eliminar/".$this->uri->segment(3)."/".$datos['id']."'><img src='".base_url()."img/x.png'></a>";
     		else if($this->uri->segment(3)!='pedido_producto')echo "<a href='".base_url()."index.php/backend/eliminar/".$this->uri->segment(3)."/".$datos['cod']."'><img src='".base_url()."img/x.png'></a>";
     		else echo "<a href='".base_url()."index.php/backend/eliminar/".$this->uri->segment(3)."/".$datos['cod_producto']."/".$datos['cod_pedido']."'><img src='".base_url()."img/x.png'></a>";?>
@@ -82,8 +100,6 @@ else{?>
 	</tbody>
 	</table>
 </div>
-<br>
-<center><button id="create-user">Insertar nuevo <?php echo $this->uri->segment(3);?></button></center>
 
 </div>
 

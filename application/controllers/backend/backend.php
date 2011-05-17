@@ -16,6 +16,7 @@ class Backend extends CI_Controller {
 			$this->load->helper('form');
 			$this->load->helper('date');
 			$this->load->model('producto_model');
+			$this->load->library('form_validation');
        }
        
        public function Index(){
@@ -51,7 +52,6 @@ class Backend extends CI_Controller {
        			$datos['tabla'] = $this->backend_model->obtener_tabla($nombre_tabla);
        			$datos['columnas'] = $this->backend_model->info_columnas($nombre_tabla);	
        			$datos['subcategorias'] = $this->backend_model->obtener_subcategorias();
-       	
        			
   				$this->load->view('backend/header', $datos);
        			$this->load->view('backend/tabla_view');    			
@@ -89,9 +89,8 @@ class Backend extends CI_Controller {
 	       		$num_registro=$this->uri->segment(4);
 	       		$datos['registro'] = $this->backend_model->obtener_registro($nombre_tabla,$num_registro);
 	       		$datos['columnas'] = $this->backend_model->info_columnas($nombre_tabla);
-	       		
-	       	/*	$this->load->view('backend/header', $datos);
-	       		$this->load->view('backend/editar_view');*/	
+	       		$this->tabla($nombre_tabla); 
+	       		$this->load->view('backend/editar_view',$datos);
        		} else redirect('cuenta/index');     	
        }
        
@@ -114,7 +113,7 @@ class Backend extends CI_Controller {
        		} else redirect('cuenta/index');
        }
        
-       public function insertar_registro_nuevo(){
+      /* public function insertar_registro_nuevo(){
           	if($this->session->userdata('logged_in') !==  TRUE) redirect('login/index');
        		
        		$privilegio = $this->session->userdata('tipo');
@@ -129,7 +128,7 @@ class Backend extends CI_Controller {
 	       		$this->load->view('backend/header', $datos);
 	       		$this->load->view('backend/insertar_view');	
        		} else redirect('cuenta/index');     	
-       }
+       }*/
        
        public function insertar(){
        		if($this->session->userdata('logged_in') !==  TRUE) redirect('login/index');
@@ -142,7 +141,7 @@ class Backend extends CI_Controller {
        		if ($privilegio !== 'cliente') {
     			$nombre_tabla = $this->uri->segment(3);
     			if ($nombre_tabla =='usuario') $registro = "id = ".$this->uri->segment(4);
-    			else $registro = "cod =".$this->uri->segment(4);
+    			else $registro = "cod =".$this->uri->segment(4);		
        			$datos['tabla'] = $this->backend_model->obtener_tabla($nombre_tabla);
        			$registro_nuevo = $this->input->post();
        			$this->backend_model->insertar_registro($nombre_tabla,$registro_nuevo);
@@ -184,7 +183,6 @@ class Backend extends CI_Controller {
        			$this->load->view('backend/pedido_view',$datos);  					
        		} else redirect('cuenta/index');
        	
-       	}
-       
+       	}       
 }
 ?>

@@ -9,7 +9,26 @@
 			modal: true,
 			buttons: {
 				/*"Guardar": function() {
-						$( this ).button.submit(); 
+						$( this ).dialog.submit(); 
+						$( this ).dialog( "close" );
+				},*/
+				Cancelar: function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			close: function() {
+				allFields.val( "" ).removeClass( "ui-state-error" );
+			}
+		});
+		
+		$( "#dialog-form2" ).dialog({
+			autoOpen: true,
+			MinHeight: 400,
+			width: 440,
+			modal: true,
+			buttons: {
+				/*"Guardar": function() {
+						$( this ).dialog.submit(); 
 						$( this ).dialog( "close" );
 				},*/
 				Cancelar: function() {
@@ -26,4 +45,10 @@
 			.click(function() {
 				$( "#dialog-form" ).dialog( "open" );
 			});
+		
+		//Para editar//
+		$( "#edit" )
+		.click(function() {
+			$( "#dialog-form2" ).dialog( "open" );
+		});
 	});
