@@ -52,3 +52,24 @@
 			$( "#dialog-form2" ).dialog( "open" );
 		});
 	});
+	
+	//Función para mostrar u ocultar el campo contraseña
+	jQuery(document).ready(function() {				
+		var passwText = jQuery('#password');	
+		passwText.after('<span class="showpass"><input type="text" id="password-show" /><input type="checkbox" id="toogle-check"/></span	>');
+		var toogCheck = jQuery('#toogle-check');
+		var inputText = jQuery('#password-show');
+		
+		inputText.hide();
+		
+		inputText.keyup(function() { passwText.attr('value', inputText.attr('value')); });
+		passwText.keyup(function() { inputText.attr('value', passwText.attr('value')); });
+		
+		$(toogCheck).click(function() {			
+			if( toogCheck.is(':checked') ) {
+				inputText.show(); passwText.hide(); 
+			} else {
+				inputText.hide(); passwText.show();	
+			}
+		});
+	});

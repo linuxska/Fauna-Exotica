@@ -17,6 +17,7 @@ class Backend extends CI_Controller {
 			$this->load->helper('date');
 			$this->load->model('producto_model');
 			$this->load->library('form_validation');
+			$this->load->model('cuenta_model');
        }
        
        public function Index(){
@@ -112,24 +113,7 @@ class Backend extends CI_Controller {
        			$this->tabla($nombre_tabla);		
        		} else redirect('cuenta/index');
        }
-       
-      /* public function insertar_registro_nuevo(){
-          	if($this->session->userdata('logged_in') !==  TRUE) redirect('login/index');
-       		
-       		$privilegio = $this->session->userdata('tipo');
-       		
-       		$datos['privilegio'] = $privilegio;    	
-       		$datos['usuario'] = $this->session->userdata('usuario'); 
-       		
-       		if ($privilegio !== 'cliente') {
-	       		$nombre_tabla = $this->uri->segment(3);
-	       		$datos['columnas'] = $this->backend_model->info_columnas($nombre_tabla);
-	       		
-	       		$this->load->view('backend/header', $datos);
-	       		$this->load->view('backend/insertar_view');	
-       		} else redirect('cuenta/index');     	
-       }*/
-       
+           
        public function insertar(){
        		if($this->session->userdata('logged_in') !==  TRUE) redirect('login/index');
        		
@@ -142,10 +126,18 @@ class Backend extends CI_Controller {
     			$nombre_tabla = $this->uri->segment(3);
     			if ($nombre_tabla =='usuario') $registro = "id = ".$this->uri->segment(4);
     			else $registro = "cod =".$this->uri->segment(4);		
+    			
+    			// Reglas de validaciÃ³n del formulario
+				$this->establecer_reglas();
+				
+				if($this->form_validation->run()==FALSE) echo "No son correctos los datos";
+				else{
+    			
        			$datos['tabla'] = $this->backend_model->obtener_tabla($nombre_tabla);
        			$registro_nuevo = $this->input->post();
        			$this->backend_model->insertar_registro($nombre_tabla,$registro_nuevo);
-       			$this->tabla($nombre_tabla);		
+       			$this->tabla($nombre_tabla);	
+				}	
        		} else redirect('cuenta/index');
        }
        
@@ -184,5 +176,12 @@ class Backend extends CI_Controller {
        		} else redirect('cuenta/index');
        	
        	}       
+       	
+       // Reglas Form Validation
+       private function establecer_reglas(){
+			$this->form_validation->set_rules('password', 'contraseña', 'md5');
+       }
+       	
+       	
 }
 ?>

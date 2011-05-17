@@ -1,19 +1,6 @@
 <div class="demo">
-<!-- <div id="dialog-form2" title="Editar <?php echo $this->uri->segment(3);?>">
-	<?php  
-		echo form_open('backend/actualizar/'.$this->uri->segment(3).'/'.$this->uri->segment(4));
-			foreach ($columnas as $col){ 
-				if ($col!='password' && $col!='password_recuperacion'){
-							echo form_label($col);
-		  					echo form_input($col,$registro->$col);			
-				}
-			}
-			echo form_submit('','Guardar');
-		echo form_close();
-	?>
-</div>
- -->
-<?php if($this->uri->segment(3)!='producto'){?>
+
+<?php if($this->uri->segment(3)!='producto' && $this->uri->segment(3)!='usuario'){?>
 <div id="dialog-form" title="Insertar nuevo <?php echo $this->uri->segment(3);?>">
 	<?php  
 		echo form_open('backend/insertar/'.$this->uri->segment(3));
@@ -27,7 +14,33 @@
 		echo form_close();
 	?>
 </div>
+
 <?php }
+ else if($this->uri->segment(3)=='usuario'){?>
+<div id="dialog-form" title="Insertar nuevo <?php echo $this->uri->segment(3);?>">
+	<?php  
+		echo form_open('backend/insertar/'.$this->uri->segment(3));
+			foreach ($columnas as $col){ 
+				if ($col!='password_recuperacion' && $col!='cod' && $col!='id' ){
+					echo "<div class='form'>".form_label($col.":");
+					if ($col=='password') {
+						echo form_password(array('name' => 'password', 'id' => 'password'))."</div>";
+					}
+					else if($col=='tipo'){
+						$tipos= array('cliente' => 'cliente', 'admin' => 'admin');
+			  			echo form_dropdown('tipo', $tipos,'admin')."</div>";
+					}
+					else echo form_input($col)."</div>";
+				} 
+			}
+			echo form_submit('','Guardar');
+		echo form_close();
+	?>
+</div>
+<?php }
+
+
+
 else{?>
 <div id="dialog-form" title="Insertar nuevo <?php echo $this->uri->segment(3);?>">
 	<?php  
