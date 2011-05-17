@@ -36,7 +36,7 @@
 				
 								
 			    <tr>
-			    <form accept-charset="utf-8" method="post" action="http://localhost/Fauna-Exotica/carrito/actualizar">
+			    <form accept-charset="utf-8" method="post" action="<?php echo base_url()?>carrito/actualizar">
 					<td><?php echo "<img src=".base_url()."img/productos/".$producto['foto']." class='carrito_img'>"; ?></td>
 				    <td><?php echo $producto['name']; ?></td>
 				    <td><?php echo form_hidden('rowid', $producto['rowid']); ?>
@@ -56,7 +56,7 @@
 			<?php if ($total_items>0) {
 				echo '<p class="centrado">'.anchor('carrito/pedido', 'Procesar pedido', 'class="boton_ui" id="B_procesar_pedido"').'</p>'; 
 				if( $this->session->userdata('logged_in') !==  TRUE) {
-					echo '<p class="centrado">(Es nesesario tener una cuenta iniciada)</p>';					
+					echo '<p class="centrado">(Es necesario tener una cuenta iniciada)</p>';					
 					// Si no ha iniciado sesión mostrará este dialogo:
 					echo '<div id="D_procesar_pedido" title="Abre tu cuenta"><p>
 							<span class="ui-icon ui-icon-circle-close" style="float:left; margin:0 7px 50px 0;"></span>
