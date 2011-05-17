@@ -65,7 +65,7 @@ class Registro extends CI_Controller {
        private function establecer_reglas(){
        	    $this->form_validation->set_rules('usuario', 'usuario', 'required|trim|min_length[5]|max_length[25]|callback_existe_usuario');
 			$this->form_validation->set_rules('email', 'email', 'required|valid_email|trim|callback_existe_email');
-			$this->form_validation->set_rules('password', 'contraseña', 'required|trim|md5');
+			$this->form_validation->set_rules('password', 'contraseña', 'required|min_length[5]|max_length[25]|trim|md5');
 			$this->form_validation->set_rules('repassword', 'reescribir contraseña', 'required|matches[password]|trim|md5');
 			
 			$this->form_validation->set_message('required', 'Debe introducir el campo %s');
