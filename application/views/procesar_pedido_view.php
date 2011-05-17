@@ -47,6 +47,9 @@
 	<br>
 	<input type="radio" name="formaenvio" value="correo" class='inline'> Correos<br>
 	<input type="radio" name="formaenvio" value="x" class='inline'> Seur (Transporte urgente 24h)
+	<br>
+	<span class='grid_6 push_5' id='solicitar'><?php echo form_submit('enviar', 'Solicitar')?></span>
+	<div class=clear></div>
 	</div>
 
 	<!--  OPCION 2 : Advertencia Paypal -->
@@ -54,8 +57,7 @@
 	<p>Será usted redirigido a la página de paypal para proceder al pago. Una vez finalizado volverá a nuestra web.</p>
 	</div>
 
-	<span class='grid_6 push_5' id='solicitar'><?php echo form_submit('enviar', 'Solicitar')?></span>
-	<div class=clear></div>
+	
 	
 <?php echo form_close();?>
 
@@ -74,6 +76,7 @@
             <span class='grid_6 push_5' id='solicitar'><input id='submit_paypal' type="submit" value="PayPal"> </span>          
             </form>
 	<div class=clear></div>
+	
 </div><!--  Fin Procesar Pedido -->
 <div class=clear></div>	
 
