@@ -8,17 +8,11 @@
 			width: 440,
 			modal: true,
 			buttons: {
-				/*"Guardar": function() {
-						/*$( this ).dialog.submit();
-						$( this ).dialog( "close" );
-*/
-				"GuardarSubmit": function() {
-						//$( this ).dialog.submit(); 
-						//$( this ).dialog( "close" );
+				"Guardar": function() {
 						var tr = $(this).closest('div');
 						var form = tr.find('form');
 						form.submit();
-
+						$( this ).dialog( "close" );
 				},
 				Cancelar: function() {
 					$( this ).dialog( "close" );
@@ -35,10 +29,12 @@
 			width: 440,
 			modal: true,
 			buttons: {
-				/*"Guardar": function() {
-						$( this ).dialog.submit(); 
+				"Guardar": function() {
+						var tr = $(this).closest('div');
+						var form = tr.find('form');
+						form.submit();
 						$( this ).dialog( "close" );
-				},*/
+				},
 				Cancelar: function() {
 					$( this ).dialog( "close" );
 				}

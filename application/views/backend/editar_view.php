@@ -1,6 +1,4 @@
 
-
-
 <div id="dialog-form2" title="Editar <?php echo $this->uri->segment(3);?>">
 	<?php  
 		echo form_open('backend/actualizar/'.$this->uri->segment(3).'/'.$this->uri->segment(4));
@@ -10,7 +8,6 @@
 		  					echo form_input($col,$registro->$col);			
 				}
 			}
-			echo form_submit('','Guardar');
 		echo form_close();
 	?>
 </div>

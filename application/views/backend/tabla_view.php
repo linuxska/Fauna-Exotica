@@ -10,7 +10,6 @@
 					echo form_input($col)."</div>";
 				} 
 			}
-			echo form_submit('','Guardar');
 		echo form_close();
 	?>
 </div>
@@ -33,7 +32,6 @@
 					else echo form_input($col)."</div>";
 				} 
 			}
-			/*echo form_submit('','Guardar');*/
 		echo form_close();
 	?>
 </div>
@@ -57,7 +55,6 @@ else{?>
 			  		}
 				}
 			}
-			echo form_submit('','Guardar');
 		echo form_close();
 	?>
 </div>
