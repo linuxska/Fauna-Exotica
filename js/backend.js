@@ -8,10 +8,10 @@
 			width: 440,
 			modal: true,
 			buttons: {
-				/*"Guardar": function() {
-						$( this ).dialog.submit(); 
+				"Guardar": function() {
+						/*$( this ).dialog.submit();*/
 						$( this ).dialog( "close" );
-				},*/
+				},
 				Cancelar: function() {
 					$( this ).dialog( "close" );
 				}

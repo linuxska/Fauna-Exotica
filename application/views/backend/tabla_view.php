@@ -33,14 +33,11 @@
 					else echo form_input($col)."</div>";
 				} 
 			}
-			echo form_submit('','Guardar');
+			/*echo form_submit('','Guardar');*/
 		echo form_close();
 	?>
 </div>
 <?php }
-
-
-
 else{?>
 <div id="dialog-form" title="Insertar nuevo <?php echo $this->uri->segment(3);?>">
 	<?php  

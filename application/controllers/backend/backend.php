@@ -1,11 +1,4 @@
 <?php
-/*
- * LOGIN
- * Loguear un usuario en la sesión
- * - Las sesiones se inician automaticamente sin datos
- * - Al loguear, cambia su estado logged_in a verdadero
- * - Si desloguea se queda en falso
- */
 
 class Backend extends CI_Controller {
 
@@ -17,7 +10,6 @@ class Backend extends CI_Controller {
 			$this->load->helper('date');
 			$this->load->model('producto_model');
 			$this->load->library('form_validation');
-			$this->load->model('cuenta_model');
        }
        
        public function Index(){
@@ -127,18 +119,15 @@ class Backend extends CI_Controller {
     			if ($nombre_tabla =='usuario') $registro = "id = ".$this->uri->segment(4);
     			else $registro = "cod =".$this->uri->segment(4);		
     			
-    			// Reglas de validaciÃ³n del formulario
-				$this->establecer_reglas();
-				
-				if($this->form_validation->run()==FALSE) echo "No son correctos los datos";
-				else{
-    			
+    			//Insertar la contraseña en la base de datos en md5
+    			$this->form_validation->set_rules('password', 'contraseña', 'md5');
+							
        			$datos['tabla'] = $this->backend_model->obtener_tabla($nombre_tabla);
        			$registro_nuevo = $this->input->post();
        			$this->backend_model->insertar_registro($nombre_tabla,$registro_nuevo);
        			$this->tabla($nombre_tabla);	
-				}	
-       		} else redirect('cuenta/index');
+			}	
+       		else redirect('cuenta/index');
        }
        
        public function ver_producto(){
@@ -175,13 +164,6 @@ class Backend extends CI_Controller {
        			$this->load->view('backend/pedido_view',$datos);  					
        		} else redirect('cuenta/index');
        	
-       	}       
-       	
-       // Reglas Form Validation
-       private function establecer_reglas(){
-			$this->form_validation->set_rules('password', 'contraseña', 'md5');
-       }
-       	
-       	
+       	}        	
 }
 ?>
