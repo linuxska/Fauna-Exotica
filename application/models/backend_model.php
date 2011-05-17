@@ -59,12 +59,9 @@ class Backend_model extends CI_Model {
 		}
 		
 		public function borrar_registro($tabla,$registro){
-			if ($tabla=='usuario'){
-			$this->db->where('id', $registro);
-			}
-			else{
-				$this->db->where('cod', $registro);
-			}
+			if ($tabla=='usuario')$this->db->where('id', $registro);
+			else if($tabla == 'producto_etiqueta')  $this->db->where('cod_etiqueta', $registro);												 
+			else $this->db->where('cod', $registro);
 			$this->db->delete($tabla);
 		}
 		
@@ -73,6 +70,10 @@ class Backend_model extends CI_Model {
 			$this->db->delete('pedido_producto');
 		}
 		
+		public function borrar_etiquetas_producto($cod_producto){
+			$this->db->where('cod_producto', $cod_producto);
+			$this->db->delete('producto_etiqueta');
+		}		
 	
 		public function obtener_registro($tabla,$registro){
 			if ($tabla=='usuario'){
@@ -107,6 +108,21 @@ class Backend_model extends CI_Model {
 								->join("producto", "producto.cod = pedido_producto.cod_producto")
 	   							->get('pedido_producto');
 	   							
+	   		return $query->result_array();
+		}
+		
+		public function obtener_etiquetas($cod){
+			$query = $this->db->select('cod_etiqueta, nombre')
+								->where('cod_producto',$cod)
+								->join("etiqueta", "etiqueta.cod = producto_etiqueta.cod_etiqueta")
+	   							->get('producto_etiqueta');
+	   							
+	   		return $query->result_array();
+		}
+		
+		public function obtener_all_etiquetas(){
+			$query = $this->db->select('cod, nombre')
+	   							->get('etiqueta');				
 	   		return $query->result_array();
 		}
 }

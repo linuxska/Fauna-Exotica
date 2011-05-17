@@ -92,13 +92,16 @@ else{?>
 			
 			if ($this->uri->segment(3)=='producto')echo "<a href='".base_url()."index.php/backend/ver_producto/".$datos['cod']."'><img src='".base_url()."img/ver.gif'></a>";
 			
+			if ($this->uri->segment(3)=='producto')echo "<a href='".base_url()."index.php/backend/ver_etiquetas/producto_etiqueta/".$datos['cod']."'><img src='".base_url()."img/etiquetas.gif'></a>";
+			
 			if ($this->uri->segment(3)=='pedido_producto')echo "<a href='".base_url()."index.php/backend/ver_producto/".$this->uri->segment(3)."/".$datos['cod_producto']."/".$datos['cod_pedido']."'><img src='".base_url()."img/ver.gif'></a>";
     		
     		if ($this->uri->segment(3)=='usuario') echo "<a id='edit' href='".base_url()."index.php/backend/editar/".$this->uri->segment(3)."/".$datos['id']."' ><img src='".base_url()."img/editar.png'></a>";
-    		else if($this->uri->segment(3)!='pedido_producto') echo "<a id='edit' href='".base_url()."index.php/backend/editar/".$this->uri->segment(3)."/".$datos['cod']."'><img src='".base_url()."img/editar.png'></a>"; 
+    		else if($this->uri->segment(3)!='pedido_producto' && $this->uri->segment(3)!='producto_etiqueta') echo "<a id='edit' href='".base_url()."index.php/backend/editar/".$this->uri->segment(3)."/".$datos['cod']."'><img src='".base_url()."img/editar.png'></a>"; 
 	
     		if ($this->uri->segment(3)=='usuario') echo "<a href='".base_url()."index.php/backend/eliminar/".$this->uri->segment(3)."/".$datos['id']."'><img src='".base_url()."img/x.png'></a>";
-    		else if($this->uri->segment(3)!='pedido_producto')echo "<a href='".base_url()."index.php/backend/eliminar/".$this->uri->segment(3)."/".$datos['cod']."'><img src='".base_url()."img/x.png'></a>";
+    		else if($this->uri->segment(3)!='pedido_producto' && $this->uri->segment(3)!='producto_etiqueta')echo "<a href='".base_url()."index.php/backend/eliminar/".$this->uri->segment(3)."/".$datos['cod']."'><img src='".base_url()."img/x.png'></a>";
+    		else if($this->uri->segment(3)=='producto_etiqueta') echo "<a href='".base_url()."index.php/backend/eliminar/".$this->uri->segment(3)."/".$datos['cod_producto']."/".$datos['cod_producto']."'><img src='".base_url()."img/x.png'></a>";
     		else echo "<a href='".base_url()."index.php/backend/eliminar/".$this->uri->segment(3)."/".$datos['cod_producto']."/".$datos['cod_pedido']."'><img src='".base_url()."img/x.png'></a>";?>
     	</td>
     </tr>

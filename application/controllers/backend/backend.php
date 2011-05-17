@@ -64,8 +64,11 @@ class Backend extends CI_Controller {
        			$datos['tabla'] = $this->backend_model->obtener_tabla($nombre_tabla);
        			$registro = $this->uri->segment(4);
        			if ($nombre_tabla=='pedido') $this->backend_model->borrar_productos_pedido($registro);
+       			if ($nombre_tabla=='producto') $this->backend_model->borrar_etiquetas_producto($registro);
+       			if ($nombre_tabla=='producto_etiqueta') $this->backend_model->borrar_registro($nombre_tabla, $this->uri->segment(5));
        			$this->backend_model->borrar_registro($nombre_tabla,$registro);
-       			$this->tabla($nombre_tabla); 	
+       			if($nombre_tabla=='producto_etiqueta')$this->ver_etiquetas();
+       			else $this->tabla($nombre_tabla); 	
        		} else redirect('cuenta/index');
        }
        
@@ -125,7 +128,8 @@ class Backend extends CI_Controller {
        			$datos['tabla'] = $this->backend_model->obtener_tabla($nombre_tabla);
        			$registro_nuevo = $this->input->post();
        			$this->backend_model->insertar_registro($nombre_tabla,$registro_nuevo);
-       			$this->tabla($nombre_tabla);	
+       			if($nombre_tabla=='producto_etiqueta') $this->ver_etiquetas();
+       			else $this->tabla($nombre_tabla);
 			}	
        		else redirect('cuenta/index');
        }
@@ -164,6 +168,24 @@ class Backend extends CI_Controller {
        			$this->load->view('backend/pedido_view',$datos);  					
        		} else redirect('cuenta/index');
        	
-       	}        	
+       	}
+
+       	public function ver_etiquetas(){
+       		if($this->session->userdata('logged_in') !==  TRUE) redirect('login/index');
+       		
+       		$privilegio = $this->session->userdata('tipo');
+       		
+       		$datos['privilegio'] = $privilegio;    	
+       		$datos['usuario'] = $this->session->userdata('usuario'); 
+       		
+       		if ($privilegio !== 'cliente') {
+       			$datos['tabla'] = $this->backend_model->obtener_tabla('producto_etiqueta');
+       			$datos['columnas'] = $this->backend_model->info_columnas('producto_etiqueta');	
+       			$datos['etiquetas'] = $this->backend_model->obtener_etiquetas($this->uri->segment(4));
+       			$datos['all_etiquetas'] = $this->backend_model->obtener_all_etiquetas();
+  				$this->load->view('backend/header', $datos);
+       			$this->load->view('backend/etiquetas_view',$datos);    			
+       		} else redirect('cuenta/index');
+       } 
 }
 ?>
