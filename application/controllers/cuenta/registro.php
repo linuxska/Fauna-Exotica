@@ -39,11 +39,10 @@ class Registro extends CI_Controller {
 			    //Registro BD
 				$reg = $this->cuenta_model->registrar($usuario, $password, $email);				
 				
-				if ($reg === TRUE) {
-					$this->session->sess_destroy();
-					$this->cuenta_model->login($usuario, $password);
-					redirect('cuenta/index');
-				} else echo "error registro";			
+				$this->session->sess_destroy(); // Borra la vieja sesión
+				$this->cuenta_model->login($usuario, $password); // Loguea automaticamente
+					
+				redirect('cuenta/index');	
 			}						
     		
     		$this->load->view('footer');

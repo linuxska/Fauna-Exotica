@@ -18,11 +18,12 @@ class Carrito extends CI_Controller {
    			$this->load->model('cuenta_model');
        }
        
-       public function Index(){
+		public function Index(){
        		/* Datos para la vista */
 	       	$head['titulo'] = "Carrito";
 	       	$menu['menu'] = $this->menu_model->obtener_menu();
 	       	
+	       	// Datos del carro
 	        $contenido['total_items'] = $this->cart->total_items(); 
 	        $contenido['total'] = $this->cart->total(); 
 			$contenido['carrito'] = $this->carrito_model->obtener_carrito();
@@ -37,44 +38,47 @@ class Carrito extends CI_Controller {
 	    	$this->load->view('footer');      	
        }
        
-       // Añadir elemento al carro
-       public function incluir (){
-       	
-       	//Comprobar si el producto ya está en el carro
-       	$id_producto=$this->carrito_model->esta($this->input->post('id'),$this->cart->contents());
-       	if($id_producto!=null){ //Incrementamos la cantidad del producto
-       		$data = array(
-               'rowid' => $id_producto['rowid'],
-               'qty'   => ($id_producto['qty']) + ($this->input->post('cantidad'))
-            );
+		// Añadir elemento al carro
+		public function incluir (){
+			
+       		$id_producto=$this->carrito_model->esta($this->input->post('id'),$this->cart->contents());
+       		
+       		//Comprobar si el producto ya está en el carro     		
+       		if($id_producto!=null){ 
+       			//Incrementamos la cantidad del producto
+       			$data = array('rowid' => $id_producto['rowid'],
+              	 'qty'   => ($id_producto['qty']) + ($this->input->post('cantidad')));
             
-			$this->cart->update($data); 
-      	}else{ //Se incluye en el carro
-	       	
-				$producto = array( 
-								'id'      => $this->input->post('id'),
+				$this->cart->update($data); 
+			
+			} else { //Se incluye en el carro
+		       	
+				$producto = array('id'      => $this->input->post('id'),
 								'price'   => $this->input->post('price'),
 								'qty'	  => $this->input->post('cantidad'),
-								'name'    => $this->input->post('name') 
-				);
-	
+								'name'    => $this->input->post('name'));
+		
 				$this->cart->insert($producto); // Insertar a la sesión del carrito
-       		}       
-				// Muestra el carrito:
-		       	redirect('carrito/index/');      	
+	       	}      
+       	 
+			// Muestra el carrito:
+			redirect('carrito/index/');      	
        		
-       }
+		}
        
        // Borrar elemento del carro
-       public function eliminar($rowid){
+		public function eliminar($rowid){
+			// Actualizar la cantidad a 0 implica borrarlo
 			$this->carrito_model->actualizar_cantidad($rowid, '0');		
 	       	        
 			// Muestra el carrito:
 	       	redirect('carrito/index/');
        }
        
-        public function actualizar(){          	
-			$this->carrito_model->actualizar_cantidad($this->input->post('rowid'),  $this->input->post('cantidad'));		
+		// Actualiza la cantidad de un producto del carro
+		public function actualizar(){          	
+			$this->carrito_model->actualizar_cantidad($this->input->post('rowid'),  
+													$this->input->post('cantidad'));		
 	       	        
 			// Muestra el carrito:
 	       	redirect('carrito/index/');
@@ -99,7 +103,7 @@ class Carrito extends CI_Controller {
 	            /* Carga de las vistas */
 				$this->load->view('header', $head);    		
 	    		
-	    		// Reglas de validaciÃ³n del formulario
+	    		// Reglas de validación del formulario
 				$this->establecer_reglas();
 				
 				if($this->form_validation->run()==FALSE){
@@ -133,6 +137,7 @@ class Carrito extends CI_Controller {
 			}
        }  
       
+       // Proceso de confirmación de un pedido contrareembolso
        public function confirmar_contrareembolso(){
        		$datos_pedido = array('formaenvio'      => $this->input->post('formaenvio'),
 							'formapago'   => 'contrareembolso',
@@ -140,15 +145,17 @@ class Carrito extends CI_Controller {
 							'direccion_factura'    => $this->input->post('direccion_factura') 
 							);
 			
+			// Se registra en la BD
        		$this->carrito_model->confirmar_pedido($datos_pedido);
        		       
        		// Destruir el carro
        		$this->cart->destroy();
        		
-       		// ¿Necesario reducir stock? O esperar a confirmacion de los datos..
-       		redirect('cuenta/index/'); // Redireccion al inicio, falta mensaje al usuario
+       		// No se reduce el stock (es necesario la comprobacion de los datos)
+       		redirect('cuenta/index/');
        }
        
+       // Confirmamos que se ha hecho una compra paypal
        public function confirmar_paypal(){
        		$datos_pedido = array('formaenvio'      => '',
 							'formapago'   => 'paypal',
@@ -156,16 +163,18 @@ class Carrito extends CI_Controller {
 							'direccion_factura'    => '' 
 							);
 			
+			// Registramos en la BD
        		$this->carrito_model->confirmar_pedido($datos_pedido);
        		
+       		
        		$carrito = $this->carrito_model->obtener_carrito();
-       		// Reducir stock
+       		
+       		// Reducir stock (la compa está confirmada por paypal)
        		foreach ($carrito as $producto) {
        			$this->carrito_model->reducir_stock($producto);
        		}
 
        }
-
 
         
        //Funcion para comprobar si la cantidad solicitada de un producto está en stock
@@ -174,6 +183,7 @@ class Carrito extends CI_Controller {
        		if ($cantidad>$qty_producto['cantidad_disponible']) return true;
        		else return false;
        }
+       
        
        // Reglas Form Validation
        private function establecer_reglas(){
@@ -189,69 +199,69 @@ class Carrito extends CI_Controller {
 			
        }
        
+       // Llamada de retorno via paypal, tras hacer una compra el usuario.
+       // Recogemos mediante un script, los datos de la compra por PDT Paypal
        public function transactionID(){
        	
-			// read the post from PayPal system and add 'cmd'
 			$req = 'cmd=_notify-synch';
 			
+			// Identificador de la compra: transactionID
 			$tx_token =  $this->input->get('tx');
 			
+			// Código autentificaición (configuracion cuenta paypal de la tienda)
 			$auth_token = "e5ToGxzfIKWjDmmpR93UCGpQC6Z7t5IlJIZMFvMorXYWxs6HJe-sO4eeDM0";
 			
-			$req .= "&tx=$tx_token&at=$auth_token";
+			$req .= "&tx=$tx_token&at=$auth_token";			
 			
-			
-			// post back to PayPal system to validate
+			// Post a PayPalde validacion
 			$header = "";
 			$header .= "POST /cgi-bin/webscr HTTP/1.0\r\n";
 			$header .= "Content-Type: application/x-www-form-urlencoded\r\n";
 			$header .= "Content-Length: " . strlen($req) . "\r\n\r\n";
+			
+			// Lectura de la página (entorno de pruebas, la direcion oficial es www.paypal.com)
 			$fp = fsockopen ('www.sandbox.paypal.com', 80, $errno, $errstr, 30);
-			// If possible, securely post back to paypal using HTTPS
-			// Your PHP server will need to be SSL enabled
-			// $fp = fsockopen ('ssl://www.sandbox.paypal.com', 443, $errno, $errstr, 30);
 			
 			if (!$fp) {
 				echo "<p><h3>HTTP Error</h3></p>";
 			} else {
-			fputs ($fp, $header . $req);
-			// read the body data
-			$res = '';
-			$headerdone = false;
-			while (!feof($fp)) {
-			$line = fgets ($fp, 1024);
-			if (strcmp($line, "\r\n") == 0) {
-			// read the header
-			$headerdone = true;
-			}
-			else if ($headerdone)
-			{
-			// header has been read. now read the contents
-			$res .= $line;
-			}
-			}
-			
-			// parse the data
-			$lines = explode("\n", $res);
-			$keyarray = array();
-			if (strcmp ($lines[0], "SUCCESS") == 0) {
-
-				for ($i=1; $i<count($lines);$i++){
-					if ( strpos($lines[$i],'=') !== false ){
-						list($key,$val) = explode("=", $lines[$i]);
-						$keyarray[urldecode($key)] = urldecode($val);
-					} 
+				fputs ($fp, $header . $req);
+				// read the body data
+				$res = '';
+				$headerdone = false;
+				while (!feof($fp)) {
+					$line = fgets ($fp, 1024);
+					if (strcmp($line, "\r\n") == 0) {
+						// Lectura header
+						$headerdone = true;
+					}
+					else if ($headerdone){
+						// header leido. Lectura contenido...
+						$res .= $line;
+					}
 				}
-
-				$datos['nombre'] = $keyarray['first_name'];
-				$datos['apellidos'] = $keyarray['first_name'];
-				$datos['coste_total'] = $keyarray['mc_gross'];
-
-			}
-			else if (strcmp ($lines[0], "FAIL") == 0) {
-				// log for manual investigation
-				echo "<p><h3>ERROR transactionID</h3></p>";
-			}
+				
+				// Convertir los datos
+				$lines = explode("\n", $res);
+				$keyarray = array();
+				if (strcmp ($lines[0], "SUCCESS") == 0) {
+	
+					for ($i=1; $i<count($lines);$i++){
+						if ( strpos($lines[$i],'=') !== false ){
+							list($key,$val) = explode("=", $lines[$i]);
+							$keyarray[urldecode($key)] = urldecode($val);
+						} 
+					}
+	
+					// Datos que recogemos de la compra
+					$datos['nombre'] = $keyarray['first_name'];
+					$datos['apellidos'] = $keyarray['first_name'];
+					$datos['coste_total'] = $keyarray['mc_gross'];
+	
+				}
+				else if (strcmp ($lines[0], "FAIL") == 0) {
+					echo "<p><h3>ERROR transactionID</h3></p>";
+				}
 			
 			}
 			

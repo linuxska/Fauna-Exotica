@@ -20,7 +20,7 @@
 			$total = 0;
 			foreach ($productos as $fila) {
 				$total = $total + $fila['precio'];
-				echo '<a href="'.base_url().'producto/mostrar'.$fila['cod_producto'].'">';
+				echo '<a href="'.base_url().'producto/mostrar/'.$fila['cod_producto'].'">';
 				echo '<li>('.$fila['cantidad'].') '. $fila['nombre'] .' a '. $fila['precio'].'€</li></a>';				
 			}
 		?>
