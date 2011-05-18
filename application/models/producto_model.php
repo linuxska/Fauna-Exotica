@@ -72,7 +72,7 @@ class Producto_model extends CI_Model{
 			// Lo pasamos a un array
 			$cod_etiquetas = array();
 			foreach ($query_cod_etiquetas->result() as $value ) $cod_etiquetas[] = $value->cod;
-			foreach ($query_cod_etiquetas->result() as $value ) echo $value->cod;
+			
 			// Si no hay resultados, devuelve un array vacio
 			if ($query_cod_etiquetas->num_rows()>0){
 				
