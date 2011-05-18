@@ -27,7 +27,7 @@
 		<h3><a href="#">Cuenta</a></h3>	
 		<div>
 			<!--  Inicio Cuenta -->			
-			<a href='<?php echo base_url();?>cuenta/logout'><span id='logout'>Terminar sesión</span></a>
+			<a class='sin_subrayado' href='<?php echo base_url();?>cuenta/logout'><span id='logout'>Terminar sesión</span></a>
 			
 			<p>Bienvenido <?php echo $cuenta->usuario?></p>		
 			<?php if ($cuenta->tipo === 'cliente') {

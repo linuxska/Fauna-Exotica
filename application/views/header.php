@@ -83,7 +83,7 @@
 	</div> <!--  Fin Carro -->
 
 	<div class="grid_3"> 
-		<a href="http://localhost/Fauna-Exotica/cuenta/index"><span id="micuenta">Mi Cuenta</span></a>
+		<a class='sin_subrayado' href="http://localhost/Fauna-Exotica/cuenta/index"><span id="micuenta">Mi Cuenta</span></a>
 	</div>
 			
 	<div class='clear'>&nbsp;</div> <!--  Colocacion Header -->

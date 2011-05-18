@@ -120,3 +120,8 @@ form.buscador{
 .inline{
 	display:inline;
 }
+
+.sin_subrayado {
+	text-decoration: none;
+}
+

@@ -50,7 +50,7 @@ class Contactar extends CI_Controller {
 				$this->email->set_alt_message(strip_tags($msg)); 
 				
 				// Enviando email
-				$this->load->view('cuenta/email_enviado_view');
+				$this->load->view('email_enviado_view');
 					
     		}
     		
