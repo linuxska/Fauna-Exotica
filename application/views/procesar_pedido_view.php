@@ -46,7 +46,7 @@
 	<span>Forma de envío</span>
 	<br>
 	<input type="radio" name="formaenvio" value="correo" class='inline'> Correos<br>
-	<input type="radio" name="formaenvio" value="x" class='inline'> Seur (Transporte urgente 24h)
+	<input type="radio" name="formaenvio" value="seur" class='inline'> Seur (Transporte urgente 24h)
 	<br>
 	<span class='grid_6 push_5' id='solicitar'><?php echo form_submit('enviar', 'Solicitar')?></span>
 	<div class=clear></div>
