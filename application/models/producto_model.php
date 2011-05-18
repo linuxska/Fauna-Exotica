@@ -49,7 +49,7 @@ class Producto_model extends CI_Model{
 
 	   }
 	   
-	   //Obtener el n� total de productos de una subcategoria
+	   //Obtener el numero total de productos de una subcategoria
 	   public function total_productos($cod_subcategoria){
 	   		$query = $this->db->select('cod')
        							->where('cod_subcategoria',$cod_subcategoria)
@@ -72,7 +72,7 @@ class Producto_model extends CI_Model{
 			// Lo pasamos a un array
 			$cod_etiquetas = array();
 			foreach ($query_cod_etiquetas->result() as $value ) $cod_etiquetas[] = $value->cod;
-			
+			foreach ($query_cod_etiquetas->result() as $value ) echo $value->cod;
 			// Si no hay resultados, devuelve un array vacio
 			if ($query_cod_etiquetas->num_rows()>0){
 				
@@ -80,17 +80,19 @@ class Producto_model extends CI_Model{
 				$query_cod_productos = $this->db->select('cod_producto')
 										->where_in('cod_etiqueta', $cod_etiquetas)
 										->get('producto_etiqueta');
-			
-				// Lo pasamos a un array
-				$cod_productos = array();
-				foreach ($query_cod_productos->result() as $v) $cod_productos[] = $v->cod_producto;			
 
-				// Obtenemos los productos resultantes
-				$query = $this->db->select('cod, nombre, foto, descripcion, precio')
-	       							->where_in('cod', $cod_productos)
-	       							->get('producto', $num_items, $num_pag);
-	       		return $query->result();
-			
+				// Si no existen productos con esas etiquetas, devuelve vacio
+				if ($query_cod_productos->num_rows()>0){
+					// Lo pasamos a un array
+					$cod_productos = array();
+					foreach ($query_cod_productos->result() as $v) $cod_productos[] = $v->cod_producto;			
+	
+					// Obtenemos los productos resultantes
+					$query = $this->db->select('cod, nombre, foto, descripcion, precio')
+		       							->where_in('cod', $cod_productos)
+		       							->get('producto', $num_items, $num_pag);
+		       		return $query->result();				
+				} else return array();
 			} else return array();
 	   }
 	   
@@ -117,7 +119,7 @@ class Producto_model extends CI_Model{
 				$query_cod_productos = $this->db->select('cod_producto')
 										->where_in('cod_etiqueta', $cod_etiquetas)
 										->get('producto_etiqueta');
-			
+				if ($query_cod_productos->num_rows()<=0) return 0;
 				// Lo pasamos a un array
 				$cod_productos = array();
 				foreach ($query_cod_productos->result() as $v) $cod_productos[] = $v->cod_producto;			
