@@ -257,6 +257,7 @@ class Carrito extends CI_Controller {
 					$datos['nombre'] = $keyarray['first_name'];
 					$datos['apellidos'] = $keyarray['first_name'];
 					$datos['coste_total'] = $keyarray['mc_gross'];
+					$datos['moneda'] = $keyarray['mc_currency'];
 	
 				}
 				else if (strcmp ($lines[0], "FAIL") == 0) {

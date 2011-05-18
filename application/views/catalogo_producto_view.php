@@ -10,23 +10,25 @@
 		
 		<form class="buscador" accept-charset="utf-8" method="get" action="<?php echo base_url();?>buscador/index">
 			<input type='text' name='busqueda' id='busqueda' maxlength='30' size='20'/>
-			<input type='submit' value='Buscar'/>
+			<input id='boton_buscar' type='submit' value='Buscar'/>
 			<br/>
 		</form>
 	</ul>
 	<div id="tabs-1">
 		<h1>Catálogo</h1>
 <?php 
+
+$i=0;
 	if (empty($productos)) echo "No se encontraron resultados para su búsqueda";
 		else {foreach($productos as $fila){
-			
+		
 		$data = array(
 	               'id'      => $fila->cod,
 	               'price'   => $fila->precio,
 				   'cantidad' => 1,
 	               'name'    => $fila->nombre
 	            );
-	           
+	  
 			echo "<div class=\"producto grid_3 push_1\">"; 
 			echo "<img src=".base_url()."img/productos/".$fila->foto.">";
 			echo "<div class=\"info\"><p>".$fila->nombre."</p>";
@@ -41,6 +43,11 @@
 			echo "</div>";
 			echo "</div>";
 			echo "</div>";	
+			if($i==2){
+				echo "<div class=clear></div>";
+				$i=0;
+			}
+			else $i++;
 		}
 	}
 ?>
