@@ -3,8 +3,8 @@
  * LOGIN
  * Loguear un usuario en la sesión
  * - Las sesiones se inician automaticamente sin datos
- * - Al loguear, cambia su estado logged_in a verdadero
- * - Si desloguea se queda en falso
+ * - Al loguear, cambia su estado logged_in a verdadero, mas un id y nombre de usuario
+ * - Si desloguea se queda logged_in a falso
  */
 
 class Login extends CI_Controller {
@@ -35,18 +35,17 @@ class Login extends CI_Controller {
 			$this->load->view('header', $head);
     		   		
        		if($this->form_validation->run()==FALSE) {
+       			// Si no se ha enviado el formulario
        			$this->load->view('menu', $menu);
 				$this->load->view('cuenta/login_view');	
 			
        		} else {
 				$usuario = $this->input->post('usuario');
-				$password = $this->input->post('password');
+				$password = $this->input->post('password'); // en md5
 
 				$login = $this->cuenta_model->login($usuario, $password);
 				
-				if ($login == TRUE){
-					redirect('cuenta/index');
-				} else echo "error login";
+				redirect('cuenta/index');
 			
 			}
 			$this->load->view('footer');
@@ -79,7 +78,6 @@ class Login extends CI_Controller {
 			$this->form_validation->set_message('comprobar_password', 'La contraseña no es correcta');
 			
        }
-
        
 }
 ?>

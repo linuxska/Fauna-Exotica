@@ -3,7 +3,7 @@
  * PRODUCTO
  * Muestra en principio el catálogo de productos separado por subcategorias
  * Al solicitar un producto en concreto se muestra Informacion mas detallada del mismo
- * Se podrá filtrar los resultados por etiquetas * (no empezado)
+ * 
  */
 class Producto extends CI_Controller {
 

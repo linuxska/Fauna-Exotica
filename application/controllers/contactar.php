@@ -4,6 +4,7 @@
  * Permite al usuario mandar un email con un mensaje corto.
  * Se envia a través de gmail por SMTP, con la cuenta lauscar.sl@gmail
  * El email del usuario se manda también a lauscar.sl@gmail
+ * 
  */
 class Contactar extends CI_Controller {
 
@@ -31,17 +32,17 @@ class Contactar extends CI_Controller {
     		$this->load->view('menu', $menu);
     		
     		if($this->form_validation->run()==FALSE){
-    			// Si no se ha enviado el formulario se muestra 
-    			// se muestran con tabs
+    			// Si no se ha enviado el formulario 
     			$this->load->view('contactar_view'); 
     			  			
     		} else {
+    			// Formulario enviado correctamente
     			$nombre = $this->input->post('nombre');
     			$email = $this->input->post('email');
     			$asunto = $this->input->post('asunto');
     			$msg = $this->input->post('mensaje');
     			
-    			// Datos del mensaje
+    			// Datos del mensaje email
 				$this->email->from($email, $nombre);
 				$this->email->to('lauscar.sl@gmail.com');
 				$this->email->subject($asunto);				
@@ -49,10 +50,8 @@ class Contactar extends CI_Controller {
 				$this->email->set_alt_message(strip_tags($msg)); 
 				
 				// Enviando email
-		       	if ($this->email->send()){
-					$this->load->view('cuenta/email_enviado_view');
+				$this->load->view('cuenta/email_enviado_view');
 					
-		       	} else "Error email";	
     		}
     		
     		$this->load->view('footer');

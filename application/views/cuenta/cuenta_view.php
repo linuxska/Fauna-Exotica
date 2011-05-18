@@ -31,7 +31,7 @@
 			
 			<p>Bienvenido <?php echo $cuenta->usuario?></p>		
 			<?php if ($cuenta->tipo === 'cliente') {
-				echo "<p>".anchor('carrito/pedido', ' Continuar comprando')."</p>";
+				echo "<p>".anchor('inicio', ' Continuar comprando')."</p>";
 			} else {
 				echo '<p>Tiene usted permiso de '.$cuenta->tipo.': ';
 				echo anchor('backend/index', 'Acceder al Backend').'</p>';

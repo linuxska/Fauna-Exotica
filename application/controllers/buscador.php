@@ -14,19 +14,16 @@ class Buscador extends CI_Controller {
 			$this->load->helper('form');
 			$this->load->library('form_validation');
 			$this->load->library('pagination');
-
        }
 
        public function Index(){
     		
        		/* Datos de paginacion y obtener palabras de la búsqueda*/
-            if ($this->uri->segment(3) === FALSE)
-			{
+            if ($this->uri->segment(3) === FALSE){
     			$busqueda = explode(' ', $this->input->get('busqueda'));
     			$config['base_url']= base_url().'index.php/buscador/index/'.$this->input->get('busqueda');
-			}
-			else
-			{
+			
+            }else {
 				$busqueda = explode(' ', $this->uri->segment(3));
 				$config['base_url']= base_url().'index.php/buscador/index/'.$this->uri->segment(3);
 			}
@@ -62,7 +59,9 @@ class Buscador extends CI_Controller {
     		$this->load->view('footer'); 
        }
        
-		public function callback () {
+		// Llamada ajax mediante json. Envia todas las etiquetas de la BD, para
+		// el autocompletado en el buscador
+		public function callback() {
       		$datos = $this->producto_model->obtener_etiquetas();
       		$etiquetas = array();
       		foreach ($datos as $valor){

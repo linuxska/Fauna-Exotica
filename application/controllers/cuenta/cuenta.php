@@ -2,7 +2,7 @@
 /*
  * CUENTA
  * Se encarga de todo el control del usuario y las sesiones.
- * - Si la sesión no se ha iniciado carga el login
+ * - Si la sesión no se ha iniciado carga login()
  * - Con la sesión iniciada muestra el panel del usuario
  * 
  */
@@ -20,9 +20,10 @@ class Cuenta extends CI_Controller {
 			$this->load->model('producto_model');
        }
        
+       
        public function Index(){
 			if( $this->session->userdata('logged_in') !==  TRUE){
-				// Si no ha iniciado sesión se abre la pagina login
+				// Si no ha iniciado sesión => login()
 				redirect('login/index');
 				
 			} else {
@@ -35,22 +36,24 @@ class Cuenta extends CI_Controller {
 				$this->load->view('menu', $menu);
 						   			
     			// Datos del usuario para el formulario
-
     			$datos['cuenta'] = $this->cuenta_model->obtener_todo($this->session->userdata('id'));
     			$datos['pedidos'] =  $this->pedido_model->obtener_pedidos($this->session->userdata('id'));
+    			
     			// Contenido principal  
 				$this->load->view('cuenta/cuenta_view', $datos);
 				
 				$this->load->view('footer');
 			}
        }
+
        
+       // Muestra información de un pedido realizado, según su código en la BD
        public function pedido($cod_pedido){
        		// Datos para la vista 
 	       	$head['titulo'] = "Cuenta";
 			$menu['menu'] = $this->menu_model->obtener_menu();
 	
-	           // Carga de las vistas 
+	        // Carga de las vistas 
 			$this->load->view('header', $head);    	
 			$this->load->view('menu', $menu);
 						   			
@@ -64,7 +67,7 @@ class Cuenta extends CI_Controller {
        }
        
 
-       // Termina la sesión. Estado logged => Falso
+       // Termina la sesión. Modifica el estado logged a Falso
        public function logout (){
        		$this->session->set_userdata('logged_in', 'FALSE');
        		
@@ -86,6 +89,7 @@ class Cuenta extends CI_Controller {
             /* Carga de las vistas */
 			$this->load->view('header', $head);
 			
+			//Datos de la cuenta
 			$cuenta = $this->cuenta_model->obtener_todo($this->session->userdata('id'));
 			
 			if($this->form_validation->run()==FALSE){
@@ -129,6 +133,7 @@ class Cuenta extends CI_Controller {
             /* Carga de las vistas */
 			$this->load->view('header', $head);
 			
+			//Datos usuario
 			$cuenta = $this->cuenta_model->obtener_todo($this->session->userdata('id'));
 			
 			if($this->form_validation->run()==FALSE){
@@ -165,6 +170,7 @@ class Cuenta extends CI_Controller {
             /* Carga de las vistas */
 			$this->load->view('header', $head);
 			
+			//Datos usuario
 			$cuenta = $this->cuenta_model->obtener_todo($this->session->userdata('id'));
 			
 			if($this->form_validation->run()==FALSE){

@@ -1,4 +1,13 @@
 <?php
+/*
+ * 
+ * Método para recuperar una contraseña, enviando al correo 
+ * del usuario, una nueva aleatoria. Se establece dicha contraseña en la BD
+ * sin sustituir la anterior. Si entra con la nueva contraseña pasa a ser
+ * su contraseña princiapal (se le aconseja cambiarla). En caso de que
+ * "recuerde" su contraseña anterior y la introduce, la última generada se borra.
+ * 
+ */
 
 class Recuperar_password extends CI_Controller {
 
@@ -34,10 +43,13 @@ class Recuperar_password extends CI_Controller {
 				$this->load->view('cuenta/recuperar_password_view');	
 			
        		}else{
-				// Dato recibido: Email o Usuario...
-				$user_email = $this->input->post('user_email');
 				
-				// Obtenemos los datos de la cuenta
+       			/*
+       			 * Puede recibir un usuario o un email
+       			 */
+       			
+				$user_email = $this->input->post('user_email');
+
 				// Comprobamos si es un usuario o el email
 				if (valid_email($user_email)) {
 		       	  	// Es un email
@@ -50,10 +62,10 @@ class Recuperar_password extends CI_Controller {
 		       	
 		       	// Creamos nueva contraseña aleatoria
 		       	$password = random_string('alnum', 8, 'nozero');
-		       	$password_md5 =  md5($password);
+		       	$password_md5 =  md5($password); // Encriptamos md5
 				$this->cuenta_model->registrar_password_recuperacion($password_md5);
 
-				// Datos del mensaje
+				// Datos del mensaje email que se manda al usuario
 				$this->email->from('lauscar.sl@gmail.com', 'Lauscar');
 				$this->email->to($datos['email']);
 				$this->email->subject('FaunaExotica: Recuperar contraseña');
@@ -62,7 +74,7 @@ class Recuperar_password extends CI_Controller {
 				$this->email->message($msg);
 				$this->email->set_alt_message(strip_tags($msg)); 
 				
-				// Enviando email
+				// Enviando email vía gmail
 		       	if ($this->email->send()){
 		       		$this->load->view('menu', $menu);
 					$this->load->view('cuenta/email_enviado_view');
@@ -73,7 +85,7 @@ class Recuperar_password extends CI_Controller {
        }
        
 
-		// Valida si existe el usuario o email en la BD
+		// Form Validation: Valida si existe el usuario o email en la BD
 		public function comprobar_datos($user_email){
 			if (valid_email($user_email))  // Es un email			
 				return $this->cuenta_model->existe_email($user_email);

@@ -22,7 +22,7 @@ class Inicio extends CI_Controller {
 			$this->load->view('header', $head);
     		$this->load->view('menu', $menu);
     		
-    		//Obtener novedades
+    		//Obtener novedades (slider)
             $contenido['novedad'] = $this->novedades_model->obtener_novedades();
     		
     		// Tabs
