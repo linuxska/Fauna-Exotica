@@ -18,6 +18,7 @@ class Cuenta extends CI_Controller {
 			$this->load->model('cuenta_model');
 			$this->load->model('pedido_model');
 			$this->load->model('producto_model');
+			
        }
        
        
@@ -90,12 +91,13 @@ class Cuenta extends CI_Controller {
 			$this->load->view('header', $head);
 			
 			//Datos de la cuenta
-			$cuenta = $this->cuenta_model->obtener_todo($this->session->userdata('id'));
+			$datos['cuenta'] = $this->cuenta_model->obtener_todo($this->session->userdata('id'));
+			$datos['pedidos'] =  $this->pedido_model->obtener_pedidos($this->session->userdata('id'));
 			
 			if($this->form_validation->run()==FALSE){
 				// Si no se ha enviado el formulario, devuelve a la vista de cuenta
 				$this->load->view('menu', $menu);
-				$this->load->view('cuenta/cuenta_view', $cuenta);
+				$this->load->view('cuenta/cuenta_view', $datos);
 				
 			} else {
 				// Formulario enviado
@@ -111,7 +113,7 @@ class Cuenta extends CI_Controller {
 				$reg = $this->cuenta_model->actualizar_usuario($datos_perfil, $cod_usuario);	
 							
 				$this->load->view('menu', $menu);
-				$this->load->view('cuenta/cuenta_view', $cuenta);
+				$this->load->view('cuenta/cuenta_view', $datos);
 						
 			} 
 			$this->load->view('footer');
@@ -134,12 +136,13 @@ class Cuenta extends CI_Controller {
 			$this->load->view('header', $head);
 			
 			//Datos usuario
-			$cuenta = $this->cuenta_model->obtener_todo($this->session->userdata('id'));
+			$datos['cuenta'] = $this->cuenta_model->obtener_todo($this->session->userdata('id'));
+			$datos['pedidos'] =  $this->pedido_model->obtener_pedidos($this->session->userdata('id'));
 			
 			if($this->form_validation->run()==FALSE){
 				// Si no se ha enviado el formulario, devuelve a la vista de cuenta
 				$this->load->view('menu', $menu);
-				$this->load->view('cuenta/cuenta_view', $cuenta);
+				$this->load->view('cuenta/cuenta_view', $datos);
 			
 			} else {
 				// Formulario enviado			    
@@ -150,7 +153,7 @@ class Cuenta extends CI_Controller {
 				$reg = $this->cuenta_model->actualizar_usuario($email, $cod_usuario);	
 				
 				$this->load->view('menu', $menu);
-				$this->load->view('cuenta/cuenta_view', $cuenta);		
+				$this->load->view('cuenta/cuenta_view', $datos);		
 			}
 			$this->load->view('footer');
        }
@@ -171,12 +174,13 @@ class Cuenta extends CI_Controller {
 			$this->load->view('header', $head);
 			
 			//Datos usuario
-			$cuenta = $this->cuenta_model->obtener_todo($this->session->userdata('id'));
+			$datos['cuenta'] = $this->cuenta_model->obtener_todo($this->session->userdata('id'));
+			$datos['pedidos'] =  $this->pedido_model->obtener_pedidos($this->session->userdata('id'));
 			
 			if($this->form_validation->run()==FALSE){
 				// Si no se ha enviado el formulario, devuelve a la vista de cuenta
 				$this->load->view('menu', $menu);
-				$this->load->view('cuenta/cuenta_view', $cuenta);
+				$this->load->view('cuenta/cuenta_view', $datos);
 			
 			} else {
 				// Formulario enviado			    
@@ -187,7 +191,7 @@ class Cuenta extends CI_Controller {
 				$reg = $this->cuenta_model->actualizar_usuario($password, $cod_usuario);	
 				
 				$this->load->view('menu', $menu);
-				$this->load->view('cuenta/cuenta_view', $cuenta);			
+				$this->load->view('cuenta/cuenta_view', $datos);			
 			}
 			$this->load->view('footer');
        }

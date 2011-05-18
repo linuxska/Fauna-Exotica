@@ -76,7 +76,7 @@
 			<?php echo form_label('Email:', 'email'); ?>
 			<?php echo form_input(array('name' => 'email', 'id' => 'email', 'maxlength'   => '40', 'size' => '50', 'value' => set_value('email', $cuenta->email))); ?>
 			<?php echo form_label('Contraseña actual:', 'password_email_actual'); ?>
-			<?php echo form_password(array('name' => 'password_actual', 'id' => 'password', 'maxlength'   => '40', 'size' => '50')); ?>
+			<?php echo form_password(array('name' => 'password_email_actual', 'id' => 'password_email_actual', 'maxlength'   => '40', 'size' => '50')); ?>
 			
 			<?php echo form_submit('enviar', 'Guardar') ?>
 			<?php echo form_close() ?>
