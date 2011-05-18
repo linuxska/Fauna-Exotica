@@ -55,7 +55,7 @@
 	<!--  OPCION 2 : Advertencia Paypal -->
 	<div class='grid_6 push_3' id='paypal'>
 	<p>Será usted redirigido a la página de paypal para proceder al pago. Una vez finalizado volverá a nuestra web.</p>
-	</div>
+	
 
 	
 	
@@ -73,8 +73,8 @@
             <?php $i++; ?>
             <?php endforeach; ?>
             <INPUT TYPE="hidden" NAME="return" value="http://localhost/Fauna-Exotica/carrito/transactionID">
-            <span class='grid_6 push_5' id='solicitar'><input id='submit_paypal' type="submit" value="PayPal"> </span>          
-            </form>
+            <span id='solicitar'><input id='submit_paypal' type="submit" value="PayPal"> </span>          
+            </form></div>
 	<div class=clear></div>
 	
 </div><!--  Fin Procesar Pedido -->
