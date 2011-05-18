@@ -26,7 +26,7 @@
 	<span>Forma de pago </span>
 	<br>
 	<input type="radio" name="formapago" value="contra_reembolso" class='inline'> Contra Reembolso<br>
-	<input type="radio" name="formapago" value="paypal" class='inline'> <img src="<?php echo base_url();?>img/pago/Paypal.png"></img>
+	<input type="radio" name="formapago" value="paypal" class='inline'> <img src="<?php echo base_url();?>img/Paypal.png"></img>
 	<p>
 	<input type="checkbox" name="condiciones" value="condiciones" class='inline'> He leído y acepto la Política de Privacidad y Condiciones de compra *<br>
 	</p>
