@@ -4,7 +4,7 @@
 	<div id="tabs">
 	<ul>
 		<li><a href='#tabs-1'>Lista productos</a></li>
-		<li><?php echo anchor('inicio', 'Inicio');?></li>
+		<li><?php echo anchor('inicio/index', 'Inicio');?></li>
 		<li><?php echo anchor('Informacion', 'Informacion');?></li>
 		<li><?php echo anchor('contactar/index', 'Contactar');?></li>
 		

@@ -12,6 +12,7 @@ class Backend extends CI_Controller {
 			$this->load->library('form_validation');
        }
        
+       //Genera la tabla principal del backend
        public function Index(){
        		if($this->session->userdata('logged_in') !==  TRUE) redirect('login/index');
        		
@@ -23,16 +24,11 @@ class Backend extends CI_Controller {
        		if ($privilegio == 'admin') {
        			$datos['tablas'] = $this->backend_model->info_tablas('admin');
        			$this->load->view('backend/header', $datos);  	
-  				$this->load->view('backend/backend_admin_view');  
-  									
-       		} elseif($privilegio == 'gestor') {
-       			$datos['tablas'] = $this->backend_model->info_tablas('gestor');
-       			$this->load->view('backend/header', $datos);	
-       			$this->load->view('backend/backend_gestor_view', $datos);
-       			
+  				$this->load->view('backend/backend_admin_view');         			
        		} else redirect('cuenta/index');
        }   
        
+       // Genera cada una de las tablas
         public function tabla($nombre_tabla){
        		if($this->session->userdata('logged_in') !==  TRUE) redirect('login/index');
        		
@@ -50,7 +46,8 @@ class Backend extends CI_Controller {
        			$this->load->view('backend/tabla_view');    			
        		} else redirect('cuenta/index');
        }  
-         
+
+       // Función que permite eliminar registros de una tabla
         public function eliminar($registro){
         	if($this->session->userdata('logged_in') !==  TRUE) redirect('login/index');
        		
@@ -72,6 +69,7 @@ class Backend extends CI_Controller {
        		} else redirect('cuenta/index');
        }
        
+       // función que permite editar un registro de una tabla
        public function editar(){
           	if($this->session->userdata('logged_in') !==  TRUE) redirect('login/index');
        		
@@ -90,6 +88,7 @@ class Backend extends CI_Controller {
        		} else redirect('cuenta/index');     	
        }
        
+       // Función necesaria para actualizar los cambios de editar
        public function actualizar(){
        		if($this->session->userdata('logged_in') !==  TRUE) redirect('login/index');
        		
@@ -108,7 +107,8 @@ class Backend extends CI_Controller {
        			$this->tabla($nombre_tabla);		
        		} else redirect('cuenta/index');
        }
-           
+
+       //Función que permite insertar un nuevo registro en la tabla
        public function insertar(){
        		if($this->session->userdata('logged_in') !==  TRUE) redirect('login/index');
        		
@@ -134,6 +134,7 @@ class Backend extends CI_Controller {
        		else redirect('cuenta/index');
        }
        
+       //Función que permite ver la foto de un producto en concreto
        public function ver_producto(){
        		if($this->session->userdata('logged_in') !==  TRUE) redirect('login/index');
        		
@@ -150,6 +151,7 @@ class Backend extends CI_Controller {
        	
        }
        
+       //Función que permite ver los productos de un pedido en concreto 
 		public function ver_pedido(){
        		if($this->session->userdata('logged_in') !==  TRUE) redirect('login/index');
        		
@@ -169,7 +171,8 @@ class Backend extends CI_Controller {
        		} else redirect('cuenta/index');
        	
        	}
-
+		
+       	//Función que permite ver las etiquetas que tiene asignadas un producto en concreto
        	public function ver_etiquetas(){
        		if($this->session->userdata('logged_in') !==  TRUE) redirect('login/index');
        		
