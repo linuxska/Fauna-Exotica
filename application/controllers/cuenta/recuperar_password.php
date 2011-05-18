@@ -57,13 +57,14 @@ class Recuperar_password extends CI_Controller {
 					
 		       	} else {
 		       	  	// Es un usuario
-		       	  	$datos = $this->cuenta_model->recuperar_por_usuario($user_email);		       	  	
+		       	  	$datos = $this->cuenta_model->recuperar_por_usuario($user_email);
+		       	  			       	  	
 		       	}
 		       	
 		       	// Creamos nueva contraseña aleatoria
 		       	$password = random_string('alnum', 8, 'nozero');
 		       	$password_md5 =  md5($password); // Encriptamos md5
-				$this->cuenta_model->registrar_password_recuperacion($password_md5);
+				$this->cuenta_model->registrar_password_recuperacion($datos['id'], $password_md5);
 
 				// Datos del mensaje email que se manda al usuario
 				$this->email->from('lauscar.sl@gmail.com', 'Lauscar');

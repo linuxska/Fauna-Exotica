@@ -34,7 +34,7 @@ class Cuenta_model extends CI_Model {
 			
 			return $dato;
 		}
-	
+		
 		// Comprobar si el usuario ya existe en la BD
        	public function existe_usuario ($usuario) {
 	        if ($usuario === false) return false;
@@ -205,7 +205,7 @@ class Cuenta_model extends CI_Model {
 		/* Recuperacion contraseña */
 		
 		public function recuperar_por_usuario($usuario){
-			$query = $this->db->select('usuario, password, email')
+			$query = $this->db->select('id, usuario, password, email')
 								->where('usuario', $usuario)
 								->get('usuario');		
 					
@@ -215,7 +215,7 @@ class Cuenta_model extends CI_Model {
 		}
 		
 		public function recuperar_por_email($email){
-			$query = $this->db->select('usuario, password, email')
+			$query = $this->db->select('id, usuario, password, email')
 								->where('email', $email)
 								->get('usuario');
 			
@@ -226,13 +226,14 @@ class Cuenta_model extends CI_Model {
 		
 		
 		// Insertar nueva pass en md5 en al BD para recuperacion via email
-		public function registrar_password_recuperacion ($password){
+		public function registrar_password_recuperacion ($cod_usuario, $password){
 		    if ($password === false)  return false;	    
 		    
 	        // Tabla usuario
 			$data = array('password_recuperacion' => $password);
 	    	
-			$this->db->update('usuario', $data);
+			$this->db->where('id', $cod_usuario)
+					 ->update('usuario', $data);
 			
 			return ($this->db->affected_rows() > 0) ? true : false;
 		}

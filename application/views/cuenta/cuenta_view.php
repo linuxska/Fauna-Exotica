@@ -2,7 +2,7 @@
 		<span class="ui-icon ui-icon-circle-close" style="float:left; margin:0 7px 50px 0;"></span>', '</p></div>');?>
 <?php if (isset($guardado) && $guardado===true) {
 	echo '<div class="guardado" title="Error en formulario"><p>
-	<span class="ui-icon ui-icon-circle-close" style="float:left; margin:0 7px 50px 0;">
+	<span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;">
 	</span>Se han guardado los cambios</p></div>';
 	}
 ?>
