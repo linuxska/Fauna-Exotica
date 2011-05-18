@@ -5,7 +5,7 @@
 	
 	<div id="tabs">
 	<ul>
-		<li><?php echo anchor('inicio/indextab', 'Inicio');?></li>
+		<li><?php echo anchor('inicio/index', 'Inicio');?></li>
 		<li><?php echo anchor('Informacion', 'Informacion');?></li>
 		<li><a href="#tabs-4">Contactar</a></li>
 		
