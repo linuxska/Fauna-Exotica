@@ -1,5 +1,6 @@
 <div class="demo">
 
+<!-- formulario en diálogo para todas las tablas menos producto y usuario -->
 <?php if($this->uri->segment(3)!='producto' && $this->uri->segment(3)!='usuario'){?>
 <div id="dialog-form" title="Insertar nuevo <?php echo $this->uri->segment(3);?>">
 	<?php  
@@ -14,6 +15,7 @@
 	?>
 </div>
 
+<!-- Formulario en diálogo para la tabla usuario -->
 <?php }
  else if($this->uri->segment(3)=='usuario'){?>
 <div id="dialog-form" title="Insertar nuevo <?php echo $this->uri->segment(3);?>">
@@ -35,6 +37,8 @@
 		echo form_close();
 	?>
 </div>
+
+<!-- Formulario en diálogo para la tabla producto -->
 <?php }
 else{?>
 <div id="dialog-form" title="Insertar nuevo <?php echo $this->uri->segment(3);?>">
@@ -60,6 +64,7 @@ else{?>
 </div>
 <?php }?>
 
+<!-- Vista principal de una tabla -->
 <div id="users-contain" class="ui-widget">
 
 

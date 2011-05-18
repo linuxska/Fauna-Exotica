@@ -3,8 +3,8 @@
 	<table  id='principal'>
 	<thead>
 	    <tr>
-		  <th></th>
-	      <th></th>
+		  <th>Tabla</th>
+	      <th>Operaciones</th>
 	      <th></th>
 	    </tr>
 	</thead>

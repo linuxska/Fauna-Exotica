@@ -1,4 +1,5 @@
-<div id="dialog-form" title="Insertar nuevo <?php echo $this->uri->segment(3);?>">
+<!-- Formulario en diálogo para insertar nueva etiqueta -->
+<div id="dialog-form" title="Insertar nueva etiqueta">
 	<?php  
 		echo form_open('backend/insertar/'.$this->uri->segment(3).'/'.$this->uri->segment(4));
 			foreach ($columnas as $col){
@@ -48,23 +49,6 @@
     		</tr>
 
 		<?php endforeach; ?>
-		
-		
-
-<!-- 	<?php foreach($pedido as $fila){?>
-			<td>
-			<?php if ($fila===NULL || $fila === '') echo "&nbsp";
-				  else echo $fila;?>
-			</td>
-
-    	<td>
-    		<?php
-					
-			echo "<a href='".base_url()."index.php/backend/ver_producto/".$datos['cod_producto']."'><img src='".base_url()."img/ver.gif'></a>";?>
-    	</td>
-    </tr>
-	<?php } ?> 
--->
 
 		</tbody>
 	</table>

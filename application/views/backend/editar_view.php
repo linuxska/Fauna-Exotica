@@ -1,4 +1,4 @@
-
+<!-- Formulario en diálogo para editar un registro -->
 <div id="dialog-form2" title="Editar <?php echo $this->uri->segment(3);?>">
 	<?php  
 		echo form_open('backend/actualizar/'.$this->uri->segment(3).'/'.$this->uri->segment(4));
