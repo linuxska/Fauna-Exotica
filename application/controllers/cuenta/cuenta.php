@@ -39,6 +39,7 @@ class Cuenta extends CI_Controller {
     			// Datos del usuario para el formulario
     			$datos['cuenta'] = $this->cuenta_model->obtener_todo($this->session->userdata('id'));
     			$datos['pedidos'] =  $this->pedido_model->obtener_pedidos($this->session->userdata('id'));
+    			$datos['acordeon_abierto']= '0';
     			
     			// Contenido principal  
 				$this->load->view('cuenta/cuenta_view', $datos);
@@ -60,6 +61,7 @@ class Cuenta extends CI_Controller {
 						   			
     		// Lista de productos del pedido
     		$datos['productos'] =  $this->pedido_model->obtener_productos_pedido($cod_pedido);
+    		$datos['acordeon_abierto']= '3';
     		
     		// Contenido principal  
 			$this->load->view('cuenta/pedido_view', $datos);
@@ -93,6 +95,7 @@ class Cuenta extends CI_Controller {
 			//Datos de la cuenta
 			$datos['cuenta'] = $this->cuenta_model->obtener_todo($this->session->userdata('id'));
 			$datos['pedidos'] =  $this->pedido_model->obtener_pedidos($this->session->userdata('id'));
+			$datos['acordeon_abierto']= '1';
 			
 			if($this->form_validation->run()==FALSE){
 				// Si no se ha enviado el formulario, devuelve a la vista de cuenta
@@ -111,7 +114,9 @@ class Cuenta extends CI_Controller {
 			    // Update BD
 			    $cod_usuario = $this->session->userdata('id');
 				$reg = $this->cuenta_model->actualizar_usuario($datos_perfil, $cod_usuario);	
-							
+				
+				$datos['guardado'] = true; // Activa mensaje dialogo
+					
 				$this->load->view('menu', $menu);
 				$this->load->view('cuenta/cuenta_view', $datos);
 						
@@ -138,6 +143,7 @@ class Cuenta extends CI_Controller {
 			//Datos usuario
 			$datos['cuenta'] = $this->cuenta_model->obtener_todo($this->session->userdata('id'));
 			$datos['pedidos'] =  $this->pedido_model->obtener_pedidos($this->session->userdata('id'));
+			$datos['acordeon_abierto']= '2';
 			
 			if($this->form_validation->run()==FALSE){
 				// Si no se ha enviado el formulario, devuelve a la vista de cuenta
@@ -151,6 +157,8 @@ class Cuenta extends CI_Controller {
 			    //Update BD
 			    $cod_usuario = $this->session->userdata('id');
 				$reg = $this->cuenta_model->actualizar_usuario($email, $cod_usuario);	
+				
+				$datos['guardado'] = true; // Activa mensaje dialogo
 				
 				$this->load->view('menu', $menu);
 				$this->load->view('cuenta/cuenta_view', $datos);		
@@ -176,6 +184,7 @@ class Cuenta extends CI_Controller {
 			//Datos usuario
 			$datos['cuenta'] = $this->cuenta_model->obtener_todo($this->session->userdata('id'));
 			$datos['pedidos'] =  $this->pedido_model->obtener_pedidos($this->session->userdata('id'));
+			$datos['acordeon_abierto']= '2';
 			
 			if($this->form_validation->run()==FALSE){
 				// Si no se ha enviado el formulario, devuelve a la vista de cuenta
@@ -189,6 +198,8 @@ class Cuenta extends CI_Controller {
 			    //Update BD
 			    $cod_usuario = $this->session->userdata('id');
 				$reg = $this->cuenta_model->actualizar_usuario($password, $cod_usuario);	
+				
+				$datos['guardado'] = true; // Activa mensaje dialogo
 				
 				$this->load->view('menu', $menu);
 				$this->load->view('cuenta/cuenta_view', $datos);			

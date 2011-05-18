@@ -11,7 +11,6 @@ $(document).ready( function(){
 	// Menu categorias acordeon
 	$( "#acordeon_animales" ).accordion({ autoHeight: false, collapsible: true, active: false });
 	$( "#acordeon_articulos" ).accordion({ autoHeight: false, collapsible: true, active: false });
-	$( "#acordeon_cuenta" ).accordion({ autoHeight: false, icons: { 'header': 'ui-icon-circle-arrow-e', 'headerSelected': 'ui-icon-circle-arrow-s' } });
 	
 	// Pestañas de las vistas
 	$( "#tabs" ).tabs({
@@ -77,9 +76,26 @@ $(document).ready( function(){
         }
     });
 	
+	// Acordeon pane cuenta
+	//var acordeon_abierto = $("#acordeon_abierto").val();
+	$( "#acordeon_cuenta" ).accordion({ autoHeight: false, icons: { 'header': 'ui-icon-circle-arrow-e', 'headerSelected': 'ui-icon-circle-arrow-s' } });
+
+	// Obtener de un input el acordeon que debe abrirse por defecto
+	var acordeon_abierto = parseInt($("#acordeon_abierto").val()) ;
+	$( "#acordeon_cuenta" ).accordion( "option", "active", acordeon_abierto);
+	
 	// Dialogo modal: form validations
 	$( "#dialog:ui-dialog" ).dialog( "destroy" );
 	$( ".error" ).dialog({
+		modal: true,
+		buttons: {
+			Ok: function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+	
+	$( ".guardado" ).dialog({
 		modal: true,
 		buttons: {
 			Ok: function() {
