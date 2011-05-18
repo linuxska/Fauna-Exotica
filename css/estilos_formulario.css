@@ -74,3 +74,10 @@ div.error{
 	text-align: center;
 }
 
+.ui-button{
+	margin-top:5px;
+}
+
+#boton_buscar{
+	margin-top:0px;
+}

@@ -4,13 +4,13 @@
 	<div id="tabs">
 	<ul>
 		<li><a href='#tabs-1'>Lista productos</a></li>
-		<li><?php echo anchor('inicio/index', 'Inicio');?></li>
+		<li><?php echo anchor('inicio', 'Inicio');?></li>
 		<li><?php echo anchor('Informacion', 'Informacion');?></li>
 		<li><?php echo anchor('contactar/index', 'Contactar');?></li>
 		
 		<form class="buscador" accept-charset="utf-8" method="get" action="<?php echo base_url();?>buscador/index">
 			<input type='text' name='busqueda' id='busqueda' maxlength='30' size='20'/>
-			<input type='submit' value='Buscar'/>
+			<input id='boton_buscar' type='submit' value='Buscar'/>
 			<br/>
 		</form>
 	</ul>

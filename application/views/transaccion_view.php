@@ -9,7 +9,7 @@
 		
 		<form class="buscador" accept-charset="utf-8" method="get" action="<?php echo base_url();?>buscador/index">
 			<input type='text' name='busqueda' id='busqueda' maxlength='30' size='20'/>
-			<input type='submit' value='Buscar'/>
+			<input id='boton_buscar' type='submit' value='Buscar'/>
 			<br/>
 		</form>
 	</ul>
@@ -17,7 +17,7 @@
 		<h3>¡Gracias por tu compra!</h3>
 		Detalles del pago por paypal:<br>
 		Nombre: <?php echo $nombre;?>;<br>
-		Coste total: <?php echo $coste_total;?><br>
+		Coste total: <?php echo $coste_total." ".$moneda;?><br>
 		<p>Tu transacción se ha completado, el recibo se ha enviado a tu email.</p>
 		<br>Deberás loguearte en <a href='https://www.paypal.com'>www.paypal.com</a> para ver los detalles de la transacción.<br>
     </div> 
