@@ -6,8 +6,8 @@
 }
 
 .producto img{
-	height:180px;
-	width: 220px;
+	width:100%;
+	height:50%;
 }
 
 .producto p {
