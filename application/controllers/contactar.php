@@ -17,6 +17,8 @@ class Contactar extends CI_Controller {
 			
 			$this->load->helper('email');
 		    $this->load->library('email');
+			
+			$this->load->model('cuenta_model');
        }
        
        public function Index(){
@@ -30,10 +32,16 @@ class Contactar extends CI_Controller {
             // Carga de las vistas 
 			$this->load->view('header', $head);
     		$this->load->view('menu', $menu);
-    		
+			
+			// Datos usuario
+			if ($this->session->userdata('logged_in') ===  TRUE)
+				$datos['cuenta'] = $this->cuenta_model->obtener_todo($this->session->userdata('id'));
+			else $datos=null;
+			
     		if($this->form_validation->run()==FALSE){
     			// Si no se ha enviado el formulario 
-    			$this->load->view('contactar_view'); 
+				
+    			$this->load->view('contactar_view', $datos); 
     			  			
     		} else {
     			// Formulario enviado correctamente
